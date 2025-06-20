@@ -2,7 +2,7 @@
 name: Development Bug Template
 about: Documenting bugs found during development
 title: "[BUG] - "
-labels: ''
+labels: bug
 assignees: mildred-prog
 
 ---
