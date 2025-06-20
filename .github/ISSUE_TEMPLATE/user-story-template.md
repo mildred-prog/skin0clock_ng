@@ -10,6 +10,6 @@ assignees: mildred-prog
 As a **role** I can **capability** so that **received_benefit**.
 
 ### Acceptance Criteria
-- []
-- []
-- []
+- [ ]
+- [ ]
+- [ ]
