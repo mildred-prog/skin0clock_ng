@@ -1,5 +1,5 @@
 """
-ASGI config for mildred_and_bloom project.
+ASGI config for skin0clock_ng project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mildred_and_bloom.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'skin0clock_ng.settings')
 
 application = get_asgi_application()
