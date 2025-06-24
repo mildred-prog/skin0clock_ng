@@ -1,0 +1,52 @@
+[
+    {
+        "pk": 1,
+        "model": "products.categories",
+        "fields": {
+            "name": "Cleansers"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "products.categories",
+        "fields": {
+            "name": "Toners"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "products.categories",
+        "fields": {
+            "name": "Serums"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "products.categories",
+        "fields": {
+            "name": "Moisturizers"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "products.categories",
+        "fields": {
+            "name": "Sunscreens"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "products.categories",
+        "fields": {
+            "name": "lotions"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "products.categories",
+        "fields": {
+            "name": "Scrubs"
+        }
+    },
+   
+]
