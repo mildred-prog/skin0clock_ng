@@ -43,96 +43,82 @@
 </head>
 
 <body>
-<header class="container-fluid fixed-top bg-white border-bottom">
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <!-- Logo -->
-        <a class="navbar-brand" href="{% url 'home' %}">
-            <h2 class="logo-font text-black my-0"><strong>SKIN'0'CLOCK_NG</strong></h2>
-        </a>
+    <header class="container-fluid fixed-top bg-white border-bottom">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <!-- Logo -->
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <h2 class="logo-font text-black my-0"><strong>SKIN'0'CLOCK_NG</strong></h2>
+            </a>
 
-        <!-- Toggler for mobile -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
-            aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Collapsible nav content -->
-        <div class="collapse navbar-collapse" id="main-nav">
-            <!-- Search (visible on large screens only) -->
-            <form method="GET" action="" class="d-none d-lg-block mx-auto w-45">
-                <div class="input-group">
-                    <input class="form-control border border-black rounded-0" type="text" name="q"
-                        placeholder="Search our site">
-                    <div class="input-group-append">
-                        <button class="btn btn-black border border-black rounded-0" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
+            <!-- Collapsible nav content -->
+            <div class="collapse navbar-collapse" id="main-nav">
+                <!-- Search (visible on large screens only) -->
+                <form method="GET" action="" class="d-none d-lg-block mx-auto w-50">
+                    <div class="input-group">
+                        <input class="form-control border border-black rounded-0" type="text" name="q"
+                            placeholder="Search our site">
+                        <div class="input-group-append">
+                            <button class="btn btn-black border border-black rounded-0" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
 
-            <!-- Navigation Links -->
-            <ul class="navbar-nav mx-auto mt-3 mt-lg-0 text-center">
-                <li class="nav-item">
-                    <a class="nav-link {% if request.resolver_match.url_name == 'products' %}active{% endif %}"
-                        href="">Products</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if request.resolver_match.url_name == 'categories' %}active{% endif %}"
-                        href="">Categories</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if request.resolver_match.url_name == 'Skin_concern' %}active{% endif %}"
-                        href="">Skin Concern</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}"
-                        href="">Contact Us</a>
-                </li>
-            </ul>
-
-            <!-- Account and Cart -->
-            <ul class="navbar-nav ml-auto text-center">
-                <!-- My Account Dropdown -->
-                <li class="nav-item dropdown me-lg-4 me-2">
-                    <a class="nav-link dropdown-toggle text-black" href="#" id="user-options" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user fa-lg"></i>
-                        <div class="d-lg-none">My Account</div>
-                    </a>
-                    <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                        {% if request.user.is_authenticated %}
+                <!-- Account and Cart -->
+                <ul class="navbar-nav ml-auto text-center">
+                    <!-- My Account Dropdown -->
+                    <li class="nav-item dropdown me-lg-4 me-2">
+                        <a class="nav-link dropdown-toggle text-black" href="#" id="user-options" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user fa-lg"></i>
+                            <div class="d-lg-none">My Profile</div>
+                        </a>
+                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                            {% if request.user.is_authenticated %}
                             {% if request.user.is_superuser %}
-                                <a href="#" class="dropdown-item">Product Management</a>
+                            <a href="#" class="dropdown-item">Product Management</a>
                             {% endif %}
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                        {% else %}
+                            {% else %}
                             <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
                             <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                        {% endif %}
-                    </div>
-                </li>
-
-                <!-- Cart -->
-                <li class="nav-item">
-                    <a class="nav-link {% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %}"
-                        href="#" aria-label="View shopping bag">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <div class="d-lg-none">Cart</div>
-                        <p class="my-0 d-none d-lg-block">
-                            {% if grand_total %}
-                                €{{ grand_total|floatformat:2 }}
-                            {% else %}
-                                €0.00
                             {% endif %}
-                        </p>
-                    </a>
-                </li>
-            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Cart -->
+                    <li class="nav-item">
+                        <a class="nav-link {% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %}"
+                            href="#" aria-label="View shopping bag">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <div class="d-lg-none">Cart</div>
+                            <p class="my-0 d-none d-lg-block">
+                                {% if grand_total %}
+                                €{{ grand_total|floatformat:2 }}
+                                {% else %}
+                                €0.00
+                                {% endif %}
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="row bg-white">
+            <nav class="navbar navbar-expand-lg navbar-light w-100">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+                    aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                {% include 'includes/mobile-top-header.html' %}
+                {% include 'includes/main-nav.html' %}
+            </nav>
         </div>
-    </nav>
-</header>
+    </header>
+
 
     {% if messages %}
     <div class="message-container"></div>
