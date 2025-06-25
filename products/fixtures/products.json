@@ -1,237 +1,275 @@
 [
-    {
-        "pk": 1,
-        "model": "products.product",
-        "fields": {
-            "name": "Barrier Base Mineral SPF 50",
-            "description": "A non-comedogenic mineral sunscreen with zinc oxide and niacinamide for broad-spectrum protection and skin barrier support.",
-            "price": 58.00,
-            "categories": 5,
-            "image": "barrier_base_mineral_SPF_50",
-
-        }
-    },
-    {
-        "pk": 2,
-        "model": "products.product",
-        "fields": {
-            "name": "Sunrise Serum Drops SPF 35",
-            "description": "A featherlight daily serum with SPF 35 and vitamin C to protect and brighten without clogging pores.",
-            "price": 20.00,
-            "categories": 5,
-            "image": "sunrise_serum_drops_SPF_35",
-        }
-    },
-    {
-        "pk": 3,
-        "model": "products.product",
-        "fields": {
-            "name": "City Block UV Defense Mist SPF 40",
-            "description": "A refreshing, invisible SPF 40 mist ideal for on-the-go protection—wear alone or over makeup to defend against UV and pollution.",
-            "price": 35.00,
-            "categories": 5,
-            "image": "city_block_uv_defense_mist_SPF_40",
-        }
-    },
-    {
-        "pk": 4,
-        "model": "products.product",
-        "fields": {
-            "name": "Deep Moisture Lotion",
-            "description": "A rich, fast-absorbing body lotion that delivers 24-hour hydration with hyaluronic acid and oat extract to restore softness and suppleness.",
-            "price": 18.00,
-            "categories": 6,
-            "image": "deep_moisture_lotion",
-
-        }
-    },
-    {
-        "pk": 5,
-        "model": "products.product",
-        "fields": {
-            "name": "Radiance Body Lotion",
-            "description": "A lightweight body lotion infused with vitamin C and botanical brighteners to visibly even skin tone and enhance glow.",
-            "price": 15.00,
-            "categories": 6,
-            "image": "radiance_body_lotion",
-
-        }
-    },
-    {
-        "pk": 6,
-        "model": "products.product",
-        "fields": {
-            "name": "PM Repair Lotion",
-            "description": "A nourishing nighttime lotion powered by ceramides and peptides to support overnight skin repair and barrier recovery.",
-            "price": 32.00,
-            "categories": 6,
-            "image": "pm_repair_lotion",
-        }
-    },
-    {
-        "pk": 7,
-        "model": "products.product",
-        "fields": {
-            "name": "Essence Toner",
-            "description": "A hydrating toner-meets-essence packed with cucumber, glycerin, and panthenol to prep, plump, and refresh skin before serum or moisturizer.",
-            "price": 20.00,
-            "categories": 2,
-            "image": "essence_toner",
-        }
-      },
-      {
-        "pk": 8,
-        "model": "products.product",
-        "fields": {
-            "name": "BHA Clarifying Toner",
-            "description": "A clarifying exfoliating toner formulated with 2% salicylic acid to help unclog pores, control oil, and prevent breakouts.",
-            "price": 24.00,
-            "categories": 2,
-            "image": "bha_clarifying_toner",
-        }
-    },
-    {
-        "pk": 9,
-        "model": "products.product",
-        "fields": {
-            "name": "Purifying Gel Wash",
-            "description": "A refreshing gel cleanser with tea tree and green tea extracts that deeply cleanses without stripping, ideal for oily or blemish-prone skin.",
-            "price": 15.00,
-            "categories": 1,
-            "image": "purifying_gel_wash",
-        }
-    },
-    {
-        "pk": 10,
-        "model": "products.product",
-        "fields": {
-            "name": "Bright Start Cleanser",
-            "description": "A gentle morning cleanser infused with papaya enzymes and vitamin B5 to refresh skin and promote a radiant start to the day.",
-            "price": 25.00,
-            "categories": 1,
-            "image": "bright_start_cleanser",
-        }
-    },
-    {
-        "pk": 11,
-        "model": "products.product",
-        "fields": {
-            "name": "Micellar Water Cleanser",
-            "description": "A rinse-free micellar formula that effortlessly lifts makeup, dirt, and oil while hydrating and soothing the skin.",
-            "price": 35.00,
-            "categories": 1,
-            "image": "micellar_water_cleanser",
-        }
-    },
-    {
-        "pk": 12,
-        "model": "products.product",
-        "fields": {
-            "name": "Aloe Repair Gel",
-            "description": "A soothing, fast-absorbing gel enriched with aloe vera and chamomile to calm irritation, hydrate dry skin, and promote natural healing—perfect for sensitive, sun-stressed, or post-treatment skin..",
-            "price": 45.00,
-            "categories": 4,
-            "stock": 1,
-            "image": "aloe_repair_gel",
-        }
-    },
-    {
-        "pk": 13,
-        "model": "products.product",
-        "fields": {
-            "name": "Hyaluronic Boost Serum",
-            "description": "A triple-weight hyaluronic acid serum that delivers multi-depth hydration for plump, dewy, and refreshed skin.",
-            "price": 35.00,
-            "categories": 3,
-            "image": "hyaluronic_boost_serum",
-        }
-    },
-    {
-        "pk": 14,
-        "model": "products.product",
-        "fields": {
-            "name": "PM Repair Serum",
-            "description": "A night-active treatment with niacinamide, peptides, and bakuchiol to reduce signs of fatigue and boost overnight renewal.",
-            "price": 25.00,
-            "categories": 3,
-            "image": "pm_repair_serum",
-        }
-    },
-    {
-        "pk": 15,
-        "model": "products.product",
-        "fields": {
-            "name": "Redness Relief Serum",
-            "description": "A calming serum formulated with centella asiatica and azelaic acid to soothe irritated skin and reduce visible redness.",
-            "price": 30.00,
-            "category": 3,
-            "image": "redness_relief_serum",
-        }
-    },
-    {
-        "pk": 16,
-        "model": "products.product",
-        "fields": {
-            "name": "Radiant Eye Serum",
-            "description": "A lightweight eye serum enriched with caffeine, peptides, and vitamin C to brighten, de-puff, and hydrate the delicate eye area.",
-            "price": 45.00,
-            "categories": 3,
-            "image": "radiant_eye_serum",
-        }
-    },
-    {
-        "pk": 17,
-        "model": "products.product",
-        "fields": {
-            "name": "Citrus Peel Exfoliant",
-            "description": "A gentle enzyme exfoliant with citrus fruit acids and AHAs to resurface dull skin and refine texture without irritation.",
-            "price": 25.00,
-            "categories": 7,
-            "image": "citrus_peel_exfoliant",
-        }
-    },
-    {
-        "pk": 18,
-        "model": "products.product",
-        "fields": {
-            "name": "Radiant Face Scrub",
-            "description": "A creamy exfoliator with rice powder and jojoba beads that polishes the skin for a soft, glowing finish.",
-            "price": 45.00,
-            "categories": 7,
-            "image": "radiant_face_scrub",
-        }
-    },
-    {
-        "pk": 19,
-        "model": "products.product",
-        "fields": {
-            "name": "Green Tea Clay Scrub",
-            "description": "A dual-action scrub with kaolin clay and green tea extract that detoxifies, exfoliates, and calms in one step.",
-            "price": 40.00,
-            "categories": 7,
-            "image": "green_tea_clay_scrub",
-        }
-    },
-    {
-        "pk": 20,
-        "model": "products.product",
-        "fields": {
-            "name": "Deep Nourishing Moisturizer",
-            "description": "A velvet-rich cream loaded with shea butter, ceramides, and squalane to deeply replenish and lock in moisture",
-            "price": 50.00,
-            "categories": 4,
-            "image": "deep_nourishing_moisturizer",
-        }
-    },
-    {
-        "pk": 21,
-        "model": "products.product",
-        "fields": {
-            "name": "Renew Night Elixir Moisturizer",
-            "description": "A silky nighttime elixir formulated with natural oils and botanical extracts to rejuvenate tired skin by morning.",
-            "price": 60.00,
-            "categories": 3,
-            "image": "renew_night_elixir_moisturizer",
-        }
-    },
+  {
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+      "name": "Barrier Base Mineral SPF 50",
+      "description": "A non-comedogenic mineral sunscreen with zinc oxide and niacinamide for broad-spectrum protection and skin barrier support.",
+      "price": 58.0,
+      "category": 5,
+      "rating": 4.8,
+      "sku": "SUN-BRMIN50",
+      "image": "barrier_base_mineral_spf_50"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+      "name": "Sunrise Serum Drops SPF 35",
+      "description": "A featherlight daily serum with SPF 35 and vitamin C to protect and brighten without clogging pores.",
+      "price": 20.0,
+      "category": 5,
+      "rating": 4.6,
+      "sku": "SUN-SUNSD35",
+      "image": "sunrise_serum_drops_spf_35"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+      "name": "City Block UV Defense Mist SPF 40",
+      "description": "A refreshing, invisible SPF 40 mist ideal for on-the-go protection—wear alone or over makeup to defend against UV and pollution.",
+      "price": 35.0,
+      "category": 5,
+      "rating": 4.7,
+      "sku": "SUN-CITYSPF40",
+      "image": "city_block_uv_defense_mist_spf_40"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+      "name": "Deep Moisture Lotion",
+      "description": "A rich, fast-absorbing body lotion that delivers 24-hour hydration with hyaluronic acid and oat extract to restore softness and suppleness.",
+      "price": 18.0,
+      "category": 6,
+      "rating": 4.6,
+      "sku": "LOT-DEEPML",
+      "image": "deep_moisture_lotion"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 5,
+    "fields": {
+      "name": "Radiance Body Lotion",
+      "description": "A lightweight body lotion infused with vitamin C and botanical brighteners to visibly even skin tone and enhance glow.",
+      "price": 15.0,
+      "category": 6,
+      "rating": 4.5,
+      "sku": "LOT-RADBL",
+      "image": "radiance_body_lotion"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 6,
+    "fields": {
+      "name": "PM Repair Lotion",
+      "description": "A nourishing nighttime lotion powered by ceramides and peptides to support overnight skin repair and barrier recovery.",
+      "price": 32.0,
+      "category": 6,
+      "rating": 4.7,
+      "sku": "LOT-PMRL",
+      "image": "pm_repair_lotion"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 7,
+    "fields": {
+      "name": "Essence Toner",
+      "description": "A hydrating toner-meets-essence packed with cucumber, glycerin, and panthenol to prep, plump, and refresh skin before serum or moisturizer.",
+      "price": 20.0,
+      "category": 2,
+      "rating": 4.5,
+      "sku": "TON-ESSENCE",
+      "image": "essence_toner"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 8,
+    "fields": {
+      "name": "BHA Clarifying Toner",
+      "description": "A clarifying exfoliating toner formulated with 2% salicylic acid to help unclog pores, control oil, and prevent breakouts.",
+      "price": 24.0,
+      "category": 2,
+      "rating": 4.6,
+      "sku": "TON-BHACT",
+      "image": "bha_clarifying_toner"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 9,
+    "fields": {
+      "name": "Purifying Gel Wash",
+      "description": "A refreshing gel cleanser with tea tree and green tea extracts that deeply cleanses without stripping, ideal for oily or blemish-prone skin.",
+      "price": 15.0,
+      "category": 1,
+      "rating": 4.4,
+      "sku": "CLE-PURGW",
+      "image": "purifying_gel_wash"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 10,
+    "fields": {
+      "name": "Bright Start Cleanser",
+      "description": "A gentle morning cleanser infused with papaya enzymes and vitamin B5 to refresh skin and promote a radiant start to the day.",
+      "price": 25.0,
+      "category": 1,
+      "rating": 4.7,
+      "sku": "CLE-BRSC",
+      "image": "bright_start_cleanser"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 11,
+    "fields": {
+      "name": "Micellar Water Cleanser",
+      "description": "A rinse-free micellar formula that effortlessly lifts makeup, dirt, and oil while hydrating and soothing the skin.",
+      "price": 35.0,
+      "category": 1,
+      "rating": 4.8,
+      "sku": "CLE-MICWC",
+      "image": "micellar_water_cleanser"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 12,
+    "fields": {
+      "name": "Aloe Repair Gel",
+      "description": "A soothing, fast-absorbing gel enriched with aloe vera and chamomile to calm irritation, hydrate dry skin, and promote natural healing—perfect for sensitive, sun-stressed, or post-treatment skin.",
+      "price": 45.0,
+      "category": 4,
+      "rating": 4.9,
+      "sku": "MOI-ALOERG",
+      "image": "aloe_repair_gel"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 13,
+    "fields": {
+      "name": "Hyaluronic Boost Serum",
+      "description": "A triple-weight hyaluronic acid serum that delivers multi-depth hydration for plump, dewy, and refreshed skin.",
+      "price": 35.0,
+      "category": 3,
+      "rating": 4.8,
+      "sku": "SER-HYABOOST",
+      "image": "hyaluronic_boost_serum"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 14,
+    "fields": {
+      "name": "PM Repair Serum",
+      "description": "A night-active treatment with niacinamide, peptides, and bakuchiol to reduce signs of fatigue and boost overnight renewal.",
+      "price": 25.0,
+      "category": 3,
+      "rating": 4.7,
+      "sku": "SER-PMRS",
+      "image": "pm_repair_serum"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 15,
+    "fields": {
+      "name": "Redness Relief Serum",
+      "description": "A calming serum formulated with centella asiatica and azelaic acid to soothe irritated skin and reduce visible redness.",
+      "price": 30.0,
+      "category": 3,
+      "rating": 4.9,
+      "sku": "SER-RRS",
+      "image": "redness_relief_serum"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 16,
+    "fields": {
+      "name": "Radiant Eye Serum",
+      "description": "A lightweight eye serum enriched with caffeine, peptides, and vitamin C to brighten, de-puff, and hydrate the delicate eye area.",
+      "price": 45.0,
+      "category": 3,
+      "rating": 5.0,
+      "sku": "SER-RADSE",
+      "image": "radiant_eye_serum"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 17,
+    "fields": {
+      "name": "Citrus Peel Exfoliant",
+      "description": "A gentle enzyme exfoliant with citrus fruit acids and AHAs to resurface dull skin and refine texture without irritation.",
+      "price": 25.0,
+      "category": 7,
+      "rating": 4.6,
+      "sku": "SCR-CITRPEX",
+      "image": "citrus_peel_exfoliant"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 18,
+    "fields": {
+      "name": "Radiant Face Scrub",
+      "description": "A creamy exfoliator with rice powder and jojoba beads that polishes the skin for a soft, glowing finish.",
+      "price": 45.0,
+      "category": 7,
+      "rating": 5.0,
+      "sku": "SCR-RADFS",
+      "image": "radiant_face_scrub"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 19,
+    "fields": {
+      "name": "Green Tea Clay Scrub",
+      "description": "A dual-action scrub with kaolin clay and green tea extract that detoxifies, exfoliates, and calms in one step.",
+      "price": 40.0,
+      "category": 7,
+      "rating": 4.8,
+      "sku": "SCR-GTCLAY",
+      "image": "green_tea_clay_scrub"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 20,
+    "fields": {
+      "name": "Deep Nourishing Moisturizer",
+      "description": "A velvet-rich cream loaded with shea butter, ceramides, and squalane to deeply replenish and lock in moisture",
+      "price": 50.0,
+      "category": 4,
+      "rating": 4.9,
+      "sku": "MOI-DEEPNM",
+      "image": "deep_nourishing_moisturizer"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 21,
+    "fields": {
+      "name": "Renew Night Elixir Moisturizer",
+      "description": "A silky nighttime elixir formulated with natural oils and botanical extracts to rejuvenate tired skin by morning.",
+      "price": 60.0,
+      "category": 3,
+      "rating": 5.0,
+      "sku": "MOI-RENEM",
+      "image": "renew_night_elixir_moisturizer"
+    }
+  }
 ]
