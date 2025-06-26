@@ -41,3 +41,13 @@ def home(request):
         'featured_products': featured_products,
     }
     return render(request, 'home/index.html', context)
+
+def category_products(request, category_id):
+    """A view to show all products in a specific category"""
+    category = Category.objects.get(pk=category_id)
+    products = Product.objects.filter(category_id=category_id)
+    context = {
+        'category': category,
+        'products': products,
+    }
+    return render(request, 'products/category_products.html', context)
