@@ -2,12 +2,26 @@ html {
     height: 100%;
 }
 
-body {
-    background: url('/media/hero_image.webp') no-repeat center center fixed;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+.my-hero {
+    background: url('/media/hero_image.webp') no-repeat center;
     background-size: cover;
-    height: calc(100vh - 164px);
+    height: 500px;
     color: #555;
-    font-family: 'Lato';
+    font-family: 'Lato', sans-serif;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 /* from Bulma */
@@ -21,6 +35,7 @@ body {
 
 .logo-font {
     text-transform: uppercase;
+    margin-bottom: 5px;
 }
 
 .main-logo-link {
@@ -40,7 +55,7 @@ body {
 .shop-now-button {
     background: #000;
     color: #ffffff;
-    min-width: 260px;
+    min-width: 150px;
 }
 
 .btn-black {
@@ -76,14 +91,7 @@ body {
 	z-index: -1;
 }
 
-/* -------------------------------- Media Queries */
-
-/* Slightly larger container on xl screens */
-@media (min-width: 1200px) {
-  .container {
-    max-width: 80%;
-  }
-}
+/* -------------------------------- Media Queries
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
