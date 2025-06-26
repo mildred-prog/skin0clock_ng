@@ -94,6 +94,12 @@ html, body {
 /* -------------------------------- Media Queries
 
 /* fixed top navbar only on medium and up */
+@media (min-width: 320px) {
+    .logo-font {
+        padding-top: 5px;
+    }
+}
+
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;
@@ -106,4 +112,18 @@ html, body {
     .header-container {
         padding-top: 164px;
     }
+
+    .featured-col {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
 }
+
+/* pad the top a bit when navbar is collapsed on mobile */
+@media (max-width: 991px) {
+    .header-container {
+        padding-top: 140px;
+    }
+}
+
+/* Additional padding for very small screens */
