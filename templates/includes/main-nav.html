@@ -1,4 +1,4 @@
-<div class="collapse navbar-collapse" id="main-nav">
+ <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -16,23 +16,13 @@
                 Categories
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="categories">
-                <a href="" class="dropdown-item">Cleanser</a>
-                <a href="" class="dropdown-item">Toner</a>
-                <a href="" class="dropdown-item">Serum</a>
-                <a href="" class="dropdown-item">Moisturizer</a>
-                <a href="" class="dropdown-item">Sunscreen</a>
-            </div>
-        </li>
-
-        <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="skin-concern" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Skin Concern
-            </a>
-            <div class="dropdown-menu border-0" aria-labelledby="skin-concern">
-                <a href="" class="dropdown-item">Ageing Skin</a>
-                <a href="" class="dropdown-item">Skin Discoloration</a>
-                <a href="" class="dropdown-item">Dull Skin</a>
-                <a href="" class="dropdown-item">Redness prone skin</a>
+                <a href="{% url 'products' %}?category=Cleansers" class="dropdown-item">Cleanser</a>
+                <a href="{% url 'products' %}?category=Toners" class="dropdown-item">Toner</a>
+                <a href="{% url 'products' %}?category=Serums" class="dropdown-item">Serum</a>
+                <a href="{% url 'products' %}?category=Moisturizers" class="dropdown-item">Moisturizer</a>
+                <a href="{% url 'products' %}?category=Sunscreens" class="dropdown-item">Sunscreen</a>
+                <a href="{% url 'products' %}?category=Scrubs" class="dropdown-item">Scrubs</a>
+                <a href="{% url 'products' %}?category=lotions" class="dropdown-item">Lotion</a>
             </div>
         </li>
 
