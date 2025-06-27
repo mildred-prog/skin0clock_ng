@@ -10,6 +10,15 @@ def all_products(request):
 
     products = Product.objects.all()
     query = None
+    categories = None
+    current_category = None
+
+    if request.GET:
+        if 'category' in request.GET:
+            category_name = request.GET['category']
+            current_category = category_name
+            products = products.filter(category__name=category_name)
+            categories = Category.objects.filter(name=category_name)
 
     if request.GET:
         if 'q' in request.GET:
@@ -24,8 +33,9 @@ def all_products(request):
     context = {
         'products': products,
         'search_term': query,
+        'current_categories': categories,
+        'current_category': current_category,
     }
-
 
     return render(request, 'products/products.html', context)
 
