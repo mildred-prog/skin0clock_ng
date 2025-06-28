@@ -3,6 +3,8 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Product, Category
+from reviews.models import Review
+from reviews.forms import ReviewForm
 
 # Create your views here.
 
@@ -63,9 +65,20 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    reviews = product.reviews.all().order_by('-date_posted')
+    review_form = None
+    user_has_reviewed = False
+    
+    if request.user.is_authenticated:
+        user_has_reviewed = product.reviews.filter(user=request.user).exists()
+        if not user_has_reviewed:
+            review_form = ReviewForm()
 
     context = {
         'product': product,
+        'reviews': reviews,
+        'review_form': review_form,
+        'user_has_reviewed': user_has_reviewed,
     }
 
     return render(request, 'products/product_detail.html', context)
