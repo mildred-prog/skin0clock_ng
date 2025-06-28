@@ -80,6 +80,12 @@
                             <a href="#" class="dropdown-item">Product Management</a>
                             {% endif %}
                             <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="{% url 'wishlist:wishlist' %}" class="dropdown-item">
+                                <i class="fas fa-heart"></i> My Wishlist 
+                                {% if wishlist_count > 0 %}
+                                    <span class="badge badge-primary">{{ wishlist_count }}</span>
+                                {% endif %}
+                            </a>
                             <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                             {% else %}
                             <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
