@@ -1,0 +1,25 @@
+{% if user.is_authenticated %}
+    <div class="wishlist-button-container" data-product-id="{{ product.id }}">
+        <form method="post" action="{% url 'wishlist:add_to_wishlist' product.id %}" class="d-inline wishlist-form">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-primary btn-sm wishlist-btn" 
+                    data-product-id="{{ product.id }}"
+                    title="Add to Wishlist">
+                <i class="fas fa-heart"></i> Add to Wishlist
+            </button>
+        </form>
+        
+        <form method="post" action="{% url 'wishlist:remove_from_wishlist' product.id %}" class="d-inline wishlist-form" style="display: none;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger btn-sm wishlist-btn" 
+                    data-product-id="{{ product.id }}"
+                    title="Remove from Wishlist">
+                <i class="fas fa-heart text-danger"></i> Remove from Wishlist
+            </button>
+        </form>
+    </div>
+{% else %}
+    <a href="{% url 'account_login' %}?next={{ request.path }}" class="btn btn-outline-primary btn-sm">
+        <i class="fas fa-heart"></i> Login to Add to Wishlist
+    </a>
+{% endif %} 
