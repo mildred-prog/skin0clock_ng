@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Reviews for {{ product.name }}</h2>
+    
+    {% if reviews %}
+        {% for review in reviews %}
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="review-author">{{ review.user.get_full_name|default:review.user.username }}</span>
+                        <span class="review-date">{{ review.date_posted|date:"M d, Y H:i" }}</span>
+                    </div>
+                </div>
+                <div class="review-body">
+                    <div class="d-flex align-items-center">
+                        <div class="star-display">
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= review.rating %}
+                                    <i class="fas fa-star"></i>
+                                {% else %}
+                                    <i class="far fa-star"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <span class="rating-text">{{ review.rating }} out of 5 stars</span>
+                    </div>
+                    <p class="review-comment mt-3">{{ review.comment }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="no-reviews">
+            <p>No reviews yet for this product.</p>
+            <p>Be the first to share your experience!</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %} 
