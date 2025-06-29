@@ -17,6 +17,7 @@
     {% block corecss %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
@@ -97,7 +98,7 @@
                     <!-- Cart -->
                     <li class="nav-item">
                         <a class="nav-link {% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %}"
-                            href="#" aria-label="View shopping bag">
+                            href="{% url 'view_bag' %}" aria-label="View shopping bag">
                             <i class="fa-solid fa-cart-shopping"></i>
                             <div class="d-lg-none">Cart</div>
                             <p class="my-0 d-none d-lg-block">
@@ -123,8 +124,12 @@
                 {% include 'includes/main-nav.html' %}
             </nav>
         </div>
+        <div id="delivery-banner" class="row text-center">
+            <div class="col bg-black text-white">
+                <h4 class="logo-font my-1">Free delivery on orders over ${{ free_delivery_threshold }}!</h4>
+            </div>
+        </div>
     </header>
-
 
     {% if messages %}
     <div class="message-container"></div>
@@ -133,12 +138,39 @@
     {% block page_header %}
     {% endblock %}
 
-    {% block content %}
-    {% endblock %}
+    <main class="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
     
     {% block postloadjs %}
     {% endblock %}
 
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h3>Stay Connected</h3>
+                <p>Follow us on social media:</p>
+                <div class="footer-social-links">
+                    <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/" target="_blank" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://youtube.com/" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <h3>Sign up for our Newsletter</h3>
+                <form class="footer-newsletter-form" method="post" action="#">
+                    <input type="email" name="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; This website has been created for education purposes   |   2025 Code Institute PP5.</p>
+        </div>
+    </footer>
+    
 </body>
 
 </html>
