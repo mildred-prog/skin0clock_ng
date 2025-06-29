@@ -4,7 +4,7 @@
 {% block title %}My Wishlist{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
+<div class="container mt-4 wishlist-container">
     <div class="row">
         <div class="col-12">
             <h1 class="mb-4">My Wishlist</h1>
@@ -12,14 +12,14 @@
             {% if wishlist_items %}
                 <div class="row">
                     {% for item in wishlist_items %}
-                    <div class="col-md-4 col-lg-3 mb-4">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
                         <div class="card h-100">
                             {% if item.product.image %}
-                                <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.name }}" style="height: 200px; object-fit: cover;">
+                                <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.name }}" style="height: 200px; object-fit: cover; width: 100%;">
                             {% elif item.product.image_url %}
-                                <img src="{{ item.product.image_url }}" class="card-img-top" alt="{{ item.product.name }}" style="height: 200px; object-fit: cover;">
+                                <img src="{{ item.product.image_url }}" class="card-img-top" alt="{{ item.product.name }}" style="height: 200px; object-fit: cover; width: 100%;">
                             {% else %}
-                                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px; width: 100%;">
                                     <span class="text-muted">No image available</span>
                                 </div>
                             {% endif %}
