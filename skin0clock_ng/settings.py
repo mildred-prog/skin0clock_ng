@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'faq',
     'wishlist',
     'reviews',
+    'contact',
+    'bag',
 ]
 
 MIDDLEWARE = [
@@ -99,6 +101,12 @@ SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# Email settings for contact form
+DEFAULT_FROM_EMAIL = 'noreply@skin0clock.ng'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
