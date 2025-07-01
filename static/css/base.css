@@ -96,7 +96,6 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.3);
     z-index: 1;
 }
 
@@ -124,6 +123,12 @@ h1.display-4 {
 .btn-black {
     background: #000;
     color: #ffffff;
+}
+
+.btn-outline-black {
+    background: #ffffff;
+    color: #000 !important;
+    border: 1px solid #000;
 }
 
 .shop-now-button:hover,
