@@ -2,11 +2,14 @@ asgiref==3.8.1
 certifi==2025.6.15
 charset-normalizer==3.4.2
 cloudinary==1.36.0
+crispy-bootstrap4==2025.6
 dj-database-url==3.0.0
 dj3-cloudinary-storage==0.0.6
 Django==5.2.3
 django-allauth==65.9.0
+django-crispy-forms==2.4
 idna==3.10
+pillow==11.1.0
 pytz==2025.2
 requests==2.32.4
 six==1.17.0
