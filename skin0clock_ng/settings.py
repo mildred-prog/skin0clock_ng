@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'contact',
     'bag',
     'checkout',
+    'profiles',
 
      #Other apps
     'crispy_forms',
@@ -119,20 +120,26 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
+# Email configuration for development
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# Email settings for contact form
 DEFAULT_FROM_EMAIL = 'noreply@skin0clock.ng'
+
+# Email settings for contact form (these are not used with console backend)
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = False
 
 # Updated Allauth configuration
-ACCOUNT_LOGIN_METHODS = {'email', 'username'}
-ACCOUNT_SIGNUP_FIELDS = ['email*', 'email2*', 'username*', 'password1*', 'password2*']
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_USERNAME_MIN_LENGTH = 4
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
+ACCOUNT_EMAIL_CONFIRMATION_HMAC = True
+ACCOUNT_EMAIL_CONFIRMATION_COOLDOWN = 180
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
