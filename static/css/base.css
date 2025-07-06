@@ -110,6 +110,10 @@ h1.display-4 {
     line-height: 1.2;
 }
 
+input[name='q']::placeholder {
+    color: #aab7c4;
+}
+
 /* ========================================
    BUTTONS & UTILITIES
    ======================================== */
@@ -211,7 +215,7 @@ h1.display-4 {
 }
 
 .custom-toast {
-   overflow: visible;
+    overflow: visible;
 }
 
 .toast-capper {
@@ -221,10 +225,10 @@ h1.display-4 {
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
 
 .arrow-up {
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 4px solid transparent;
-    border-right: 4px solid transparent; 
+    border-right: 4px solid transparent;
     border-bottom: 10px solid black;
     position: absolute;
     top: -10px;
@@ -303,7 +307,8 @@ h1.display-4 {
     padding-top: 20px;
 }
 
-main, .container-fluid {
+main,
+.container-fluid {
     padding-top: 20px;
 }
 
@@ -572,7 +577,8 @@ main, .container-fluid {
     flex-wrap: wrap;
 }
 
-.footer-left, .footer-right {
+.footer-left,
+.footer-right {
     flex: 1 1 300px;
     margin: 10px 20px;
 }
@@ -688,6 +694,63 @@ main, .container-fluid {
     h1.display-4 {
         font-size: 6rem;
     }
+
+    /* Allauth form formatting */
+
+    .allauth-form-inner-content p {
+        margin-top: 1.5rem;
+        /* mt-4 */
+        color: #6c757d;
+        /* text-secondary */
+    }
+
+    .allauth-form-inner-content input {
+        border-color: #000;
+        border-radius: 0;
+    }
+
+    .allauth-form-inner-content label:not([for='id_remember']) {
+        display: none;
+    }
+
+    .allauth-form-inner-content input::placeholder {
+        color: #aab7c4;
+    }
+
+    .allauth-form-inner-content button,
+    .allauth-form-inner-content input[type='submit'] {
+        /* btn */
+        display: inline-block;
+        font-weight: 400;
+        color: #fff;
+        text-align: center;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color: #000;
+        border: 1px solid #000;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0;
+
+        /* standard bootstrap btn transitions */
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    .allauth-form-inner-content button:hover,
+    .allauth-form-inner-content input[type='submit']:hover {
+        color: #fff;
+        background-color: #222;
+        border-color: #222;
+    }
+
+    .allauth-form-inner-content a {
+        color: #17a2b8;
+        /* text-info */
+    }
 }
 
 @media (min-width: 1400px) {
@@ -701,11 +764,11 @@ main, .container-fluid {
     body {
         padding-top: 180px;
     }
-    
+
     .container {
         padding-top: 0px;
     }
-    
+
     .main-content {
         padding-top: 0px;
         padding-bottom: 60px;
@@ -738,7 +801,8 @@ main, .container-fluid {
         padding: 0 10px;
     }
 
-    .footer-left, .footer-right {
+    .footer-left,
+    .footer-right {
         margin: 15px 0;
         width: 100%;
         text-align: center;
@@ -749,7 +813,7 @@ main, .container-fluid {
         align-items: center;
     }
 
-    .footer-newsletter-form input[type="email"], 
+    .footer-newsletter-form input[type="email"],
     .footer-newsletter-form button {
         border-radius: 20px;
         width: 90%;
