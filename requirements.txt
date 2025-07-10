@@ -1,8 +1,8 @@
 asgiref==3.8.1
-certifi==2025.6.15
+certifi==2024.6.2
 charset-normalizer==3.4.2
 cloudinary==1.36.0
-crispy-bootstrap4==2025.6
+crispy-bootstrap4==2023.1
 dj-database-url==0.5.0
 dj3-cloudinary-storage==0.0.6
 Django==4.2.8
@@ -15,13 +15,13 @@ packaging==25.0
 pillow==11.1.0
 psycopg2==2.9.10
 python-decouple==3.8
-pytz==2025.2
+pytz==2023.3
 requests==2.32.4
 setuptools==75.8.0
 six==1.17.0
 sqlparse==0.5.3
 stripe==12.3.0
 typing_extensions==4.14.0
-tzdata==2025.2
+tzdata==2023.3
 urllib3==1.26.20
 whitenoise==6.9.0
