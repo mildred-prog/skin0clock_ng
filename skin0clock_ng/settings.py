@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
+import dj_database_url
 
 from pathlib import Path
 from decouple import config
@@ -32,7 +33,12 @@ SECRET_KEY = 'django-insecure-3dq=_3(=%m5y1lcf-c(@3=a^9xb@u6by1n^+nivdvwz0!#kgk4
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.herokuapp.com']
+
+ALLOWED_HOSTS = [
+    '127.0.0.1',  # local preview
+    'skin0clock-ng-1fc932a0495c.herokuapp.com',  # Heroku app
+    'localhost',  # listen for stripe wh
+]
 
 
 # Application definition
@@ -145,13 +151,18 @@ WSGI_APPLICATION = 'skin0clock_ng.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else: 
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
