@@ -4,10 +4,12 @@ from storages.backends.s3boto3 import S3Boto3Storage
 
 class StaticStorage(S3Boto3Storage):
     location = settings.STATICFILES_LOCATION
-    default_acl = 'public-read'
+    # Remove or comment out the ACL
+    # default_acl = 'public-read'
 
 
 class MediaStorage(S3Boto3Storage):
     location = settings.MEDIAFILES_LOCATION
     file_overwrite = False
-    default_acl = 'public-read'
+    # Remove or comment out the ACL
+    # default_acl = 'public-read'
