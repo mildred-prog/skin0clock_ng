@@ -151,14 +151,16 @@ input[name='q']::placeholder {
 }
 
 .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #764ba2;
+    color: #fff;
+    border-color:  #b8a3cc
     padding: 10px 20px;
     font-size: 16px;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #764ba2;
+    color: #fff;
     border-color: #0056b3;
 }
 
@@ -380,7 +382,8 @@ input[name='q']::placeholder {
     border-radius: 8px;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-left: 4px solid #007bff;
+    border-left: 4px solid  #764ba2 ;
+    color: #fff;
 }
 
 .review-header {
@@ -497,7 +500,8 @@ input[name='q']::placeholder {
 }
 
 .star-rating .form-check-input:checked+.form-check-label {
-    background-color: #007bff;
+    background-color: #764ba2;
+    color: #fff;
     color: white;
     border-color: #007bff;
 }
@@ -535,6 +539,13 @@ input[name='q']::placeholder {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
+}
+
+.contact-panel {
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
 }
 
 /* ========================================
@@ -601,7 +612,7 @@ input[name='q']::placeholder {
     padding: 10px 22px;
     border: none;
     border-radius: 0 20px 20px 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background:  #764ba2 ;
     color: #fff;
     font-weight: 600;
     cursor: pointer;
@@ -609,7 +620,7 @@ input[name='q']::placeholder {
 }
 
 .footer-newsletter-form button:hover {
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    background:  #764ba2
 }
 
 .footer-bottom {
