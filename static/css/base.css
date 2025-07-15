@@ -13,9 +13,9 @@ body {
     overflow-x: hidden;
 }
 
-body {
+/* body {
     padding-top: 200px;
-}
+} */
 
 /* ========================================
    NAVIGATION & HEADER
@@ -33,9 +33,6 @@ body {
     color: #555 !important;
 }
 
-.header-container {
-    padding-top: 0px;
-}
 
 .main-logo-link {
     width: fit-content;
@@ -303,22 +300,6 @@ input[name='q']::placeholder {
     width: 100%;
 }
 
-.container {
-    padding-top: 20px;
-}
-
-main,
-.container-fluid {
-    padding-top: 20px;
-}
-
-.page-header {
-    margin-top: 20px;
-}
-
-.form-container {
-    padding-top: 20px;
-}
 
 .main-content {
     min-height: calc(100vh - 400px);
@@ -667,10 +648,6 @@ main,
         margin-bottom: 40px;
     }
 
-    body {
-        padding-top: 220px;
-    }
-
     .main-content {
         padding-top: 10px;
         padding-bottom: 60px;
@@ -793,11 +770,7 @@ main,
 
 @media (max-width: 768px) {
     body {
-        padding-top: 180px;
-    }
-
-    .container {
-        padding-top: 0px;
+        padding-top: 150px;
     }
 
     .main-content {
