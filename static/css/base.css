@@ -13,9 +13,9 @@ body {
     overflow-x: hidden;
 }
 
-/* body {
+body {
     padding-top: 200px;
-} */
+}
 
 /* ========================================
    NAVIGATION & HEADER
@@ -756,9 +756,6 @@ input[name='q']::placeholder {
     border-color: #dc3545;
     border-radius: 0;
 }
-
-
-    
 
 
 @media (min-width: 1400px) {
