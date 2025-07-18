@@ -14,6 +14,13 @@ def is_admin(user):
 @login_required
 def add_review(request, product_id):
     product = get_object_or_404(Product, id=product_id)
+
+    # Check if this user has already reviewed this product
+    existing_review = Review.objects.filter(product=product, user=request.user).first()
+    if existing_review:
+        messages.warning(request, "You have already submitted a review for this product.")
+        return redirect('product_detail', product_id=product.id)
+
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -22,10 +29,13 @@ def add_review(request, product_id):
             review.user = request.user
             review.date_posted = timezone.now()
             review.save()
+            messages.success(request, "Thank you! Your review has been submitted.")
             return redirect('product_detail', product_id=product.id)
     else:
         form = ReviewForm()
+
     return render(request, 'reviews/add_review.html', {'form': form, 'product': product})
+
 
 def product_reviews(request, product_id):
     product = get_object_or_404(Product, id=product_id)

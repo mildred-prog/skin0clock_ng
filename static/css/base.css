@@ -17,6 +17,11 @@ body {
 .fixed-top {
     z-index: 1030;
 }
+/* 
+#top-head .navbar {
+    flex-wrap: nowrap !important;
+    margin-inline: 0 !important;
+} */
 
 .navbar-nav .nav-link {
     color: #000 !important;
@@ -104,6 +109,10 @@ h1.display-4 {
 
 input[name='q']::placeholder {
     color: #aab7c4;
+}
+
+#main-nav {
+    margin-top: 0 !important;
 }
 
 /* ========================================
@@ -696,6 +705,27 @@ input[name='q']::placeholder {
 /* ========================================
    MEDIA QUERIES
    ======================================== */
+@media (max-width: 376px) {
+    body{
+        padding-top: 150px;
+    }
+
+}
+@media (max-width: 344px) {
+    .logo-font {
+        margin-top: 80px !important;
+    }
+
+    #main-nav {
+        margin-top: 0 !important;
+    }
+
+    /* Optional: Adjust spacing for links inside navbar */
+    #main-nav .nav-link {
+        margin-top: 0 !important;
+        font-size: 0.9rem; /* Optional: slightly smaller font */
+    }
+}
 
 @media (min-width: 768px) {
     h1.display-4 {
@@ -715,6 +745,10 @@ input[name='q']::placeholder {
         right: 0;
         left: 0;
         z-index: 1030;
+    }
+
+    #main-nav .mt-5 {
+        margin-top: 0 !important;
     }
 
     .featured-col {
