@@ -10,6 +10,18 @@ body {
     padding-top: 200px;
 }
 
+/* --- Overflow Fixes --- */
+/* img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+body, .main-content, .container, .container-fluid {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+} */
+
 /* ========================================
    NAVIGATION & HEADER
    ======================================== */
@@ -38,7 +50,7 @@ body {
 
 .logo-font {
     text-transform: uppercase;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     font-size: 1.4rem;
     text-align: center;
 }
@@ -111,9 +123,9 @@ input[name='q']::placeholder {
     color: #aab7c4;
 }
 
-#main-nav {
+/* #main-nav {
     margin-top: 0 !important;
-}
+} */
 
 /* ========================================
    BUTTONS & UTILITIES
@@ -711,21 +723,34 @@ input[name='q']::placeholder {
     }
 
 }
-@media (max-width: 344px) {
-    .logo-font {
-        margin-top: 80px !important;
-    }
+/* @media (max-width: 344px) { */
+    /* .logo-font {
+        margin-top: 80px !important; */
+    /* } */
 
-    #main-nav {
+    /* #main-nav {
         margin-top: 0 !important;
     }
 
     /* Optional: Adjust spacing for links inside navbar */
-    #main-nav .nav-link {
+    /* #main-nav .nav-link {
         margin-top: 0 !important;
         font-size: 0.9rem; /* Optional: slightly smaller font */
+    /* } */ 
+
+
+@media (max-width: 768px) {
+    #main-nav .nav-item {
+        flex: 1 1 45%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+    #main-nav .nav-link {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.9rem;
     }
 }
+
 
 @media (min-width: 768px) {
     h1.display-4 {
@@ -747,9 +772,9 @@ input[name='q']::placeholder {
         z-index: 1030;
     }
 
-    #main-nav .mt-5 {
+    /* #main-nav .mt-5 {
         margin-top: 0 !important;
-    }
+    } */
 
     .featured-col {
         flex: 0 0 20%;
@@ -847,6 +872,51 @@ input[name='q']::placeholder {
         margin: 5px 0;
     }
 }
+
+@media (max-width: 400px) {
+    #delivery-banner.row.text-center {
+        flex-wrap: nowrap !important;
+    }
+    #delivery-banner .col {
+        padding-left: 4px;
+        padding-right: 4px;
+        font-size: 0.9em;
+    }
+}
+@media (max-width: 344px) {
+    #delivery-banner.row.text-center {
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    #delivery-banner .col {
+        flex: 0 0 auto;
+        min-width: 0;
+        padding-left: 2px;
+        padding-right: 2px;
+        font-size: 0.8em;
+    }
+    #delivery-banner h4 {
+        font-size: 0.75rem;
+    }
+
+    #nav-margin .navbar-nav {
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    #nav-margin .nav-item {
+        flex: 0 0 auto;
+        padding-right: 0.75rem;
+    }
+
+    /* Ensure content below header is pushed down */
+    main, .product-detail-container {
+        margin-top: 220px !important; /* Adjust as needed */
+    }
+}
+
 
 /* ========================================
    WISHLIST EMPTY STATE
