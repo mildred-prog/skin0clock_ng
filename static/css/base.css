@@ -32,12 +32,18 @@ body {
     width: fit-content;
 }
 
-.logo-font {
-    text-transform: uppercase;
-    /* margin-top: 50px; */
-    font-size: 1.4rem;
+h2.logo-font {
+    display: block !important;
     text-align: center;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: #000;
+    z-index: 1000;
+    position: relative;
+    background: white;
 }
+
+
 
 /* ========================================
    DELIVERY BANNER
@@ -101,6 +107,7 @@ h1.display-4 {
     font-weight: 200px;
     line-height: 1.2;
     text-align: center;
+    padding-top: 200px;
 }
 
 input[name='q']::placeholder {
@@ -278,6 +285,8 @@ input[name='q']::placeholder {
     position: fixed;
     background: white;
     z-index: -1;
+
+    
 }
 
 /* ========================================
@@ -312,9 +321,9 @@ input[name='q']::placeholder {
     margin-bottom: 40px;
 }
 
-.container-fluid {
+/* .container-fluid {
     margin-bottom: 30px;
-}
+} */
 
 /* Product grid spacing */
 .col-sm-6.col-md-6.col-lg-4.col-xl-3 {
@@ -698,30 +707,10 @@ input[name='q']::placeholder {
 /* ========================================
    MEDIA QUERIES
    ======================================== */
-@media (max-width: 376px) {
-    body{
-        padding-top: 30px;
-    }
-
-}
-
-
-@media (max-width: 768px) {
-    #main-nav .nav-item {
-        flex: 1 1 45%;
-        text-align: center;
-        margin-bottom: 0.5rem;
-    }
-    #main-nav .nav-link {
-        padding: 0.25rem 0.5rem;
-        font-size: 0.9rem;
-    }
-}
-
 
 @media (min-width: 768px) {
     h1.display-4 {
-        font-size: 4rem;
+        font-size: 3rem;
         text-align: center;
     }
 /* 
@@ -781,11 +770,15 @@ input[name='q']::placeholder {
 
 @media (max-width: 768px) {
     body {
-        padding-top: 30px !important;
+        padding-top: 250px !important;
+    }
+
+   .overlay {
+        display: none;
     }
 
     .main-content {
-        padding-top: 0px;
+        padding-top: 250px;
         padding-bottom: 60px;
         margin-bottom: 40px;
     }
