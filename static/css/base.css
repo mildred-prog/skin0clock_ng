@@ -7,7 +7,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    padding-top: 200px;
+    padding-top: 150px;
 }
 
 /* ========================================
@@ -107,7 +107,7 @@ h1.display-4 {
     font-weight: 200px;
     line-height: 1.2;
     text-align: center;
-    padding-top: 200px;
+    padding-top: 100px;
 }
 
 input[name='q']::placeholder {
@@ -707,6 +707,12 @@ input[name='q']::placeholder {
 /* ========================================
    MEDIA QUERIES
    ======================================== */
+@media (min-width: 344px) {
+    body {
+        padding-top: 0px !important;
+    }
+} 
+
 
 @media (min-width: 768px) {
     h1.display-4 {
@@ -755,7 +761,7 @@ input[name='q']::placeholder {
 
 @media (min-width: 1200px) {
     h1.display-4 {
-        font-size: 6rem;
+        font-size: 5rem;
         text-align: center;
     }
 }
@@ -769,12 +775,16 @@ input[name='q']::placeholder {
 }
 
 @media (max-width: 768px) {
-    body {
+    /* body {
         padding-top: 10px !important;
-    }
+    } */
 
    .overlay {
         display: none;
+    }
+
+    h2.logo-font {
+        margin-top: 200px !important;
     }
 
    .main-content {
