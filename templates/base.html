@@ -57,7 +57,7 @@
             <!-- Collapsible nav content -->
             <div class="collapse navbar-collapse">
                 <!-- Search (visible on large screens only) -->
-                <form method="GET" action="{% url 'products' %}" class="d-none d-lg-block mx-auto w-50">
+                <form method="GET" action="{% url 'products' %}" class="d-none d-lg-block mx-auto w-50" role="search" aria-label="Site Search">
                     <div class="input-group">
                         <input class="form-control border border-black rounded-0" type="text" name="q"
                             placeholder="Search our site">
