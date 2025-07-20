@@ -22,8 +22,9 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
-    {% block extra_css %}
-    {% endblock %}
+   {% block extra_css %}
+  <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet">
+  {% endblock %}
 
     {% block corejs %}
     <script src="https://kit.fontawesome.com/ea2dabe01a.js" crossorigin="anonymous"></script>
@@ -164,40 +165,100 @@
         {% endblock %}
     </main>
 
-    {% block postloadjs %}
-<script type="text/javascript">
-    $('.toast').toast('show');
+<footer class="footer py-4">
+  <div class="container">
+    <div class="row">
+      <!-- Left Column -->
+      <div class="col-md-6 text-md-left text-center mb-4 mb-md-0 mt-md-3">
+        <p class="mb-4">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="text-light">
+            Join our skincare community 
+            <i class="fa-brands fa-facebook ml-2"></i> Skin0clock_ng
+          </a>
+        </p>
+        <p class="mb-4">
+          Want glowing, healthy skin? Explore expert skincare tips on
+          <a href="https://www.healthline.com/health/beauty-skin-care" target="_blank" rel="noopener noreferrer"
+            aria-label="Visit Healthline for skincare tips" class="text-light external-link">
+            <strong>Healthline Beauty</strong>
+          </a> and level up your routine.
+        </p>
+        <hr>
+        <p class="footer-text-small mb-4">
+          © Skin0clock_ng &nbsp; | &nbsp; Created for educational purposes (Code Institute PP5)
+        </p>
+      </div>
+
+      <!-- Right Column (Newsletter Signup) -->
+      <div class="col-md-6 text-md-right text-center">
+        <div class="d-flex justify-content-md-end justify-content-center">
+          <div id="mc_embed_signup">
+            <form
+              action="https://herokuapp.us10.list-manage.com/subscribe/post?u=f1d7376b0ff8da6ef8a7a3ee8&amp;id=eb2c1e856a&amp;f_id=00a146e4f0"
+              method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
+              target="_blank" novalidate>
+              <h5 class="mb-2">Subscribe for Healthy Skin</h5>
+              <p class="small text-light mb-3">Get skincare tips and exclusive offers right in your inbox</p>
+
+              <div class="mc-field-group form-group">
+                <label for="mc-email" class="form-label">Email address</label>
+                <input type="email" id="mc-email" name="EMAIL" class="form-control mb-3" placeholder="Email address"
+                  required aria-required="true">
+              </div>
+
+              <div id="mce-responses" class="clear">
+                <div class="response" id="mce-error-response" style="display:none;"></div>
+                <div class="response" id="mce-success-response" style="display:none;"></div>
+              </div>
+
+              <div style="position:absolute; left:-5000px;" aria-hidden="true">
+                <input type="text" id="honeypot" name="b_f1d7376b0ff8da6ef8a7a3ee8_eb2c1e856a" tabindex="-1"
+                  aria-label="Leave this field empty" value="">
+              </div>
+
+              <div class="form-group">
+                <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-sm btn-subscribe">
+                  Subscribe
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% block postloadjs %}
+<script>
+  $('.toast').toast('show');
+
+</script>
+
+<script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+<script>
+  (function ($) {
+    window.fnames = new Array();
+    window.ftypes = new Array();
+    fnames[0] = 'EMAIL';
+    ftypes[0] = 'email';
+    fnames[1] = 'FNAME';
+    ftypes[1] = 'text';
+    fnames[2] = 'LNAME';
+    ftypes[2] = 'text';
+    fnames[3] = 'ADDRESS';
+    ftypes[3] = 'address';
+    fnames[4] = 'PHONE';
+    ftypes[4] = 'phone';
+    fnames[5] = 'BIRTHDAY';
+    ftypes[5] = 'birthday';
+    fnames[6] = 'COMPANY';
+    ftypes[6] = 'text';
+  }(jQuery));
+  var $mcj = jQuery.noConflict(true);  
 </script>
 {% endblock %}
 
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <h3>Stay Connected</h3>
-                <p>Follow us on social media:</p>
-                <div class="footer-social-links">
-                    <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com/" target="_blank" aria-label="X / Twitter"><i
-                            class="fab fa-x-twitter"></i></a>
-                    <a href="https://youtube.com/" target="_blank" aria-label="YouTube"><i
-                            class="fab fa-youtube"></i></a>
-                    <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i
-                            class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-right">
-                <h3>Sign up for our Newsletter</h3>
-                <form class="footer-newsletter-form" method="post" action="#">
-                    <input type="email" name="email" placeholder="Your email address" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; This website has been created for education purposes | 2025 Code Institute PP5.</p>
-        </div>
-    </footer>
 
 </body>
 

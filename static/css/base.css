@@ -10,10 +10,6 @@ body {
     padding-top: 150px;
 }
 
-/* ========================================
-   NAVIGATION & HEADER
-   ======================================== */
-
 .fixed-top {
     z-index: 1030;
 }
@@ -43,12 +39,6 @@ h2.logo-font {
     background: white;
 }
 
-
-
-/* ========================================
-   DELIVERY BANNER
-   ======================================== */
-
 #delivery-banner {
     background-color: #000;
     color: #fff;
@@ -67,10 +57,6 @@ h2.logo-font {
     margin-bottom: 0;
     padding-top: 0;
 }
-
-/* ========================================
-   HERO SECTION
-   ======================================== */
 
 .my-hero {
     background: url('/media/hero_image.webp') no-repeat center;
@@ -232,7 +218,7 @@ input[name='q']::placeholder {
     height: 0;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
-    border-bottom: 10px solid black;
+    border-bottom: 10px solid #000;
     position: absolute;
     top: -10px;
     right: 36px;
@@ -316,25 +302,17 @@ input[name='q']::placeholder {
     margin-bottom: 40px;
 }
 
-/* Product container spacing */
 .product-container {
     margin-bottom: 40px;
 }
 
-
-/* Product grid spacing */
 .col-sm-6.col-md-6.col-lg-4.col-xl-3 {
     margin-bottom: 30px;
 }
 
-/* Featured products spacing */
 .featured-col {
     margin-bottom: 30px;
 }
-
-/* ========================================
-   FAQ SECTION
-   ======================================== */
 
 .faq-center {
     text-align: center;
@@ -375,10 +353,6 @@ input[name='q']::placeholder {
 .faq-link:hover .faq-arrow {
     color: #555;
 }
-
-/* ========================================
-   REVIEWS SECTION
-   ======================================== */
 
 .review-card {
     border: 1px solid #e0e0e0;
@@ -425,10 +399,6 @@ input[name='q']::placeholder {
     color: #666;
     font-style: italic;
 }
-
-/* ========================================
-   STAR RATING SYSTEM
-   ======================================== */
 
 .star-rating-container {
     margin: 20px 0;
@@ -485,12 +455,6 @@ input[name='q']::placeholder {
     margin-left: 10px;
 }
 
-
-/* ========================================
-   FORMS
-   ======================================== */
-
-/* Contact page specific styles */
 .contact-heading {
     color: #333;
     font-weight: 600;
@@ -626,115 +590,111 @@ input[name='q']::placeholder {
     margin-bottom: 2rem;
 }
 .wishlist-empty-icon {
-    color: #6c757d; /* muted */
+    color: #6c757d; 
     font-size: 2.5rem;
 }
 .wishlist-empty-title {
-    color: #6c757d; /* muted */
+    color: #6c757d; 
     font-weight: 500;
 }
 .wishlist-empty-message {
-    color: #6c757d; /* muted */
+    color: #6c757d;
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
 }
 .wishlist-empty-subtext {
-    color: #6c757d; /* muted */
+    color: #6c757d; 
     margin-bottom: 1.5rem;
 }
 
-
-/* ========================================
-   FOOTER
-   ======================================== */
-
-.site-footer {
-    background: #111;
-    color: #eee;
-    padding: 40px 0 20px 0;
-    font-family: 'Montserrat', Arial, sans-serif;
+footer {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    margin-bottom: 5rem;
 }
 
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 30px;
-    flex-wrap: wrap;
+footer .form-control {
+    max-width: 250px;
+    margin: 0;
 }
 
-.footer-left,
-.footer-right {
-    flex: 1 1 300px;
-    margin: 10px 20px;
+footer a {
+    text-decoration: none !important;
+    color: #ffffff;
 }
 
-.footer-social-links a {
-    color: #eee;
-    background: #222;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    margin-right: 10px;
-    font-size: 1.2rem;
-    transition: background 0.2s, color 0.2s, transform 0.2s;
+footer a:hover {
+    color: #764ba2 !important;
+    text-decoration: underline;
 }
 
-.footer-social-links a:hover {
+.footer-text-small {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 2rem;
+}
+
+.footer-left-content p:first-of-type {
+    margin-bottom: 2rem;
+}
+
+footer i:hover {
+    color: #764ba2;
+}
+
+footer a.external-link:hover {
+    color: #764ba2!important;
+    text-decoration: underline !important;
+}
+
+hr {
+    border: .5px solid #764ba2;
+}
+
+#mc_embed_signup .form-group,
+#mc_embed_signup .mc-field-group {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#mc_embed_signup .form-control {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#mc_embed_signup {
+    width: 100%;
+    max-width: 350px;
+    text-align: left;
+}
+
+#mc_embed_signup button {
+    display: block;
+    margin: 0;
+}
+
+.btn-subscribe {
+    background-color: #000000;
+    color: #ffffff;
+    border: solid 2px #764ba2;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-subscribe:hover {
     background: #764ba2;
-    color: #fff;
-    transform: translateY(-3px) scale(1.1);
+    color: #000000;
+    text-decoration: none;
 }
 
-.footer-newsletter-form {
-    display: flex;
-    margin-top: 10px;
-}
-
-.footer-newsletter-form input[type="email"] {
-    padding: 10px;
-    border: none;
-    border-radius: 20px 0 0 20px;
-    outline: none;
-    width: 200px;
-}
-
-.footer-newsletter-form button {
-    padding: 10px 22px;
-    border: none;
-    border-radius: 0 20px 20px 0;
-    background: #764ba2;
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.footer-newsletter-form button:hover {
-    background: #764ba2
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 30px;
-    color: #aaa;
-    font-size: 0.95rem;
-}
-
-/* ========================================
-   MEDIA QUERIES
-   ======================================== */
 @media (min-width: 344px) {
     body {
         padding-top: 0px !important;
     }
 } 
-
 
 @media (min-width: 768px) {
     h1.display-4 {
@@ -801,31 +761,6 @@ input[name='q']::placeholder {
 
     .featured-col {
         margin-bottom: 25px;
-    }
-
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 0 10px;
-    }
-
-    .footer-left,
-    .footer-right {
-        margin: 15px 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    .footer-newsletter-form {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-newsletter-form input[type="email"],
-    .footer-newsletter-form button {
-        border-radius: 20px;
-        width: 90%;
-        margin: 5px 0;
     }
 }
 
