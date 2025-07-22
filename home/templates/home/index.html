@@ -3,102 +3,107 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="my-hero ">
-        <div class="container">
-            <div class="row ">
-                <div class="col-7 col-md-6 my-auto">
-                    <h1 class="display-4 logo-font text-black">
-                        Discover The Secrets Of Beauty
-                    </h1>
-                    <div class="my-2 text-center">
-                        <h4>
-                            <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Now</a>
-                        </h4>
-                    </div>
+<div class="my-hero ">
+    <div class="container">
+        <div class="row ">
+            <div class="col-7 col-md-6 my-auto">
+                <h1 class="display-4 logo-font text-black">
+                    Discover The Secrets Of Beauty
+                </h1>
+                <div class="my-2 text-center">
+                    <h4>
+                        <a href="{% url 'products' %}"
+                            class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Now</a>
+                    </h4>
                 </div>
             </div>
         </div>
     </div>
-    <main>
-        <section class="featured-products container my-5">
-            <h2 class="text-center mb-4">Featured Products</h2>
-            <div class="row">
-                {% for key, product in featured_products.items %}
-                    {% if product %}
-                        <div class="col-12 col-md-6 col-lg-4 featured-col mb-4">
-                            <div class="card h-100">
-                                {% if product.image %}
-                                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                                {% else %}
-                                    <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ product.name }}">
-                                {% endif %}
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        {% if key == 'cleansers' %}
-                                            <a href="{% url 'category_cleansers' %}">{{ product.name }}</a>
-                                        {% elif key == 'toners' %}
-                                            <a href="{% url 'category_toners' %}">{{ product.name }}</a>
-                                        {% elif key == 'serums' %}
-                                            <a href="{% url 'category_serums' %}">{{ product.name }}</a>
-                                        {% elif key == 'moisturizers' %}
-                                            <a href="{% url 'category_moisturizers' %}">{{ product.name }}</a>
-                                        {% elif key == 'sunscreens' %}
-                                            <a href="{% url 'category_sunscreens' %}">{{ product.name }}</a>
-                                        {% else %}
-                                            {{ product.name }}
-                                        {% endif %}
-                                    </h5>
-                                    <p class="card-text">{{ product.description|truncatewords:20 }}</p>
-                                    <p class="card-text fw-bold">£{{ product.price }}</p>
-                                    <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">View Product</a>
-                                </div>
-                            </div>
-                        </div>
+</div>
+<main>
+    <section class="featured-products container my-5">
+        <h2 class="text-center mb-4">Featured Products</h2>
+        <div class="row">
+            {% for key, product in featured_products.items %}
+            {% if product %}
+            <div class="col-12 col-md-6 col-lg-4 featured-col mb-4">
+                <div class="card h-100">
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                    {% else %}
+                    <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ product.name }}">
                     {% endif %}
-                {% endfor %}
-            </div>
-        </section>
-        <!-- Skincare Tips & Advice Section -->
-        <section class="skincare-tips container my-5">
-            <h2 class="text-center mb-4">Skincare Tips &amp; Advice</h2>
-            <div class="row">
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <img src="{{ MEDIA_URL }}hydrated.jpg" class="card-img-top" alt="Stay Hydrated">
-                        <div class="card-body">
-                            <h5 class="card-title">Stay Hydrated</h5>
-                            <p class="card-text">Drinking enough water daily helps keep your skin plump, radiant, and healthy. Hydration is key to maintaining your skin's natural glow.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <img src="{{ MEDIA_URL }}relief.jpg" class="card-img-top" alt="Soothe &amp; Protect">
-                        <div class="card-body">
-                            <h5 class="card-title">Soothe &amp; Protect</h5>
-                            <p class="card-text">Use gentle, soothing products to calm irritation and protect your skin barrier, especially after sun exposure or treatments.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <img src="{{ MEDIA_URL }}moisturized.jpg" class="card-img-top" alt="Moisturize Daily">
-                        <div class="card-body">
-                            <h5 class="card-title">Moisturize Daily</h5>
-                            <p class="card-text">Lock in moisture with a nourishing moisturizer to keep your skin soft, smooth, and resilient against environmental stressors.</p>
-                        </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {% if key == 'cleansers' %}
+                            <a href="{% url 'category_cleansers' %}" class="text-dark font-weight-bold">{{ product.name }}</a>
+                            {% elif key == 'toners' %}
+                            <a href="{% url 'category_toners' %}" class="text-dark font-weight-bold">{{ product.name }}</a>
+                            {% elif key == 'serums' %}
+                            <a href="{% url 'category_serums' %}" class="text-dark font-weight-bold">{{ product.name  }}</a>
+                            {% elif key == 'moisturizers' %}
+                            <a href="{% url 'category_moisturizers' %}" class="text-dark font-weight-bold">{{ product.name }}</a>
+                            {% elif key == 'sunscreens' %}
+                            <a href="{% url 'category_sunscreens' %}" class="text-dark font-weight-bold">{{ product.name }}</a>
+                            {% else %}
+                            {{ product.name }}
+                            {% endif %}
+                        </h5>
+
+                        <p class="card-text">{{ product.description|truncatewords:20 }}</p>
+                        <p class="card-text fw-bold">£{{ product.price }}</p>
+                        <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">View Product</a>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- End Skincare Tips & Advice Section -->
-    </main>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+    <!-- Skincare Tips & Advice Section -->
+    <section class="skincare-tips container my-5">
+        <h2 class="text-center mb-4">Skincare Tips &amp; Advice</h2>
+        <div class="row">
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="{{ MEDIA_URL }}hydrated.jpg" class="card-img-top" alt="Stay Hydrated">
+                    <div class="card-body">
+                        <h5 class="card-title">Stay Hydrated</h5>
+                        <p class="card-text">Drinking enough water daily helps keep your skin plump, radiant, and
+                            healthy. Hydration is key to maintaining your skin's natural glow.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="{{ MEDIA_URL }}relief.jpg" class="card-img-top" alt="Soothe &amp; Protect">
+                    <div class="card-body">
+                        <h5 class="card-title">Soothe &amp; Protect</h5>
+                        <p class="card-text">Use gentle, soothing products to calm irritation and protect your skin
+                            barrier, especially after sun exposure or treatments.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="{{ MEDIA_URL }}moisturized.jpg" class="card-img-top" alt="Moisturize Daily">
+                    <div class="card-body">
+                        <h5 class="card-title">Moisturize Daily</h5>
+                        <p class="card-text">Lock in moisture with a nourishing moisturizer to keep your skin soft,
+                            smooth, and resilient against environmental stressors.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Skincare Tips & Advice Section -->
+</main>
 {% endblock %}
