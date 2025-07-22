@@ -7,7 +7,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    padding-top: 150px;
+    /* padding-top: 150px; */
 }
 
 .fixed-top {
@@ -257,9 +257,7 @@ input[name='q']::placeholder {
     left: 0;
     position: fixed;
     background: white;
-    z-index: -1;
-
-    
+    z-index: -1;   
 }
 
 .card {
@@ -278,7 +276,7 @@ input[name='q']::placeholder {
 }
 
 .main-content {
-    margin-top: 178px;
+    margin-top: 385px;
     min-height: calc(100vh - 400px);
     padding-top: 0px;
     padding-bottom: 60px;
@@ -343,7 +341,7 @@ input[name='q']::placeholder {
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-left: 4px solid #764ba2;
-    color: #fff;
+    /* color: #fff; */
 }
 
 .review-header {
@@ -372,7 +370,7 @@ input[name='q']::placeholder {
 }
 
 .review-comment {
-    color: #333;
+    color: #000;
     line-height: 1.6;
 }
 
@@ -503,7 +501,6 @@ input[name='q']::placeholder {
 
 .allauth-form-inner-content button,
 .allauth-form-inner-content input[type='submit'] {
-    /* btn */
     display: inline-block;
     font-weight: 400;
     color: #fff;
@@ -671,9 +668,9 @@ hr {
     text-decoration: none;
 }
 
-@media (min-width: 344px) {
-    body {
-        padding-top: 0px !important;
+@media (min-width: 343px) {
+    .main-content {
+        margin-top: 262px;
     }
     .wishlist-empty {
         padding-top: 4rem;
@@ -688,6 +685,12 @@ hr {
     }
 }
 
+@media (min-width: 369px) {
+    .main-content {
+        margin-top: 179px;
+    }
+}
+
 @media (min-width: 768px) {
     h1.display-4 {
         font-size: 3rem;
@@ -696,6 +699,25 @@ hr {
 }
 
 @media (min-width: 992px) {
+    .navbar-nav .dropdown-menu {
+        right: 5px;
+        left: auto;
+        min-width: 150px;
+        background: #fff;
+        color: #000;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        border-radius: 0.25rem;
+        z-index: 1051;
+    }
+    .navbar-nav .dropdown-menu .dropdown-item {
+        color: #000;
+        white-space: nowrap;
+    }
+    .navbar-nav .dropdown-menu .dropdown-item:hover,
+    .navbar-nav .dropdown-menu .dropdown-item:focus {
+        background: #f8f9fa;
+        color: #333;
+    }
     .fixed-top-desktop-only {
         position: fixed;
         top: 0;
