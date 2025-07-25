@@ -56,3 +56,127 @@ Testing file for skin0clock_ng [README.md](README.md).
 ### HTML Validation Corrected
 Testing using the recommended [HTML W3C Validator](https://validator.w3.org/) to validate all of my HTML files.
 - [x] HTML validation all passed:
+
+**Home page**  
+![Home Page HTML Validation](static/documentation/testing/html-home.jpg)
+
+**Signup Page**  
+![Signup Page HTML Validation](static/documentation/testing/html-signup.jpg)
+
+**Login Page**  
+![Login Page HTML Validation](static/documentation/testing/html-login.jpg)
+
+**Logout Page**  
+![Logout Page HTML Validation](static/documentation/testing/html-signout.jpg)
+
+**Products Page**  
+![Products Page Page HTML Validation](static/documentation/testing/html-products.jpg)
+
+**Product Detail Page**  
+![Product Detail Page HTML Validation](static/documentation/testing/html-product-detail.jpg)
+
+**Categories Page**  
+![Add Product Page HTML Validation](static/documentation/testing/html-categories.jpg)
+
+**Wishlist Page**  
+![Grow Guide HTML Validation](static/documentation/testing/html-wishlist.jpg)
+
+**FAQ Page**  
+![Course Page HTML Validation](static/documentation/testing/html-faq.jpg)
+
+**Add to Bag Page**  
+![Review Post Page HTML Validation](static/documentation/testing/html-add-to-bag.jpg)
+
+**Contact Page**  
+![Contact Page HTML Validation](static/documentation/testing/html-contact.jpg)
+
+**Product Management Page**  
+![Message Sent HTML Validation](static/documentation/testing/html-product-management.jpg)
+
+**Shopping Bag Page**  
+![Bag Page HTML Validation](static/documentation/testing/html-bag.jpg)
+
+**Checkout Page**  
+![Checkout Page HTML Validation](static/documentation/testing/html-checkout.jpg)
+
+**Checkout Success Page**  
+![Checkout Success HTML Validation](static/documentation/testing/html-checkout-success.jpg)
+
+**Profile Page**  
+![Profile Page HTML Validation](static/documentation/testing/html-profile.jpg)
+
+**Order History Page**  
+![Order History HTML Validation](static/documentation/testing/html-order-history.jpg)
+
+**Products & Deals Page**  
+![Products & Deals HTML Validation](static/documentation/testing/html-product&deals.jpg)
+
+### Validation Errors
+
+| **CSS Validation Issue** | **Description** |
+|:-------------------------|:----------------|
+| Invalid CSS property `text-decoration-style: none;` | `text-decoration-style` does not accept `none`; corrected |
+| Invalid CSS property `font-weight: 200px;` | `font-weight 200px` is not  `a font weight value`; corrected |
+
+
+
+### CSS Validation Corrected
+Testing using the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator/) to validate all of my CSS files.
+- [x] CSS validation all passed.
+
+**base.css**  
+![base.css Validation](static/documentation/testing/css-base.jpg)
+
+**profile.css**  
+![profile.css Validation](static/documentation/testing/css-profile.jpg)
+
+**checkout.css**  
+![checkout.css Validation](static/documentation/testing/css-checkout.jpg)
+
+
+### Validation Errors
+
+| **JavaScript Validation Issue** | **Description** |
+|:---------------------------------|:----------------|
+| `console` undefined | Added `/* global console */` comment to declare `console` as a global variable |
+
+
+### JavaScript Validation Corrected
+Testing using the recommended [JShint Validator](https://jshint.com/) to validate all of my JavaScript files.
+- [x] JavaScript tests all passed.
+
+**star-rating.js**  
+![star-rating.js Validation](static/documentation/testing/js-star-rating.jpg)
+
+**wishlist.js**  
+![wishlist.js Validation](static/documentation/testing/js-wishlist.jpg)
+
+**countryfield.js**  
+![countryfield.js Validation](static/documentation/testing/js-countryfield.jpg)
+
+**bag.js**  
+![bag.js Validation](static/documentation/testing/js-bag.jpg)
+
+**stripe_element.js**  
+![stripe_element.js Validation](static/documentation/testing/js-stripe-element.jpg)
+
+### CI Python Linter
+Testing using the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com/) to validate all of my Python files.
+- [x] Python tests all passed.
+
+During development, code quality was maintained by following the [PEP8](https://peps.python.org/pep-0008/) style guide for Python. Errors & warnings were detected & corrected accross apps by running flake8.
+    
+Common issues that were identified & resolved included:
+| **Issue** | **Action Taken** |
+|:----------|:-----------------|
+| Lines exceeding 79 characters (E501) | Broken into multiple lines for readability |
+| Trailing whitespace (W291) & blank lines with whitespace (W293) | Cleaned up for clarity & consistency |
+| Missing or insufficient blank lines after class or function definitions (E302, E305) | Added blank lines to improve code structure |
+| Unused imports (F401) & unused variables (F841) | Removed unused code for a cleaner, efficient codebase |
+| Missing newlines at end of files (W292, W391) | Added newlines to meet formatting standards |
+
+
+    All Python files containing the project's code have been tested, & the errors were fixed.
+    After running the CI Python Linter, it shows there are no errors.
+
+![Python Tests Clear](static/documentation/testing/py-clear.webp)
