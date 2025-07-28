@@ -4,8 +4,16 @@ from products.models import Product
 
 
 class Wishlist(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='wishlist_items')
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='wishlist_items')
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='wishlist_items'
+    )
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='wishlist_items'
+    )
     added_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -13,4 +21,4 @@ class Wishlist(models.Model):
         verbose_name_plural = 'Wishlist items'
 
     def __str__(self):
-        return f"{self.user.username} - {self.product.name}" 
+        return f"{self.user.username} - {self.product.name}"

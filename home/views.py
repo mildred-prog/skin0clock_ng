@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from products.models import Product
 
-# Create your views here.
 
 def index(request):
     """Home page with featured products by category"""
@@ -14,7 +13,10 @@ def index(request):
     }
     featured_products = {}
     for key, cat_id in featured_categories.items():
-        featured_products[key] = Product.objects.filter(category_id=cat_id).order_by('-rating')[:1].first()
+        featured_products[key] = Product.objects.filter(
+            category_id=cat_id
+        ).order_by('-rating')[:1].first()
+
     context = {
         'featured_products': featured_products,
     }

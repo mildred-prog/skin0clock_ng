@@ -8,12 +8,16 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = '__all__'
 
-    image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
+    image = forms.ImageField(
+        label='Image',
+        required=False,
+        widget=CustomClearableFileInput
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         categories = Category.objects.all()
-        category_choices = [(c.id, c.name) for c in categories] 
+        category_choices = [(c.id, c.name) for c in categories]
 
         self.fields['category'].choices = category_choices
         for field_name, field in self.fields.items():

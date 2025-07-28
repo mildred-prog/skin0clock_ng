@@ -10,7 +10,6 @@ class ContactAdmin(admin.ModelAdmin):
     search_fields = ('name', 'email', 'message')
     readonly_fields = ('created_at',)
     date_hierarchy = 'created_at'
-    
     fieldsets = (
         ('Contact Information', {
             'fields': ('name', 'email')

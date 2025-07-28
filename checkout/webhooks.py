@@ -21,7 +21,9 @@ def webhook(request):
         return HttpResponse("Missing Stripe Signature Header", status=400)
 
     try:
-        event = stripe.Webhook.construct_event(payload, sig_header, wh_secret)
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, wh_secret
+        )
     except ValueError:
         return HttpResponse("Invalid payload", status=400)
     except stripe.error.SignatureVerificationError:
@@ -32,8 +34,10 @@ def webhook(request):
     handler = StripeWH_Handler(request)
 
     event_map = {
-        'payment_intent.succeeded': handler.handle_payment_intent_succeeded,
-        'payment_intent.payment_failed': handler.handle_payment_intent_payment_failed,
+        'payment_intent.succeeded':
+            handler.handle_payment_intent_succeeded,
+        'payment_intent.payment_failed':
+            handler.handle_payment_intent_payment_failed,
     }
 
     event_type = event['type']

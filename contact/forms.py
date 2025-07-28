@@ -3,8 +3,11 @@ from .models import Contact
 
 
 class ContactForm(forms.ModelForm):
-    """Form for contact page"""
-    
+    """
+    Form for contact page
+    This form is used to collect user contact information and messages.
+    """
+
     class Meta:
         model = Contact
         fields = ['name', 'email', 'message']
@@ -23,10 +26,10 @@ class ContactForm(forms.ModelForm):
                 'placeholder': 'Your Message'
             }),
         }
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Add custom labels
+        
         self.fields['name'].label = 'Name'
         self.fields['email'].label = 'Email'
-        self.fields['message'].label = 'Message' 
+        self.fields['message'].label = 'Message'

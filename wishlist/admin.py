@@ -8,4 +8,4 @@ class WishlistAdmin(admin.ModelAdmin):
     list_filter = ('added_date', 'product__category')
     search_fields = ('user__username', 'user__email', 'product__name')
     readonly_fields = ('added_date',)
-    ordering = ('-added_date',) 
+    ordering = ('-added_date',)
