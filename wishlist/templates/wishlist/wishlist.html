@@ -7,77 +7,82 @@
 <div class="container mt-4 wishlist-container">
     <div class="row">
         <div class="col-12">
-            
+
             {% if wishlist_items %}
-                <div class="row">
-                    {% for item in wishlist_items %}
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
-                        <div class="card h-100">
-                            {% if item.product.image %}
-                                <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.name }}" style="height: 200px; object-fit: cover; width: 100%;">
-                            {% elif item.product.image_url %}
-                                <img src="{{ item.product.image_url }}" class="card-img-top" alt="{{ item.product.name }}" style="height: 200px; object-fit: cover; width: 100%;">
-                            {% else %}
-                                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px; width: 100%;">
-                                    <span class="text-muted">No image available</span>
-                                </div>
-                            {% endif %}
-                            
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">{{ item.product.name }}</h5>
-                                <p class="card-text text-muted">{{ item.product.category.name }}</p>
-                                <p class="card-text">£{{ item.product.price }}</p>
-                                
-                                {% if item.product.rating %}
-                                <div class="mb-2">
-                                    <small class="text-warning">
-                                        {% for i in "12345" %}
-                                            {% if forloop.counter <= item.product.rating %}
-                                                ★
-                                            {% else %}
-                                                ☆
-                                            {% endif %}
+            <div class="row">
+                {% for item in wishlist_items %}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
+                    <div class="card h-100">
+                        {% if item.product.image %}
+                        <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.name }}"
+                            style="height: 200px; object-fit: cover; width: 100%;">
+                        {% elif item.product.image_url %}
+                        <img src="{{ item.product.image_url }}" class="card-img-top" alt="{{ item.product.name }}"
+                            style="height: 200px; object-fit: cover; width: 100%;">
+                        {% else %}
+                        <div class="card-img-top bg-light d-flex align-items-center justify-content-center"
+                            style="height: 200px; width: 100%;">
+                            <span class="text-muted">No image available</span>
+                        </div>
+                        {% endif %}
+
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">{{ item.product.name }}</h5>
+                            <p class="card-text text-muted">{{ item.product.category.name }}</p>
+                            <p class="card-text">£{{ item.product.price }}</p>
+
+                            {% if item.product.rating %}
+                            <div class="mb-2">
+                                <small class="d-inline-block align-middle" style="font-size: 0.95rem;">
+                                    {% for i in "12345" %}
+                                    {% if forloop.counter <= item.product.rating %} <i class="fas fa-star text-warning">
+                                        </i>
+                                        {% else %}
+                                        <i class="far fa-star text-warning"></i>
+                                        {% endif %}
                                         {% endfor %}
-                                        ({{ item.product.rating }})
-                                    </small>
-                                </div>
-                                {% endif %}
-                                
-                                <div class="mt-auto">
-                                    <a href="{% url 'product_detail' item.product.id %}" class="btn btn-primary btn-sm mb-2 w-100">
-                                        View Details
-                                    </a>
-                                    <form method="post" action="{% url 'wishlist:remove_from_wishlist' item.product.id %}" class="d-inline">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-outline-danger btn-sm w-100" 
-                                                onclick="return confirm('Remove {{ item.product.name }} from your wishlist?')">
-                                            Remove from Wishlist
-                                        </button>
-                                    </form>
-                                </div>
+                                </small>
+
                             </div>
-                            
-                            <div class="card-footer text-muted">
-                                <small>Added on {{ item.added_date|date:"M d, Y" }}</small>
+                            {% endif %}
+
+                            <div class="mt-auto">
+                                <a href="{% url 'product_detail' item.product.id %}"
+                                    class="btn btn-primary btn-sm mb-2 w-100">
+                                    View Details
+                                </a>
+                                <form method="post" action="{% url 'wishlist:remove_from_wishlist' item.product.id %}"
+                                    class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-outline-danger btn-sm w-100"
+                                        onclick="return confirm('Remove {{ item.product.name }} from your wishlist?')">
+                                        Remove from Wishlist
+                                    </button>
+                                </form>
                             </div>
                         </div>
+
+                        <div class="card-footer text-muted">
+                            <small>Added on {{ item.added_date|date:"M d, Y" }}</small>
+                        </div>
                     </div>
-                    {% endfor %}
                 </div>
+                {% endfor %}
+            </div>
             {% else %}
-                <div class="text-center py-5 wishlist-empty">
-                    <div class="wishlist-empty-header">
-                        <i class="fas fa-heart wishlist-empty-icon"></i>
-                        <h3 class="wishlist-empty-title mb-0">My Wishlist</h3>
-                    </div>
-                    <p class="wishlist-empty-message">Your wishlist is empty</p>
-                    <p class="wishlist-empty-subtext">Start adding products you love to your wishlist!</p>
-                    <a href="{% url 'products' %}" class="btn btn-primary">
-                        Browse Products
-                    </a>
+            <div class="text-center py-5 wishlist-empty">
+                <div class="wishlist-empty-header">
+                    <i class="fas fa-heart wishlist-empty-icon"></i>
+                    <h3 class="wishlist-empty-title mb-0">My Wishlist</h3>
                 </div>
+                <p class="wishlist-empty-message">Your wishlist is empty</p>
+                <p class="wishlist-empty-subtext">Start adding products you love to your wishlist!</p>
+                <a href="{% url 'products' %}" class="btn btn-primary">
+                    Browse Products
+                </a>
+            </div>
             {% endif %}
         </div>
     </div>
 </div>
-{% endblock %} 
+{% endblock %}
