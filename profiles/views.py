@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -18,6 +18,7 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile updated successfully')
+            return redirect('profile')  # ✅ Redirect after successful update
         else:
             messages.error(
                 request,
@@ -25,6 +26,7 @@ def profile(request):
             )
     else:
         form = UserProfileForm(instance=profile)
+
     orders = profile.orders.all()
 
     template = 'profiles/profile.html'
