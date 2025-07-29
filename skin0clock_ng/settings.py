@@ -128,15 +128,6 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-# # Email configuration for development
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# DEFAULT_FROM_EMAIL = 'noreply@skin0clock.ng'
-
-# # Email settings for contact form (these are not used with console backend)
-# EMAIL_HOST = 'localhost'
-# EMAIL_PORT = 1025
-# EMAIL_USE_TLS = False
-# EMAIL_USE_SSL = False
 
 # Updated Allauth configuration
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
@@ -146,6 +137,7 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
+
 
 WSGI_APPLICATION = 'skin0clock_ng.wsgi.application'
 

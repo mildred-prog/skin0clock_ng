@@ -1,81 +1,81 @@
-from django.test import TestCase, Client
+from django.test import TestCase, Client, RequestFactory
+from django.contrib.auth.models import User, AnonymousUser
 from django.contrib.auth.models import User
 from django.urls import reverse
-from products.models import Category, Product
-from .models import Wishlist
+from products.models import Product, Category
+from wishlist.models import Wishlist
+from wishlist.context_processors import wishlist_count
 
 
 class WishlistTestCase(TestCase):
     def setUp(self):
-        """Set up test data"""
         self.client = Client()
-        self.user = User.objects.create_user(
-            username='testuser',
-            email='test@example.com',
-            password='testpass123'
-        )
-        self.category = Category.objects.create(name='Test Category')
+        self.factory = RequestFactory()
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.category = Category.objects.create(name='Serums')
         self.product = Product.objects.create(
-            name='Test Product',
-            description='Test Description',
-            price=19.99,
-            category=self.category
+            name='Vitamin C Serum',
+            description='Brightens skin',
+            price=25.00,
+            category=self.category,
+            rating=4.5,
         )
 
-    def test_add_to_wishlist(self):
-        """Test adding a product to wishlist"""
-        self.client.login(username='testuser', password='testpass123')
-        response = self.client.post(
-            reverse('wishlist:add_to_wishlist', args=[self.product.id])
-        )
-        self.assertEqual(response.status_code, 302)
-        self.assertTrue(
-            Wishlist.objects.filter(
-                user=self.user,
-                product=self.product
-            ).exists()
-        )
+    def test_redirect_anonymous_user_from_wishlist_view(self):
+        response = self.client.get(reverse('wishlist:wishlist'))
+        self.assertRedirects(response, f"/accounts/login/?next={reverse('wishlist:wishlist')}")
 
-    def test_remove_from_wishlist(self):
-        """Test removing a product from wishlist"""
-        self.client.login(username='testuser', password='testpass123')
+    def test_redirect_anonymous_user_from_add_view(self):
+        response = self.client.post(reverse('wishlist:add_to_wishlist', args=[self.product.id]))
+        self.assertRedirects(response, f"/accounts/login/?next={reverse('wishlist:add_to_wishlist', args=[self.product.id])}")
+
+    def test_add_to_wishlist_once(self):
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.post(reverse('wishlist:add_to_wishlist', args=[self.product.id]), follow=True)
+        self.assertEqual(Wishlist.objects.count(), 1)
+        self.assertContains(response, 'added to your wishlist')
+
+    def test_add_same_product_twice(self):
+        self.client.login(username='testuser', password='testpass')
+        self.client.post(reverse('wishlist:add_to_wishlist', args=[self.product.id]))
+        response = self.client.post(reverse('wishlist:add_to_wishlist', args=[self.product.id]), follow=True)
+        self.assertEqual(Wishlist.objects.count(), 1)
+        self.assertContains(response, 'already in your wishlist')
+
+    def test_remove_nonexistent_item(self):
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.post(reverse('wishlist:remove_from_wishlist', args=[self.product.id]), follow=True)
+        self.assertContains(response, 'Item not found in your wishlist')
+
+    def test_wishlist_context_processor_logged_in(self):
+        self.client.login(username='testuser', password='testpass')
         Wishlist.objects.create(user=self.user, product=self.product)
-        response = self.client.post(
-            reverse('wishlist:remove_from_wishlist', args=[self.product.id])
-        )
-        self.assertEqual(response.status_code, 302)
-        self.assertFalse(
-            Wishlist.objects.filter(
-                user=self.user,
-                product=self.product
-            ).exists()
-        )
+        request = self.factory.get('/')
+        request.user = self.user
+        context = wishlist_count(request)
+        self.assertEqual(context['wishlist_count'], 1)
 
-    def test_wishlist_view_requires_login(self):
-        """Test that wishlist view requires authentication"""
-        response = self.client.get(reverse('wishlist:wishlist'))
-        self.assertEqual(response.status_code, 302)
+    def test_wishlist_context_processor_anonymous(self):
+        request = self.factory.get('/')
+        request.user = AnonymousUser()
+        context = wishlist_count(request)
+        self.assertEqual(context['wishlist_count'], 0)
 
-    def test_wishlist_view_authenticated(self):
-        """Test wishlist view for authenticated user"""
-        self.client.login(username='testuser', password='testpass123')
-        response = self.client.get(reverse('wishlist:wishlist'))
+    def test_check_wishlist_status_true(self):
+        self.client.login(username='testuser', password='testpass')
+        Wishlist.objects.create(user=self.user, product=self.product)
+        response = self.client.get(reverse('wishlist:check_wishlist_status', args=[self.product.id]))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'wishlist/wishlist.html')
+        self.assertJSONEqual(response.content, {'in_wishlist': True})
 
-    def test_duplicate_wishlist_item(self):
-        """Test that duplicate wishlist items are not created"""
-        self.client.login(username='testuser', password='testpass123')
-        self.client.post(
-            reverse('wishlist:add_to_wishlist', args=[self.product.id])
-        )
-        self.client.post(
-            reverse('wishlist:add_to_wishlist', args=[self.product.id])
-        )
-        self.assertEqual(
-            Wishlist.objects.filter(
-                user=self.user,
-                product=self.product
-            ).count(),
-            1
-        )
+    def test_check_wishlist_status_false(self):
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.get(reverse('wishlist:check_wishlist_status', args=[self.product.id]))
+        self.assertEqual(response.status_code, 200)
+        self.assertJSONEqual(response.content, {'in_wishlist': False})
+
+    def test_check_wishlist_status_invalid_product(self):
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.get(reverse('wishlist:check_wishlist_status', args=[999]))
+        self.assertEqual(response.status_code, 404)
+        self.assertJSONEqual(response.content, {'error': 'Product not found'})

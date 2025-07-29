@@ -9,17 +9,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" 
+  <meta name="description"
     content="Skin0clock_ng - Your destination for premium skincare products,expert skincare tips, and ingredient-focused education.Discover healthy, radiant skin at any time of day.">
-  <meta name="keywords"
-    content="skincare products, skincare tips, moisturizers, serums, acne treatment, skin hydration, sensitive skin care, face creams, clean beauty, healthy skin, skincare education,
+  <meta name="keywords" content="skincare products, skincare tips, moisturizers, serums, acne treatment, skin hydration, sensitive skin care, face creams, clean beauty, healthy skin, skincare education,
      skin0clock_ng, skin0clock, natural skincare, glowing skin routine">
   {% endblock %}
 
   {% block extra_meta %}
   {% endblock %}
 
-    <!-- Favicon -->
+  <!-- Favicon -->
   <link rel="icon" href="{% static 'assets/favicon/favicon.ico' %}" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicon/apple-touch-icon.png' %}">
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/favicon/favicon-32x32.png' %}">
@@ -70,18 +69,17 @@
         <form method="GET" action="{% url 'products' %}" class="d-none d-lg-block mx-auto w-50" role="search"
           aria-label="Site Search">
           <div class="input-group">
-            <label for="mobile-search-input" class="sr-only">Search products</label>
-            <input id="mobile-search-input" class="form-control border border-black rounded-0" type="text" name="q"
+            <label for="desktop-search-input" class="sr-only">Search products</label>
+            <input id="desktop-search-input" class="form-control border border-black rounded-0" type="text" name="q"
               placeholder="Search our site" aria-label="Search products">
-
             <div class="input-group-append">
               <button class="btn btn-black border border-black rounded-0" type="submit" aria-label="Submit search">
                 <i class="fas fa-search" aria-hidden="true"></i>
               </button>
             </div>
-
           </div>
         </form>
+
 
 
         <!-- Account and Cart -->
@@ -145,8 +143,8 @@
       </div>
       <div id="delivery-banner" class="row text-center">
         <div class="col bg-black text-white">
-          <h4 class="logo-font my-1">Free delivery on orders over £{{ free_delivery_threshold|default:"50.00" }}!
-          </h4>
+          <h3 class="logo-font my-1">Free delivery on orders over £{{ free_delivery_threshold|default:"50.00" }}!
+          </h3>
         </div>
       </div>
     </div>
@@ -199,7 +197,7 @@
           </p>
           <hr>
           <p class="footer-text-small mb-4">
-            © Skin0clock_ng 
+            © Skin0clock_ng mildred_prog
           </p>
         </div>
 
@@ -211,7 +209,7 @@
                 action="https://herokuapp.us10.list-manage.com/subscribe/post?u=f1d7376b0ff8da6ef8a7a3ee8&amp;id=eb2c1e856a&amp;f_id=00a146e4f0"
                 method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
                 target="_blank" novalidate>
-                <h5 class="mb-2">Subscribe for Healthy Skin</h5>
+                <p class="h5 mb-2">Subscribe for Healthy Skin</p>
                 <p class="small text-light mb-3">Get skincare tips and exclusive offers right in your inbox</p>
 
                 <div class="mc-field-group form-group">
