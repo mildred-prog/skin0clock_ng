@@ -180,3 +180,127 @@ Common issues that were identified & resolved included:
     After running the CI Python Linter, it shows there are no errors.
 
 ![Python Tests Clear](static/documentation/testing/py-clear.webp)
+
+| **Feature** | **admin.py** | **apps.py** | **models.py** | **urls.py** | **views.py** | **forms.py** | **tests.py** | 
+| ----------- |:------------:|:-----------:|:-------------:|:-----------:|:------------:|:------------:|:------------:|
+| skin0clock_ng | n/a | [no errors](static/documentation/testing/main-urls.jpg) | [no errors](static/documentation/testing/main-views.jpg) | n/a | n/a |
+| home | n/a | [no errors](static/documentation/testing/home-apps.jpg) | n/a | [no errors](static/documentation/testing/home-urls.jpg) | [no errors](static/documentation/testing/home-views.jpg) | n/a | [no errors](static/documentation/testing/home-test.webp) |
+| products | [no errors](static/documentation/testing/products-admin.jpg) | [no errors](static/documentation/testing/products-apps.jpg) | [no errors](static/documentation/testing/products-models.jpg) | [no errors](static/documentation/testing/products-urls.jpg) | [no errors](static/documentation/testing/products-views.jpg) | [no errors](static/documentation/testing/products-forms.jpg) | [no errors](static/documentation/testing/products-test.webp) |
+| wishlist | [no errors](static/documentation/testing/wishlist-admin.jpg) | n/a | [no errors](static/documentation/testing/wishlist-models.jpg) | [no errors](static/documentation/testing/wishlist-urls.jpg) | [no errors](static/documentation/testing/wishlist-views.jpg) | n/a | [no errors](static/documentation/testing/wishlist-test.jpg) |
+| faq | [no errors](static/documentation/testing/faq-admin.jpg) | [no errors](static/documentation/testing/faq-apps.jpg) | [no errors](static/documentation/testing/faq-models.jpg) | [no errors](static/documentation/testing/faq-urls.jpg) | [no errors](static/documentation/testing/faq-views.jpg) | n/a | [no errors](static/documentation/testing/faq-test.jpg) |
+| bag | n/a | [no errors](static/documentation/testing/bag-apps.jpg) | n/a | [no errors](static/documentation/testing/bag-urls.jpg) | [no errors](static/documentation/testing/bag-views.jpg) | n/a | [no errors](static/documentation/testing/bag-test.jpg) |
+| checkout | [no errors](static/documentation/testing/checkout-admin.jpg) | [no errors](static/documentation/testing/checkout-apps.jpg) | [no errors](static/documentation/testing/checkout-models.jpg) | [no errors](static/documentation/testing/checkout-urls.jpg) | [no errors](static/documentation/testing/checkout-views.jpg) | [no errors](static/documentation/testing/checkout-forms.jpg) | [no errors](static/documentation/testing/checkout-test.jpg) |
+| profiles | n/a | [no errors](static/documentation/testing/profiles-apps.jpg) | [no errors](static/documentation/testing/profiles-models.jpg) | [no errors](static/documentation/testing/profiles-url.jpg) | [no errors](static/documentation/testing/profiles-views.jpg) | [no errors](static/documentation/testing/profiles-forms.jpg) | [no errors](static/documentation/testing/profiles-test.jpg) |
+| review | [no errors](static/documentation/testing/review-admin.jpg) | [no errors](static/documentation/testing/review-apps.jpg) | [no errors](static/documentation/testing/review-models.jpg) | [no errors](static/documentation/testing/wishlist-urls.jpg) | [no errors](static/documentation/testing/wishlist-views.jpg) | [no errors](static/documentation/testing/review-forms.jpg) | [no errors](static/documentation/testing/review-test.jpg) |
+| contact | [no errors](static/documentation/testing/contact-admin.jpg) | [no errors](static/documentation/testing/contact-apps.jpg) | [no errors](static/documentation/testing/contact-models.jpg) | [no errors](static/documentation/testing/contact-urls.jpg) | [no errors](static/documentation/testing/contact-views.jpg) | [no errors](static/documentation/testing/contact-forms.jpg) | [no errors](static/documentation/testing/contact-test.jpg) |
+
+
+| **Feature** | **contexts.py** | **signals.py** | **webhook_handler.py** | **webhooks.py** | **utils.py** |
+|-------------|:---------------:|:--------------:|:----------------------:|:---------------:|:-------------:|
+| bag | [no errors](static/documentation/testing/bag-context.jpg) | n/a | n/a | n/a | [no errors](static/documentation/testing/bag-utils.webp)
+| checkout | n/a | [no errors](static/documentation/testing/checkout-signals.jpg) | [no errors](static/documentation/testing/checkout-webhook-handler.jpg) | [no errors](static/documentation/testing/checkout-webhooks.jpg)| n/a
+
+
+## Backend Testing
+Automated backend testing has been implemented across all apps using Django’s built-in TestCase framework. Each app has its own test.py file containing unit & view tests. All tests are [PEP8](https://peps.python.org/pep-0008/) compliant & validate the critical functionality of models, forms, views & session handling.
+
+__Apps tested:__
+- [x] home
+- [x] products
+- [x] wishlist
+- [x] review
+- [ ] faq
+- [x] bag
+- [x] checkout
+- [x] profiles
+- [x] contact
+
+| **Testing Includes** | **Description** |
+|:--------------|:----------------|
+| **Model String Representations** | Tests that model `__str__` methods return correct readable strings. |
+| **Form Validations** | Ensures forms validate correctly with valid & invalid inputs. |
+| **View Responses & Template Rendering** | Verifies correct HTTP responses & that the correct templates are rendered. |
+| **Access Control for Restricted Views** | Tests that only admins can access certain admin-only views & actions. |
+| **Bag Session Behavior** | Tests session functionality for adding, adjusting & removing bag items. |
+| **Checkout Process & Order Creation** | Verifies checkout flow, order saving & stock adjustments post-purchase. |
+| **Stripe Webhook Handling & Order Confirmation** | Tests webhook reception, validation & updating orders after Stripe confirmation. |
+| **User Profile Updates & Order History Retrieval** | Ensures users can update profiles & view past orders from their account page. |
+
+
+### Running Tests
+
+    NOTE: To run all tests across the project:
+    run `python manage.py test` in console
+    OR
+    run `python manage.py test app_name` in console for specific app testing
+
+- [x] **Home Test Results**  
+![console Validation](static/documentation/testing/console-home-test.jpg)
+
+- [x] **Products Test Results**  
+![console Validation](static/documentation/testing/console-product-test.jpg)
+
+- [x] **Faq Test Results**  
+![console Validation](static/documentation/testing/console-faq-test.jpg)
+
+- [x] **Review Test Results**  
+![console Validation](static/documentation/testing/console-review-test.jpg)
+
+- [x] **Bag Test Results**  
+![console Validation](static/documentation/testing/console-bag-test.jpg)
+
+- [x] **Checkout Test Results**  
+![console Validation](static/documentation/testing/console-checkout-test.jpg)
+
+- [x] **Profiles Test Results**  
+![console Validation](static/documentation/testing/console-profiles-test.jpg)
+
+- [x] **Wishlist Test Results**  
+![console Validation](static/documentation/testing/console-wishlist-test.jpg)
+
+- [x] **Contact Test Results**  
+![console Validation](static/documentation/testing/console-contact-test.jpg)
+
+## Lighthouse Test
+
+- [x] Desktop view:
+
+    **Home Page**  
+    ![Lighthouse Report Home](static/documentation/testing/lh-home.jpg)
+
+    **Products page**  
+    ![Lighthouse Report Products](static/documentation/testing/lh-products.jpg)
+
+    **Faq Page**  
+    ![Lighthouse Report Grow Guide](static/documentation/testing/lh-guide.webp)
+
+    **Wishlist Page**  
+    ![Lighthouse Report Wishlist](static/documentation/testing/lh-courses.webp)
+
+    **Bag Page**  
+    ![Lighthouse Report Bag](static/documentation/testing/lh-bag.webp)
+
+    **Checkout Page**  
+    ![Lighthouse Report Checkout](static/documentation/testing/lh-checkout.webp)
+
+    **Profiles Page**  
+    ![Lighthouse Report Profiles](static/documentation/testing/lh-profiles.webp)
+
+    **Signup Page**  
+    ![Lighthouse Report Signup](static/documentation/testing/lh-signup.webp)
+
+    **Login Page**  
+    ![Lighthouse Report Login](static/documentation/testing/lh-login.webp)
+
+    **Logout Page**  
+    ![Lighthouse Report Logout](static/documentation/testing/lh-logout.webp)
+
+    **Contact Page**  
+    ![Lighthouse Report Logout](static/documentation/testing/lh-contact.webp)
+
+- [x] Mobile view:
+
+    Performance was lower than preferred on mobile view due to the site being image heavy on landing page with hero & featured products. Images used in the sites design were compressed to offer the best chance for a decent performance score.
+
+    **Mobile Home Page**  
+    ![Lighthouse Report Home Mobile](static/documentation/testing/lh-mobile.webp)
