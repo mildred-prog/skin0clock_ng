@@ -272,31 +272,31 @@ __Apps tested:__
     ![Lighthouse Report Products](static/documentation/testing/lh-products.jpg)
 
     **Faq Page**  
-    ![Lighthouse Report Grow Guide](static/documentation/testing/lh-guide.webp)
+    ![Lighthouse Report faq](static/documentation/testing/lh-faq.jpg)
 
     **Wishlist Page**  
-    ![Lighthouse Report Wishlist](static/documentation/testing/lh-courses.webp)
+    ![Lighthouse Report Wishlist](static/documentation/testing/lh-wishlist.jpg)
 
     **Bag Page**  
-    ![Lighthouse Report Bag](static/documentation/testing/lh-bag.webp)
+    ![Lighthouse Report Bag](static/documentation/testing/lh-bag.jpg)
 
     **Checkout Page**  
-    ![Lighthouse Report Checkout](static/documentation/testing/lh-checkout.webp)
+    ![Lighthouse Report Checkout](static/documentation/testing/lh-checkout.jpg)
 
     **Profiles Page**  
-    ![Lighthouse Report Profiles](static/documentation/testing/lh-profiles.webp)
+    ![Lighthouse Report Profiles](static/documentation/testing/lh-profiles.jpg)
 
     **Signup Page**  
-    ![Lighthouse Report Signup](static/documentation/testing/lh-signup.webp)
+    ![Lighthouse Report Signup](static/documentation/testing/lh-signup.jpg)
 
     **Login Page**  
-    ![Lighthouse Report Login](static/documentation/testing/lh-login.webp)
+    ![Lighthouse Report Login](static/documentation/testing/lh-login.jpg)
 
     **Logout Page**  
-    ![Lighthouse Report Logout](static/documentation/testing/lh-logout.webp)
+    ![Lighthouse Report Logout](static/documentation/testing/lh-logout.jpg)
 
     **Contact Page**  
-    ![Lighthouse Report Logout](static/documentation/testing/lh-contact.webp)
+    ![Lighthouse Report Contact](static/documentation/testing/lh-contact.jpg)
 
 - [x] Mobile view:
 
@@ -304,3 +304,113 @@ __Apps tested:__
 
     **Mobile Home Page**  
     ![Lighthouse Report Home Mobile](static/documentation/testing/lh-mobile.webp)
+
+- [x] Mobile view:
+
+    Performance was lower than preferred on mobile view due to the site being image heavy on landing page with hero & featured products. Images used in the sites design were compressed to offer the best chance for a decent performance score.
+
+    **Mobile Home Page**  
+    ![Lighthouse Report Home Mobile](static/documentation/testing/lh-mobile.webp)
+
+
+### Accessibility
+
+Accessibility was included in every planning stage for Skin0clock_ng, through the use of the [WAVE report tool](https://wave.webaim.org/) I could ensure that any necessary changes were made to make the website as accessible as it could be.
+
+
+__Accessibility Fixes__
+
+**Accessibility Issue** | **Items Affected**  
+|:----------------------|:------------------|  
+| Missing `<h1>` heading | Homepage lacked a semantic first-level heading  
+| Missing form labels | Search bar, mobile search input  
+| Empty button (icon-only) | Search button with magnifying glass icon  
+| Multiple label methods | Search input had both `aria-label` and `placeholder`  
+| Skipped heading levels | Product details, homepage feature sections  
+| Low color contrast | Buttons, navbar toggler icon, footer text  
+| Icon-only links/buttons | Wishlist icon, Delete (trash) icon in bag page  
+| Navbar toggler low visibility | Toggler bars on mobile view lacked contrast  
+| Incorrect Bootstrap class usage | Navbar alignment (`ms-auto` instead of `ml-auto` in Bootstrap 4)  
+| Duplicate input IDs | Multiple fields with `id="search"` across templates  
+| Honeypot field without accessible name | Mailchimp newsletter input for bot protection  
+
+
+    All errors were resolved successfully.
+
+![No errors](static/documentation/testing/wave-clear.jpg)
+
+
+## Testing Stripe Integration
+
+### Core Functionalities Tested
+
+**Secure Payment Processing**
+- [x] Confirmed Stripe securely processes payments without sensitive payment data touching the application's servers.
+- [x] Verified correct Stripe test mode operation with test credit card numbers.
+
+**Webhook Notifications:**
+- [x] Ensured real-time webhook events from Stripe trigger immediate & accurate responses within the application.
+- [x] Validated appropriate webhook events (`payment_intent.created`, `payment_intent.succeeded`, `charge.succeeded`, `charge.updated`) correctly trigger order creation or updates.
+
+**Idempotent Payment Handling:**
+- [x] Tested handling duplicate webhook events to confirm no duplicated orders or redundant email notifications occur.
+- [x] Ensured application logic gracefully handles repeated webhook events without side effects.
+
+**Order Creation & Updating:**
+- [x] Verified that successful payment events (`payment_intent.succeeded`, `charge.succeeded`) automatically create & update orders accurately.
+- [x] Checked database integrity & consistency of order records following webhook processing.
+
+### Stripe Webhook Events Tested
+
+| Webhook Event | Purpose & Test Outcome |
+|---------------|--------------------------|
+| `payment_intent.created`| Successfully initiated payment intent recorded |
+| `payment_intent.succeeded`| Correct order creation & confirmation emails sent |
+| `charge.succeeded`| Order payment status updated, inventory adjusted |
+| `charge.updated`| Order adjustments verified following charge updates (refunds, disputes) |
+
+![Stripe Webhooks](static/documentation/readme/stripe-webhooks.webp)
+
+
+## Manual Testing
+
+### User Input / Form Validation
+
+Testing was carried out on desktop & mobile using multiple browsers to ensure consistent functionality, form inputs & data processing across different user environments.   
+
+**Browsers tested:**
+- [x] Chrome – primary testing environment
+- [x] Firefox
+- [x] Safari (macOS)
+
+
+| **No.** | **Test Input** | **Correct Outcome** | **Meet Requirements** |
+|:-------:|:---------------|:--------------------|:----------------------|
+| 1 | Navbar Logo & Icons | PASS | Logo links to home. Navbar links (Home, Products, Categories, Faq, Wishlist, Contact) works. Mobile menu functions correctly. |
+| 2 | Login Link | PASS | Clicking 'Login' in navbar redirects to login page. |
+| 3 | Log into Account | PASS | Login form includes username and password. Validation triggers for empty fields. Success message appears after login. |
+| 4 | Register Link | PASS | Clicking 'Register' takes user to account registration form. |
+| 5 | Register Account | PASS | Registration includes username, email (optional), password fields with validation. Shows success confirmation. |
+| 6 | Home Page 'Shop Now' | PASS | 'Shop Now' CTA button on homepage redirects user to the products page. |
+| 7 | Product Category Links | PASS | Category filters load correct product listings (e.g., Cleansers, Serums, Moisturizers). |
+| 8 | About Page Link | PASS | 'About' page loads correctly with brand mission and details. |
+| 9 | Contact Page Link | PASS | 'Contact' page loads with form for name, email, and message. |
+| 10 | Logout | PASS | Clicking 'Logout' logs user out and displays a success message. |
+| 11 | Social Links | PASS | Footer social icons link to respective platforms and open in new tabs. |
+| 12 | Add Product to Bag | PASS | Product detail page allows quantity selection and adds to bag with success toast. |
+| 13 | View Bag Page | PASS | Clicking bag icon or 'View Bag' link displays current contents with quantity, subtotal, and total. |
+| 14 | Update Quantity in Bag | PASS | Quantity field allows updates. Subtotal and total values recalculate dynamically. |
+| 15 | Remove Item from Bag | PASS | Trash icon removes item and updates bag totals. Shows confirmation message. |
+| 16 | Proceed to Checkout | PASS | 'Secure Checkout' button leads to checkout page with order summary. |
+| 17 | Checkout Form Validation | PASS | Required fields (name, address, postcode, email) must be filled. Email requires correct format. |
+| 18 | Payment Card Input | PASS | Stripe fields load for card number, expiry date, and CVC. Only valid formats accepted. |
+| 19 | Place Order with Valid Card | PASS | Stripe test card processes payment, redirects to success page, and sends confirmation email. |
+| 20 | Place Order with Invalid Card | PASS | Invalid card number causes payment failure. User is notified and can retry. |
+| 21 | Place Order with Insufficient Funds Card | PASS | Using insufficient funds card shows payment error. Bag remains intact for retry. |
+| 22 | Order Confirmation Page | PASS | Confirmation page displays order number, email, and bag summary. |
+| 23 | Order History in Profile | PASS | Logged-in users can access profile to view past orders, including order date, products, and totals. |
+| 24 | Checkout Save Info Toggle | PASS | Option to save delivery info for future checkouts works for logged-in users. |
+| 25 | Save Cart on Logout & Restore on Login | PASS | Bag contents are preserved for logged-in users who logout and return later. |
+| 26 | Contact Form Submission | PASS | Form validates required fields. Empty fields or invalid email trigger errors. Success message appears on valid submission. |
+| 27 | Footer Subscribe Form | PASS | Email newsletter form validates input. Success message shown for valid email. Errors appear for blank or invalid submissions. |
+| 28 | Stock Adjustment After Checkout | PASS | Product stock is updated after checkout. No over-selling allowed. |

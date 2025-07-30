@@ -571,12 +571,12 @@ input[name='q']::placeholder {
 }
 
 /* Wishlist Styles */
-.uniform-wishlist-btn {
+.wishlist-button-container {
     min-width: 220px; /* Make both buttons the same width */
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
     border-radius: 6px;
-    text-align: center;
+    text-align: start;
 }
 
 .wishlist-empty {
