@@ -3,7 +3,6 @@ body {
     height: 100%;
 }
 
-
 body {
     margin: 0;
     padding: 0;
@@ -572,7 +571,7 @@ input[name='q']::placeholder {
 }
 
 /* Wishlist Styles */
-.wishlist-button-container {
+.uniform-wishlist-btn {
     min-width: 220px; /* Make both buttons the same width */
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
@@ -786,26 +785,6 @@ hr {
         flex: 0 0 16.666667%;
         max-width: 16.666667%;
     }
-}
-
-@media (max-width: 344px) {
-  .navbar-nav {
-    flex-direction: column !important;
-    align-items: center;
-  }
-
-  .mobile-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .mobile-header .list-inline-item {
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 0.5rem;
-  }
 }
 
 @media (max-width: 768px) {
