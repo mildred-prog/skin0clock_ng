@@ -2,21 +2,23 @@
 {% load static %}
 {% block body_class %}error-page{% endblock %}
 {% block content %}
-<div class="container h-100 d-flex justify-content-center align-items-start mt-5">
-    <div class="row w-100">
-        <div class="col-12 col-md-8 col-lg-6 mx-auto">
-            <div class="error-panel text-center p-4 rounded mt-5">
-                <div class="error-icon mb-4">
-                    <i class="fas fa-search fa-3x text-muted"></i>
-                </div>
-                <h1 class="display-4 logo-font text-black mb-3">
-                    The page you are looking for isn't available
-                </h1>
-                <p class="lead text-black">It may have been removed, renamed, or never existed.</p>
-                <div class="my-4">
-                    <a href="{% url 'products' %}" class="btn btn-shop btn-lg rounded-0 text-uppercase py-3">
-                        Return to shop
-                    </a>
+<div class="error-page-container">
+    <div class="container h-100 d-flex justify-content-center align-items-center">
+        <div class="row w-100">
+            <div class="col-12 col-md-8 col-lg-6 mx-auto">
+                <div class="error-panel text-center p-5 rounded shadow-lg">
+                    <div class="error-icon mb-4">
+                        <i class="fas fa-search fa-4x text-muted"></i>
+                    </div>
+                    <h1 class="display-4 logo-font text-dark mb-3">
+                        The page you are looking for isn't available
+                    </h1>
+                    <p class="lead text-muted mb-4">It may have been removed, renamed, or never existed.</p>
+                    <div class="my-4">
+                        <a href="{% url 'products' %}" class="btn btn-lg rounded-pill px-4 py-3 text-uppercase fw-bold" style="background-color: #764ba2; color: white; border: none;">
+                            Return to shop
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
