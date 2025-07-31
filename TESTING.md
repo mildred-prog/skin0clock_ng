@@ -393,24 +393,42 @@ Testing was carried out on desktop & mobile using multiple browsers to ensure co
 | 5 | Register Account | PASS | Registration includes username, email (optional), password fields with validation. Shows success confirmation. |
 | 6 | Home Page 'Shop Now' | PASS | 'Shop Now' CTA button on homepage redirects user to the products page. |
 | 7 | Product Category Links | PASS | Category filters load correct product listings (e.g., Cleansers, Serums, Moisturizers). |
-| 8 | About Page Link | PASS | 'About' page loads correctly with brand mission and details. |
-| 9 | Contact Page Link | PASS | 'Contact' page loads with form for name, email, and message. |
-| 10 | Logout | PASS | Clicking 'Logout' logs user out and displays a success message. |
-| 11 | Social Links | PASS | Footer social icons link to respective platforms and open in new tabs. |
-| 12 | Add Product to Bag | PASS | Product detail page allows quantity selection and adds to bag with success toast. |
-| 13 | View Bag Page | PASS | Clicking bag icon or 'View Bag' link displays current contents with quantity, subtotal, and total. |
-| 14 | Update Quantity in Bag | PASS | Quantity field allows updates. Subtotal and total values recalculate dynamically. |
-| 15 | Remove Item from Bag | PASS | Trash icon removes item and updates bag totals. Shows confirmation message. |
-| 16 | Proceed to Checkout | PASS | 'Secure Checkout' button leads to checkout page with order summary. |
-| 17 | Checkout Form Validation | PASS | Required fields (name, address, postcode, email) must be filled. Email requires correct format. |
-| 18 | Payment Card Input | PASS | Stripe fields load for card number, expiry date, and CVC. Only valid formats accepted. |
-| 19 | Place Order with Valid Card | PASS | Stripe test card processes payment, redirects to success page, and sends confirmation email. |
-| 20 | Place Order with Invalid Card | PASS | Invalid card number causes payment failure. User is notified and can retry. |
-| 21 | Place Order with Insufficient Funds Card | PASS | Using insufficient funds card shows payment error. Bag remains intact for retry. |
-| 22 | Order Confirmation Page | PASS | Confirmation page displays order number, email, and bag summary. |
-| 23 | Order History in Profile | PASS | Logged-in users can access profile to view past orders, including order date, products, and totals. |
-| 24 | Checkout Save Info Toggle | PASS | Option to save delivery info for future checkouts works for logged-in users. |
-| 25 | Save Cart on Logout & Restore on Login | PASS | Bag contents are preserved for logged-in users who logout and return later. |
-| 26 | Contact Form Submission | PASS | Form validates required fields. Empty fields or invalid email trigger errors. Success message appears on valid submission. |
-| 27 | Footer Subscribe Form | PASS | Email newsletter form validates input. Success message shown for valid email. Errors appear for blank or invalid submissions. |
-| 28 | Stock Adjustment After Checkout | PASS | Product stock is updated after checkout. No over-selling allowed. |
+| 8 | Contact Page Link | PASS | 'Contact' page loads with form for name, email, and message. |
+| 9 | Logout | PASS | Clicking 'Logout' logs user out and displays a success message. |
+| 10 | Social Links | PASS | Footer social icons link to respective platforms and open in new tabs. |
+| 11 | Add Product to Bag | PASS | Product detail page allows quantity selection and adds to bag with success toast. |
+| 12 | View Bag Page | PASS | Clicking bag icon or 'View Bag' link displays current contents with quantity, subtotal, and total. |
+| 13 | Update Quantity in Bag | PASS | Quantity field allows updates. Subtotal and total values recalculate dynamically. |
+| 14 | Remove Item from Bag | PASS | Trash icon removes item and updates bag totals. Shows confirmation message. |
+| 15 | Proceed to Checkout | PASS | 'Secure Checkout' button leads to checkout page with order summary. |
+| 16 | Checkout Form Validation | PASS | Required fields (name, address, postcode, email) must be filled. Email requires correct format. |
+| 17 | Payment Card Input | PASS | Stripe fields load for card number, expiry date, and CVC. Only valid formats accepted. |
+| 18 | Place Order with Valid Card | PASS | Stripe test card processes payment, redirects to success page, and sends confirmation email. |
+| 19 | Place Order with Invalid Card | PASS | Invalid card number causes payment failure. User is notified and can retry. |
+| 20 | Place Order with Insufficient Funds Card | PASS | Using insufficient funds card shows payment error. Bag remains intact for retry. |
+| 21 | Order Confirmation Page | PASS | Confirmation page displays order number, email, and bag summary. |
+| 22 | Order History in Profile | PASS | Logged-in users can access profile to view past orders, including order date, products, and totals. |
+| 23 | Checkout Save Info Toggle | PASS | Option to save delivery info for future checkouts works for logged-in users. |
+| 24 | Save Cart on Logout & Restore on Login | PASS | Bag contents are preserved for logged-in users who logout and return later. |
+| 25 | Contact Form Submission | PASS | Form validates required fields. Empty fields or invalid email trigger errors. Success message appears on valid submission. |
+| 26 | Footer Subscribe Form | PASS | Email newsletter form validates input. Success message shown for valid email. Errors appear for blank or invalid submissions. |
+| 27 | Stock Adjustment After Checkout | PASS | Product stock is updated after checkout. No over-selling allowed. |
+
+
+
+## Bugs Encountered 
+  
+The below are bugs that I spent more time investigating, most of these encountered were learning curves. 
+
+
+| **Bug No.** | **Description** | **Fix Status** | **Solution Implemented** | **Source of Bug** |
+|-------------|-----------------|----------------|---------------------------|-------------------|
+| 001 | Navbar toggler misaligned and icon color too light |  Fixed | Adjusted `margin-left` and replaced default Bootstrap toggler SVG with darker stroke | UI inconsistency with theme |
+| 002 | Missing form labels on newsletter and quantity inputs |  Fixed | Added `aria-label` and `<label for="">` associations | Accessibility testing |
+| 003 | Duplicate input IDs (`email`) in forms |  Fixed | Made all input IDs unique | Manual HTML inspection |
+| 004 | Hidden honeypot input missing accessible name |  Fixed | Added `aria-hidden="true"` and `tabindex="-1"` to honeypot field | Mailchimp embed snippet |
+| 005 | Improper Bootstrap class usage (`ms-auto` in Bootstrap 4 site) |  Fixed | Replaced with `ml-auto` (Bootstrap 4 compatible) | Template inheritance |
+| 006 | Buttons and links with insufficient color contrast |  Fixed | Updated colors to meet WCAG contrast ratio guidelines | Lighthouse audit |
+| 007 | Wishlist heart icon not toggling active state visually |  Fixed | Added `aria-pressed` state and visual class toggling on click | JS logic in wishlist.js |
+| 008 | FAQ toggle buttons not accessible by keyboard |  Fixed | Converted from `<div>` to `<button>` and added `aria-expanded` attributes | Manual keyboard test |
+| 009 | Review submission form not announcing success to screen readers |  Fixed | Added `role="status"` live region to toast message container | Accessibility improvement |
