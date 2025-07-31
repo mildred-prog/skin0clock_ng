@@ -26,6 +26,27 @@ a.text-primary {
     color: #555 !important;
 }
 
+/* Custom navbar toggler styling to match other nav icons */
+.navbar-toggler {
+    border: none !important;
+    padding: 0.25rem 0.5rem !important;
+    background-color: transparent !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.navbar-light .navbar-toggler {
+    color: rgba(0, 0, 0, 0.8) !important;
+    border-color: rgba(0, 0, 0, 0.3) !important;
+}
+
 
 .main-logo-link {
     width: fit-content;
@@ -571,12 +592,12 @@ input[name='q']::placeholder {
 }
 
 /* Wishlist Styles */
-.wishlist-button-container {
+.uniform-wishlist-btn {
     min-width: 220px; /* Make both buttons the same width */
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
     border-radius: 6px;
-    text-align: start;
+    text-align: center;
 }
 
 .wishlist-empty {
@@ -802,5 +823,92 @@ hr {
 
     .featured-col {
         margin-bottom: 25px;
+    }
+}
+
+/* Error Page Styles */
+.error-page {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-panel {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.error-panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.error-page .display-4 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.error-page .lead {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.error-page .btn-shop {
+    background: linear-gradient(45deg, #000, #333);
+    border: none;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.error-page .btn-shop:hover {
+    background: linear-gradient(45deg, #333, #000);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    color: white;
+    text-decoration: none;
+}
+
+/* Error icon styles */
+.error-icon {
+    margin-bottom: 2rem;
+}
+
+.error-icon i {
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.error-panel:hover .error-icon i {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments for error pages */
+@media (max-width: 768px) {
+    .error-page .display-4 {
+        font-size: 2rem;
+    }
+    
+    .error-page .lead {
+        font-size: 1rem;
+    }
+    
+    .error-panel {
+        margin: 1rem;
+        padding: 2rem 1rem !important;
+    }
+    
+    .error-icon i {
+        font-size: 2.5rem !important;
     }
 }
