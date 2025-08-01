@@ -19,15 +19,19 @@ Skin0clock_ng is an e-commerce platform for purchasing premium skincare products
 - [x] A modern & user-friendly e-commerce store for skincare products
 - [x] Featured products visible on landing page with links to products
 - [x] Comprehensive product categories (Cleansers, Toners, Serums, Moisturizers, Sunscreens, Body Care)
+- [x] Product sorting and filtering functionality
 - [x] Secure payment processing via Stripe
 - [x] Admin product management with CRUD functionality
 - [x] Cloudinary for assets & media storage (product images)
-- [x] User review system with star ratings
-- [x] Wishlist functionality for saved items
-- [x] FAQ section for customer support
-- [x] Contact form for customer inquiries
-- [x] User profile management with order history
+- [x] User review system with interactive star ratings
+- [x] Wishlist functionality for saved items with real-time updates
+- [x] FAQ section for customer support with searchable content
+- [x] Contact form for customer inquiries with admin management
+- [x] User profile management with order history and delivery preferences
+- [x] Order tracking and downloadable confirmations
 - [x] Responsive design for all devices
+- [x] Custom error pages (404, 403, 500)
+- [x] Email verification and password reset functionality
 
 ## Web Marketing Strategy
 
@@ -184,71 +188,81 @@ Skin0clock_ng is designed for a smooth & informative shopping experience. Below 
 | **Feature** | **Screenshot** |
 |:------------|:---------------|
 | **Hero Banner Desktop**  
-The landing page acts as the main entry point to the Skin0clock_ng site, featuring a full-width hero image that builds trust, communicates the brand's purpose & guides visitors toward shopping or learning. A 'Shop Now' CTA encourages engagement, supported by a responsive layout optimized for desktop browsing. | ![Landing Page](static/documentation/readme/landing-page.webp) |
+The landing page acts as the main entry point to the Skin0clock_ng site, featuring a full-width hero image that builds trust, communicates the brand's purpose & guides visitors toward shopping or learning. A 'Shop Now' CTA encourages engagement, supported by a responsive layout optimized for desktop browsing. | ![Landing Page](static/documentation/readme/landing-page.jpg) |
 | **Hero Banner Mobile**  
-The mobile landing page adapts the hero banner for smaller screens without losing impact, ensuring fast loading, touch-friendly navigation & clear CTA visibility. It maintains the brand's core goals while delivering a smooth, fully responsive user journey on mobile devices. | ![Landing Mobile](static/documentation/readme/landing-mobile.webp) |
+The mobile landing page adapts the hero banner for smaller screens without losing impact, ensuring fast loading, touch-friendly navigation & clear CTA visibility. It maintains the brand's core goals while delivering a smooth, fully responsive user journey on mobile devices. | ![Landing Mobile](static/documentation/readme/landing-mobile.jpg) |
 | **Navigation Bar**  
-Primary navigation bar offering intuitive access to key site areas, including Products, FAQ, Contact, Shopping Bag & User Profile. | ![Nav Desktop](static/documentation/readme/nav-desktop.webp) |
+Primary navigation bar offering intuitive access to key site areas, including Products, FAQ, Contact, Shopping Bag & User Profile. | ![Nav Desktop](static/documentation/readme/nav-desktop.jpg) |
 | **Navigation Bar Mobile**  
-Responsive hamburger menu ensuring smooth navigation on smartphones & tablets. | ![Nav Mobile](static/documentation/readme/nav-mobile.webp) |
-| **Navigation Dropdown**  
-User account management dropdown with links to login, signup, profile management & admin-only areas (for superusers). | ![Nav Dropdown](static/documentation/readme/nav-dropdown.webp) |
+Responsive hamburger menu ensuring smooth navigation on smartphones & tablets. | ![Nav Mobile](static/documentation/readme/nav-mobile.jpg) |
 | **Featured Products Section**  
-Highlighted skincare products selected by category, encouraging users to explore premium products easily from the homepage. | ![Featured Products](static/documentation/readme/featured-products.webp) |
+Highlighted skincare products selected by category, encouraging users to explore premium products easily from the homepage. | ![Featured Products](static/documentation/readme/featured-products.jpg) |
 | **Featured Products Section Mobile**  
-A clean, responsive featured section for mobile users, maintaining focus on special products. | ![Featured Mobile](static/documentation/readme/featured-mobile.webp) |
+A clean, responsive featured section for mobile users, maintaining focus on special products. | ![Featured Mobile](static/documentation/readme/featured-mobile.jpg) |
+| **Skincare Tips & Advice**  
+A clean, responsive featured section for mobile users, maintaining focus on special products. | ![Featured Mobile](static/documentation/readme/tips&advice.jpg) |
+| **Skincare Tips & Advice Mobile**  
+A clean, responsive featured section for mobile users, maintaining focus on special products. | ![Featured Mobile](static/documentation/readme/tips&advice-mobile.jpg) |
 | **Footer**  
-A consistent footer across all pages, featuring external SEO links, social media integration & an accessible scroll-to-top button. | ![Footer Desktop](static/documentation/readme/footer-desktop.webp) |
+A consistent footer across all pages, featuring external SEO links, social media integration & an accessible scroll-to-top button. | ![Footer Desktop](static/documentation/readme/footer-desktop.jpg) |
 | **Footer Mobile**  
-Mobile-optimized footer maintaining usability, visibility & accessibility compliance. | ![Footer Mobile](static/documentation/readme/footer-mobile.webp) |
-| **Product Listings**  
-Responsive product grid layout allowing users to browse available skincare products with pricing, images & stock status easily. | ![Product Page](static/documentation/readme/product-page.webp) |
+Mobile-optimized footer maintaining usability, visibility & accessibility compliance. | ![Footer Mobile](static/documentation/readme/footer-mobile.jpg) |
 | **Product Detail**  
-Detailed single-product page offering pricing, description, stock availability & direct add-to-cart functionality. | ![Product Detail](static/documentation/readme/product-detail.webp) |
+Detailed single-product page offering pricing, description, stock availability & direct add-to-cart functionality. | ![Product Detail](static/documentation/readme/product-details.jpg) |
 | **Product Listings Mobile**  
-Responsive mobile-friendly product grid to ensure seamless shopping on small devices. | ![Product Mobile](static/documentation/readme/product-mobile.webp) |
+Responsive mobile-friendly product grid to ensure seamless shopping on small devices. | ![Product Mobile](static/documentation/readme/product-mobile.jpg) |
 | **Product Detail Mobile**  
-Optimized mobile view of product details with easy add-to-cart access & product descriptions. | ![Product Detail Mobile](static/documentation/readme/product-detail-mobile.webp) |
+Optimized mobile view of product details with easy add-to-cart access & product descriptions. | ![Product Detail Mobile](static/documentation/readme/product-detail-mobile.jpg) |
 | **FAQ Page**  
-Informational page providing detailed answers to common skincare questions and customer support. | ![FAQ Page](static/documentation/readme/faq-page.webp) |
+Informational page providing detailed answers to common skincare questions and customer support. | ![FAQ Page](static/documentation/readme/faq-desktop.jpg) |
 | **FAQ Mobile**  
-Streamlined, mobile-friendly version of the FAQ for easy reference on smaller screens. | ![FAQ Mobile](static/documentation/readme/faq-mobile.webp) |
+Streamlined, mobile-friendly version of the FAQ for easy reference on smaller screens. | ![FAQ Mobile](static/documentation/readme/faq-mobile.jpg) |
 | **Shopping Bag**  
-Session-based shopping bag allowing users to adjust quantities, remove items, or proceed to checkout with real-time updates. | ![Bag Desktop](static/documentation/readme/bag-desktop.webp) |
+Session-based shopping bag allowing users to adjust quantities, remove items, or proceed to checkout with real-time updates. | ![Bag Desktop](static/documentation/readme/bag-desktop.jpg) |
 | **Add to Bag Alert**  
-Modal popup confirming that a product has been successfully added to the bag. | ![Added to Bag](static/documentation/readme/added-to-bag.webp) |
+Modal popup confirming that a product has been successfully added to the bag. | ![Added to Bag](static/documentation/readme/added-to-bag.jpg) |
 | **Delete from Bag Alert**  
-Alert message confirming an item's removal from the bag. | ![Delete Message](static/documentation/readme/delete-bag.webp) |
+Alert message confirming an item's removal from the bag. | ![Delete Message](static/documentation/readme/delete-bag.jpg) |
 | **Update Bag Alert**  
-Real-time notification after changing item quantities within the shopping bag. | ![Update Bag Message](static/documentation/readme/update-bag.webp) |
+Real-time notification after changing item quantities within the shopping bag. | ![Update Bag Message](static/documentation/readme/update-bag.jpg) |
 | **Checkout Desktop**  
-Secure checkout flow integrated with Stripe, displaying billing, delivery details & an order summary. | ![Checkout Desktop](static/documentation/readme/checkout-desktop.webp) |
+Secure checkout flow integrated with Stripe, displaying billing, delivery details & an order summary. | ![Checkout Desktop](static/documentation/readme/checkout-desktop.jpg) |
 | **Shopping Bag Mobile**  
-Mobile-optimized shopping bag allowing easy quantity adjustment & checkout progression. | ![Bag Mobile](static/documentation/readme/bag-mobile.webp) |
+Mobile-optimized shopping bag allowing easy quantity adjustment & checkout progression. | ![Bag Mobile](static/documentation/readme/bag-mobile.jpg) |
 | **Checkout Mobile**  
-Streamlined Stripe checkout experience designed for mobile users. | ![Checkout Mobile](static/documentation/readme/checkout-mobile.webp) |
-| **User Authentication**  
-Full authentication system allowing users to register, login, reset passwords & verify email addresses securely. | ![Nav Signup](static/documentation/readme/nav-dropdown-signup.webp) |
+Streamlined Stripe checkout experience designed for mobile users. | ![Checkout Mobile](static/documentation/readme/checkout-mobile.jpg) |
 | **Signup Page**  
-New user registration form requesting username, email & password. | ![Signup Page](static/documentation/readme/signup-page.webp) |
+New user registration form requesting username, email & password. | ![Signup Page](static/documentation/readme/signup-page.jpg) |
 | **Email Verification Prompt**  
-Instruction page guiding new users to verify their email addresses. | ![Verify Page](static/documentation/readme/verify-page.webp) |
+Instruction page guiding new users to verify their email addresses. | ![Verify Page](static/documentation/readme/verify-email.jpg) |
 | **Email Confirmation Success**  
-Confirmation message once a user's email address has been successfully verified. | ![Confirm Email](static/documentation/readme/email-confirm.webp) |
+Confirmation message once a user's email address has been successfully verified. | ![Confirm Email](static/documentation/readme/email-confirm.png) |
 | **Login Page**  
-User login form for account access using username & password. | ![Login Page](static/documentation/readme/login-page.webp) |
+User login form for account access using username & password. | ![Login Page](static/documentation/readme/signin.jpg) |
 | **Password Reset Request**  
-Password reset form allowing users to recover accounts securely. | ![Reset Page](static/documentation/readme/reset-page.webp) |
+Password reset form allowing users to recover accounts securely. | ![Reset Page](static/documentation/readme/reset-page.jpg) |
 | **Order History**  
-Account section showing users a summary of previous orders with downloadable confirmations. | ![Order Alert](static/documentation/readme/order-alert.webp) |
+Account section showing users a summary of previous orders. | ![Order Alert](static/documentation/readme/history.jpg) |
 | **Profile Page**  
-Profile management page where users can update personal details & delivery addresses. | ![Profile Desktop](static/documentation/readme/profile-desktop.webp) |
+Profile management page where users can update personal details & delivery addresses. | ![Profile Desktop](static/documentation/readme/profile-update.jpg) |
 | **Contact Form**  
-Dedicated contact page for inquiries, product support, or general questions submitted to admin. | ![Contact Form](static/documentation/readme/contact-form.webp) |
+Dedicated contact page for inquiries, product support, or general questions submitted to admin. | ![Contact Form](static/documentation/readme/contact-pages.jpg) |
 | **Contact Form Confirmation**  
-Success message shown to users after submitting the contact form. | ![Contact Confirm](static/documentation/readme/contact-confirm.webp) |
+Success message shown to users after submitting the contact form. | ![Contact Confirm](static/documentation/readme/message-success.jpg) |
 | **Error Pages**  
-Custom-designed 404 error page guiding users back to the homepage if they reach a broken link. | ![404 Error](static/documentation/readme/error.webp) |
+Custom-designed 404 error page guiding users back to the homepage if they reach a broken link. | ![404 Error](static/documentation/readme/404.jpg) |
+| **Wishlist Page**  
+Personal wishlist page where logged-in users can view all their saved products with options to view details or remove items. | ![Wishlist Page](static/documentation/readme/wishlist-desktop.jpg) |
+| **Wishlist Button**  
+Interactive wishlist buttons on product pages allowing users to add/remove items from their wishlist with real-time feedback. | ![Wishlist Button](static/documentation/readme/add&remove.jpg) |
+| **Review System**  
+Star rating system allowing users to leave detailed reviews for products they've purchased, with interactive star rating widget. | ![Review System](static/documentation/readme/stars.jpg) |
+| **Product Reviews Display**  
+Product detail pages show all user reviews with star ratings, helping customers make informed purchasing decisions. | ![Product Reviews](static/documentation/readme/review-form.jpg) ||
+| **Category Filtering**  
+Product filtering by categories (Cleansers, Toners, Serums, etc.) with dropdown navigation for easy product discovery. | ![Category Filtering](static/documentation/readme/dropdown-categories.jpg) |
+| **Product Sorting**  
+Advanced product sorting options by price, (low to high, high to low) and rating to help users find products that match their preferences. | ![Product Sorting](static/documentation/readme/sorting.jpg) |
 
 ### Existing Admin Features
 
@@ -266,19 +280,23 @@ Admin users can manage the entire ecosystem of products, reviews, & customer int
 | **Feature** | **Screenshot** |
 |:------------|:---------------|
 | **Admin Panel Overview**  
-The Django admin dashboard provides secure, streamlined access to manage products, reviews, orders, users & site content. Admins can perform all key actions through an intuitive interface without needing direct access to the database or codebase. | ![Admin Main](static/documentation/readme/admin-main.webp) |
+The Django admin dashboard provides secure, streamlined access to manage products, reviews, orders, users & site content. Admins can perform all key actions through an intuitive interface without needing direct access to the database or codebase. | ![Admin Main](static/documentation/readme/admin-main.jpg) |
 | **Product Management via Admin**  
-Admins can easily create, update, or delete skincare products directly through the admin interface, keeping the shop inventory dynamic & up-to-date. | ![Admin Products](static/documentation/readme/admin-products.webp) |
+Admins can easily create, update, or delete skincare products directly through the admin interface, keeping the shop inventory dynamic & up-to-date. | ![Admin Products](static/documentation/readme/admin-products.jpg) |
 | **FAQ Content Management**  
-FAQ resources can be easily expanded by admins without coding, allowing new questions, answers & categories to be added dynamically through the CMS. | ![Admin FAQ](static/documentation/readme/admin-faq.webp) |
+FAQ resources can be easily expanded by admins without coding, allowing new questions, answers & categories to be added dynamically through the CMS. | ![Admin FAQ](static/documentation/readme/admin-faq.jpg) |
+| **Review Content Management**  
+FAQ resources can be easily expanded by admins without coding, allowing new questions, answers & categories to be added dynamically through the CMS. | ![Admin FAQ](static/documentation/readme/admin-reviews.jpg) |
+| **Wishlist Content Management**  
+FAQ resources can be easily expanded by admins without coding, allowing new questions, answers & categories to be added dynamically through the CMS. | ![Admin FAQ](static/documentation/readme/admin-wishlist.jpg) |
 | **Admin Links in Navbar**  
-Admin users have quick frontend access to manage products via special links visible only when logged in with superuser privileges. | ![Nav Admin](static/documentation/readme/nav-dropdown-admin.webp) |
+Admin users have quick frontend access to manage products via special links visible only when logged in with superuser privileges. | ![Nav Admin](static/documentation/readme/nav-admin.jpg) |
 | **Manage Products via Site Interface**  
-For fast updates, admins can modify existing products or add new items directly through the site frontend without using the admin backend. | ![Manage Products](static/documentation/readme/manage-products.webp) |
+For fast updates, admins can modify existing products or add new items directly through the site frontend without using the admin backend. | ![Manage Products](static/documentation/readme/manage-product.jpg) |
 | **Order Management**  
-Admins can review all placed orders including customer details, line items, timestamps & payment status, providing full control over order processing & fulfillment. | ![Admin Orders](static/documentation/readme/admin-orders.webp) |
+Admins can review all placed orders including customer details, line items, timestamps & payment status, providing full control over order processing & fulfillment. | ![Admin Orders](static/documentation/readme/admin-orders.jpg) |
 | **User Management**  
-Admins can manage the site's userbase — viewing registered accounts, managing profile data, filtering users & handling submitted customer inquiries efficiently. | ![Admin messages](static/documentation/readme/admin-messages.webp) |
+Admins can manage the site's userbase — viewing registered accounts, managing profile data, filtering users & handling submitted customer inquiries efficiently. | ![Admin messages](static/documentation/readme/admin-.jpg) |
 
 ### Future Features:
 
@@ -329,12 +347,14 @@ User stories were used to keep track of the MOSCOW framework & project MVP as wo
 | **Order management** | As an Admin, I want to see successful orders in admin panel so that I can manage customer orders | (1) Orders appear in the Admin panel. (2) Admin can update order status (Pending, Shipped, Delivered). (3) Admin can search & sort orders by date, status & user. |
 | **Successful order email** | As a User, I want to receive a confirmation email after purchase so that I can see my order has been placed successfully | (1) An email is automatically sent to user with order confirmation. |
 | **Product management** | As an Admin, I want to add, edit & delete items so that I can edit & add new products easily | (1) Admin can add, edit & delete products via the Admin dashboard. (2) Admin can add, edit & delete products directly on site when logged in as an admin. |
-| **Write a review** | As a User, I want to write reviews for products so that I can share my experience with others | (1) Logged-in users can leave reviews with star ratings. (2) Reviews are displayed on product detail pages. (3) Users can only review products they've purchased. |
-| **Add items to wishlist** | As a User, I want to add products to my wishlist so that I can save items for later | (1) Logged-in users can add products to a personal wishlist. (2) Wishlist is accessible from the user's account dashboard. |
+| **Write a review** | As a User, I want to write reviews for products so that I can share my experience with others | (1) Logged-in users can leave reviews with interactive star ratings (1-5 stars). (2) Reviews are displayed on product detail pages with star ratings and comments. (3) Users can only review products they've purchased. (4) Review form includes both rating and detailed comment fields. |
+| **Add items to wishlist** | As a User, I want to add products to my wishlist so that I can save items for later | (1) Logged-in users can add products to a personal wishlist with real-time feedback. (2) Wishlist is accessible from the navigation menu and user's account dashboard. (3) Users can view, manage, and remove items from their wishlist. (4) Interactive wishlist buttons show current status (added/not added). |
 | **FAQ for questions** | As a User, I want to access FAQ information so that I can find answers to common questions | (1) FAQ page with categorized questions and answers. (2) Search functionality for finding specific information. |
 | **Social media profile** | As a User, I want to follow Skin0clock_ng on social media so that I can stay updated | (1) User can access social media profiles via footer links. (2) Social profiles contain brand updates and skincare tips. |
 | **Optimize with Google SEO** | As a Developer, I want the website to be optimised for Google SEO so that the site can be found when users search for skincare products | (1) Meta tags are correctly structured for SEO. (2) Sitemap and robots.txt are properly configured. |
 | **User logged in for checkout** | I want users to be logged into their profile before proceeding with checkout so that they can have their orders linked & traced back to their profiles | (1) If user is logged in already: CTA on bag view directs user to checkout page with delivery details & Stripe payment option. (2) If user is not logged in: User is directed to login / register page. (3) Once user is successfully logged in, they are redirected back to checkout view to place order successfully. |
+| **Filter products by category** | As a User, I want to filter products by category so that I can find products for my specific skincare needs | (1) Dropdown navigation with all product categories (Cleansers, Toners, Serums, etc.). (2) Category filtering shows only products in selected category. (3) Easy navigation between different product types. |
+| **Sort products by price and rating** | As a User, I want to sort products by price and rating so that I can find the best products within my budget | (1) Sort products by price (low to high, high to low). (2) Sort products by rating (highest rated first). (3) Clear sorting options in navigation dropdown. |
 
 ## Site Testing
 

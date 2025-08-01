@@ -23,26 +23,30 @@ class StripeWH_Handler:
         """
         Send the user a confirmation email
         """
-        cust_email = order.email
-        subject = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_subject.txt',
-            {'order': order}
-        )
-        body = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_body.txt',
-            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL}
-        )
+        try:
+            cust_email = order.email
+            subject = render_to_string(
+                'checkout/confirmation_emails/confirmation_email_subject.txt',
+                {'order': order}
+            )
+            body = render_to_string(
+                'checkout/confirmation_emails/confirmation_email_body.txt',
+                {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL}
+            )
 
-        send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [cust_email]
-        )
-        print(
-            f"\n Confirmation email sent to: {cust_email}\n"
-            f"Subject: {subject.strip()}\n---\n{body}\n---\n"
-        )
+            send_mail(
+                subject,
+                body,
+                settings.DEFAULT_FROM_EMAIL,
+                [cust_email]
+            )
+            print(
+                f"\n Confirmation email sent to: {cust_email}\n"
+                f"Subject: {subject.strip()}\n---\n{body}\n---\n"
+            )
+        except Exception as e:
+            print(f"Error sending confirmation email: {e}")
+            # Don't raise the exception to avoid breaking the webhook
 
     def handle_event(self, event):
         """
