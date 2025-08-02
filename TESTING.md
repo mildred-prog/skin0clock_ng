@@ -24,9 +24,9 @@ Testing file for skin0clock_ng [README.md](README.md).
 - [x] Order summary display
 - [x] Order management
 - [x] Writing a review
-- [ ] Add items to wishlist
-- [ ] Faq for questions and informative answers
-- [ ] Subscribe to newsletter
+- [x] Add items to wishlist
+- [x] Faq for questions and informative answers
+- [x] Subscribe to newsletter
 - [x] Social media profile
 - [x] Optimize with Google SEO
 
@@ -179,7 +179,6 @@ Common issues that were identified & resolved included:
     All Python files containing the project's code have been tested, & the errors were fixed.
     After running the CI Python Linter, it shows there are no errors.
 
-![Python Tests Clear](static/documentation/testing/py-clear.webp)
 
 | **Feature** | **admin.py** | **apps.py** | **models.py** | **urls.py** | **views.py** | **forms.py** | **tests.py** | 
 | ----------- |:------------:|:-----------:|:-------------:|:-----------:|:------------:|:------------:|:------------:|
@@ -209,7 +208,7 @@ __Apps tested:__
 - [x] products
 - [x] wishlist
 - [x] review
-- [ ] faq
+- [x] faq
 - [x] bag
 - [x] checkout
 - [x] profiles
@@ -305,12 +304,6 @@ __Apps tested:__
     **Mobile Home Page**  
     ![Lighthouse Report Home Mobile](static/documentation/testing/lh-mobile.webp)
 
-- [x] Mobile view:
-
-    Performance was lower than preferred on mobile view due to the site being image heavy on landing page with hero & featured products. Images used in the sites design were compressed to offer the best chance for a decent performance score.
-
-    **Mobile Home Page**  
-    ![Lighthouse Report Home Mobile](static/documentation/testing/lh-mobile.webp)
 
 
 ### Accessibility

@@ -257,6 +257,12 @@ Personal wishlist page where logged-in users can view all their saved products w
 Interactive wishlist buttons on product pages allowing users to add/remove items from their wishlist with real-time feedback. | ![Wishlist Button](static/documentation/readme/add&remove.jpg) |
 | **Review System**  
 Star rating system allowing users to leave detailed reviews for products they've purchased, with interactive star rating widget. | ![Review System](static/documentation/readme/stars.jpg) |
+| **Newsletter Subscription**  
+Mailchimp subscription form allowing users to opt-in for marketing emails, with GDPR-compliant consent. | ![Newsletter Signup](static/documentation/readme/newsletter-signup.jpg) |
+| **Newsletter Confirmation Page**  
+Success page confirming that the subscription to the newsletter was completed. | ![Newsletter Confirm](static/documentation/readme/success.jpg) |
+| **Newsletter Success Alert**  
+Visual confirmation message appearing after a successful newsletter signup. | ![Newsletter Alert](static/documentation/readme/newsletter-alert.jpg) |
 | **Product Reviews Display**  
 Product detail pages show all user reviews with star ratings, helping customers make informed purchasing decisions. | ![Product Reviews](static/documentation/readme/review-form.jpg) ||
 | **Category Filtering**  
@@ -295,8 +301,6 @@ Admin users have quick frontend access to manage products via special links visi
 For fast updates, admins can modify existing products or add new items directly through the site frontend without using the admin backend. | ![Manage Products](static/documentation/readme/manage-product.jpg) |
 | **Order Management**  
 Admins can review all placed orders including customer details, line items, timestamps & payment status, providing full control over order processing & fulfillment. | ![Admin Orders](static/documentation/readme/admin-orders.jpg) |
-| **User Management**  
-Admins can manage the site's userbase — viewing registered accounts, managing profile data, filtering users & handling submitted customer inquiries efficiently. | ![Admin messages](static/documentation/readme/admin-.jpg) |
 
 ### Future Features:
 
@@ -304,7 +308,6 @@ The following features are planned for possible future development to enhance us
 
 | **Feature** | **Details** |
 |:------------|:------------|
-| **Advanced Product Filtering** (Help users find products for their specific needs) | (1) Filter by skin type, concerns, ingredients<br>(2) Price range and rating filters<br>(3) Sort by popularity, newest, price |
 | **Skincare Routine Builder** (Personalized routine recommendations) | (1) Quiz to determine skin type and concerns<br>(2) AI-powered product recommendations<br>(3) Custom routine creation and tracking |
 | **Subscription Model** (Create recurring sales & convenience for users) | (1) Monthly skincare box subscriptions<br>(2) Auto-renew with Stripe integration<br>(3) Personalized product selection |
 | **Virtual Try-On** (AR technology for product testing) | (1) Virtual skin analysis<br>(2) Before/after simulation<br>(3) Product compatibility testing |
@@ -315,22 +318,89 @@ The following features are planned for possible future development to enhance us
 | **Ingredient Database** (Educational content) | (1) Comprehensive ingredient library<br>(2) Safety and efficacy ratings<br>(3) Ingredient interaction warnings |
 | **Personalized Email Campaigns** (Targeted marketing) | (1) Behavior-based email sequences<br>(2) Abandoned cart recovery<br>(3) Product recommendation emails |
 
+
+## Agile Development
+
+### Agile Workflow
+
+An Agile development process was followed using GitHub Projects for sprint planning, user story tracking & task issue management. New user stories have been added as the project progressed & based on user feedback during the final testing phase.
+
+### Project Issues
+
+![Issues](static/documentation/readme/project-issues.jpg)
+
+### Project Milestones
+
+![Issues](static/documentation/readme/milestone-closed.jpg)
+
+### MoSCoW Prioritisation:
+
+- **Must Have:** Essential for MVP & launch 
+- **Should Have:** Important but not critical for MVP
+- **Could Have:** Enhancements added in later sprints
+- **Won’t Have:** Out of current scope
+
+See agile [project boards here](https://github.com/users/mildred-prog/projects/11/views/9)
+
+
 ## User Stories
 
-User stories were used to keep track of the MOSCOW framework & project MVP as working through the project.
+User stories were used to keep track of the MOSCOW framework & project MVP as working through the project. 
 
-![User story](static/documentation/readme/user-story.webp)
+![User story](static/documentation/readme/user-story.jpg)
 
-![Agile](static/documentation/readme/agile.webp)
+![Agile](static/documentation/readme/agile.jpg)
 
-### EPICS:
-- [x] **EPIC 1:** User Authentication & Account Management
-- [x] **EPIC 2:** Product Listings & E-commerce
-- [x] **EPIC 3:** Checkout & Payment System
-- [x] **EPIC 4:** Review System
-- [x] **EPIC 5:** Wishlist Functionality
-- [x] **EPIC 6:** FAQ & Customer Support
-- [x] **EPIC 7:** UI / UX Enhancements & Social Links
+### Complete User Stories List:
+
+#### Core Infrastructure & Setup
+- [x] **Create Django app** - Set up the main Django application structure
+- [x] **Create PostgreSQL database** - Configure database for production deployment
+- [x] **Create product images** - Add comprehensive product image library
+- [x] **Integrate Stripe for payment** - Implement secure payment processing
+- [x] **Create a Hosting service for deployment** - Set up Heroku deployment with AWS S3
+- [x] **Create item JSON file** - Add product and category fixtures
+
+#### User Interface & Experience
+- [x] **Homepage** - Create engaging landing page with featured products
+- [x] **Viewing skincare products** - Display product catalog with filtering
+- [x] **View products details individually** - Detailed product pages with images and descriptions
+- [x] **Persistent access to shopping basket** - Session-based shopping cart functionality
+- [x] **404 page not found** - Custom error page for broken links
+- [x] **505 page-Internal server error** - Custom error page for server issues
+
+#### User Authentication & Account Management
+- [x] **Create Account** - User registration with email verification
+- [x] **Login & logout of account** - Secure authentication system
+- [x] **Manage User Account** - Admin panel for user management
+- [x] **Have a personalized profile** - User profile with order history and preferences
+
+#### Product Discovery & Management
+- [x] **Product search** - Search functionality for finding products
+- [x] **Sort products** - Sort by price, rating, and other criteria
+- [x] **Filter products** - Filter by category, price range, and other attributes
+- [x] **Add a product** - Admin functionality to add new products
+- [x] **Edit products** - Admin functionality to modify existing products
+- [x] **Delete product** - Admin functionality to remove products
+
+#### Shopping Cart & Checkout
+- [x] **Add Product to Shopping Cart** - Add items to cart with quantity selection
+- [x] **Update Products in Cart** - Modify quantities and remove items
+- [x] **Order Summary display** - Review order before checkout
+- [x] **Order confirmation** - Email confirmation and order tracking
+
+#### Customer Support & Communication
+- [x] **Contact Us** - Contact form for customer inquiries
+- [x] **Subscribe to newsletter** - Email newsletter subscription
+- [x] **Create FAQ Model** - FAQ system for customer support
+- [x] **Store owner page** - Admin dashboard for store management
+
+#### Advanced Features
+- [x] **Create Product Review Model** - User review and rating system
+- [x] **Create a Wishlist Model** - Save products for later purchase
+- [x] **Routine Planner** - Skincare routine planning functionality
+- [x] **Optimize with SEO** - Search engine optimization
+- [x] **Marketing** - Marketing strategies and campaigns
 
 | **USER STORY** | **DETAILS** | **ACCEPTANCE CRITERIA** |
 | -------------- | ----------- | ----------------------- |
@@ -359,6 +429,213 @@ User stories were used to keep track of the MOSCOW framework & project MVP as wo
 ## Site Testing
 
 Please see [TESTING.md](TESTING.md) document.
+
+## UX/UI Wireframing
+
+
+### Wireframe
+
+
+## Page Layout Wireframes
+
+### 🏠 **Home Page Layout**
+```
+┌─────────────────────────────────────────────────────────────┐
+│ 🔝 Header: Logo | Navigation | Search | Account | Bag     │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  🎯 Hero Section                                          │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │ "Discover The Secrets Of Beauty"                   │   │
+│  │ [Shop Now Button]                                  │   │
+│  └─────────────────────────────────────────────────────┘   │
+│                                                             │
+│  🛍️ Featured Products                                    │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐        │
+│  │ Product 1   │ │ Product 2   │ │ Product 3   │        │
+│  │ [Image]     │ │ [Image]     │ │ [Image]     │        │
+│  │ Name        │ │ Name        │ │ Name        │        │
+│  │ £Price      │ │ £Price      │ │ £Price      │        │
+│  │ [View]      │ │ [View]      │ │ [View]      │        │
+│  └─────────────┘ └─────────────┘ └─────────────┘        │
+│                                                             │
+│  💡 Skincare Tips & Advice                                │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐        │
+│  │ Stay        │ │ Soothe &     │ │ Moisturize  │        │
+│  │ Hydrated    │ │ Protect      │ │ Daily       │        │
+│  │ [Image]     │ │ [Image]      │ │ [Image]     │        │
+│  └─────────────┘ └─────────────┘ └─────────────┘        │
+│                                                             │
+│ 🔽 Footer: Company Info | Social Links | Contact          │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 🛍️ **Products Page Layout**
+```
+┌─────────────────────────────────────────────────────────────┐
+│ 🔝 Header: Logo | Navigation | Search | Account | Bag     │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  🏷️ Categories Dropdown: [Cleansers|Toners|Serums|...]   │
+│  🔍 Sort Options: [Price|Rating|Name] [Asc|Desc]          │
+│                                                             │
+│  📦 Product Grid (3-4 columns)                            │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐        │
+│  │ Product 1   │ │ Product 2   │ │ Product 3   │        │
+│  │ [Image]     │ │ [Image]     │ │ [Image]     │        │
+│  │ Name        │ │ Name        │ │ Name        │        │
+│  │ ⭐⭐⭐⭐⭐    │ │ ⭐⭐⭐⭐     │ │ ⭐⭐⭐⭐⭐    │        │
+│  │ £Price      │ │ £Price      │ │ £Price      │        │
+│  │ [Add to Bag]│ │ [Add to Bag]│ │ [Add to Bag]│        │
+│  └─────────────┘ └─────────────┘ └─────────────┘        │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐        │
+│  │ Product 4   │ │ Product 5   │ │ Product 6   │        │
+│  │ [Image]     │ │ [Image]     │ │ [Image]     │        │
+│  │ Name        │ │ Name        │ │ Name        │        │
+│  │ ⭐⭐⭐⭐     │ │ ⭐⭐⭐⭐⭐    │ │ ⭐⭐⭐⭐     │        │
+│  │ £Price      │ │ £Price      │ │ £Price      │        │
+│  │ [Add to Bag]│ │ [Add to Bag]│ │ [Add to Bag]│        │
+│  └─────────────┘ └─────────────┘ └─────────────┘        │
+│                                                             │
+│  📄 Pagination: [1] [2] [3] [Next]                       │
+│                                                             │
+│ 🔽 Footer: Company Info | Social Links | Contact          │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 📦 **Product Detail Page Layout**
+```
+┌─────────────────────────────────────────────────────────────┐
+│ 🔝 Header: Logo | Navigation | Search | Account | Bag     │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  🏠 Breadcrumb: Home > Products > Product Name            │
+│                                                             │
+│  📦 Product Details (2-column layout)                     │
+│  ┌─────────────────────┐ ┌─────────────────────────────┐  │
+│  │                     │ │ Product Name                │  │
+│  │    [Product Image]  │ │ ⭐⭐⭐⭐⭐ (5 reviews)        │  │
+│  │                     │ │ £Price                      │  │
+│  │                     │ │                             │  │
+│  │                     │ │ Description:                │  │
+│  │                     │ │ [Product description text]  │  │
+│  │                     │ │                             │  │
+│  │                     │ │ Quantity: [1] [+][-]        │  │
+│  │                     │ │ [Add to Bag] [❤️ Wishlist]  │  │
+│  └─────────────────────┘ └─────────────────────────────┘  │
+│                                                             │
+│  ⭐ Customer Reviews                                      │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │ Review 1: ⭐⭐⭐⭐⭐ "Great product!" - User1        │   │
+│  │ Review 2: ⭐⭐⭐⭐  "Good quality" - User2          │   │
+│  │ [Add Review] [View All Reviews]                    │   │
+│  └─────────────────────────────────────────────────────┘   │
+│                                                             │
+│ 🔽 Footer: Company Info | Social Links | Contact          │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 🛒 **Shopping Bag Page Layout**
+```
+┌─────────────────────────────────────────────────────────────┐
+│ 🔝 Header: Logo | Navigation | Search | Account | Bag     │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  🛒 Shopping Bag                                          │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │ Product 1                    │ Qty: [2] [+][-]    │   │
+│  │ [Image] Name                 │ £Price             │   │
+│  │ ⭐⭐⭐⭐⭐                     │ [Remove]            │   │
+│  ├─────────────────────────────────────────────────────┤   │
+│  │ Product 2                    │ Qty: [1] [+][-]    │   │
+│  │ [Image] Name                 │ £Price             │   │
+│  │ ⭐⭐⭐⭐                      │ [Remove]            │   │
+│  ├─────────────────────────────────────────────────────┤   │
+│  │                             │ Subtotal: £XX.XX   │   │
+│  │                             │ Delivery: £X.XX    │   │
+│  │                             │ Total: £XX.XX      │   │
+│  │                             │                     │   │
+│  │ [Continue Shopping]          │ [Secure Checkout]  │   │
+│  └─────────────────────────────────────────────────────┘   │
+│                                                             │
+│ 🔽 Footer: Company Info | Social Links | Contact          │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 💳 **Checkout Page Layout**
+```
+┌─────────────────────────────────────────────────────────────┐
+│ 🔝 Header: Logo | Navigation | Search | Account | Bag     │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  💳 Checkout (2-column layout)                            │
+│  ┌─────────────────────────────┐ ┌─────────────────────┐  │
+│  │ Delivery Information        │ │ Order Summary        │  │
+│  │ ┌─────────────────────────┐ │ │ ┌─────────────────┐ │  │
+│  │ │ Full Name: [Input]      │ │ │ │ Product 1 x2     │ │  │
+│  │ │ Email: [Input]          │ │ │ │ Product 2 x1     │ │  │
+│  │ │ Phone: [Input]          │ │ │ │                   │ │  │
+│  │ │ Country: [Dropdown]     │ │ │ │ Subtotal: £XX.XX │ │  │
+│  │ │ Postcode: [Input]       │ │ │ │ Delivery: £X.XX  │ │  │
+│  │ │ Town/City: [Input]      │ │ │ │ Total: £XX.XX    │ │  │
+│  │ │ Street Address: [Input] │ │ │ └─────────────────┘ │  │
+│  │ └─────────────────────────┘ │ │                     │  │
+│  │                             │ │ Payment:            │  │
+│  │ Payment Information         │ │ [Stripe Card Input] │  │
+│  │ ┌─────────────────────────┐ │ │                     │  │
+│  │ │ Card Number: [Input]    │ │ │ [Complete Order]   │  │
+│  │ │ Expiry: [MM/YY]        │ │ │                     │  │
+│  │ │ CVC: [Input]           │ │ │                     │  │
+│  │ └─────────────────────────┘ │ │                     │  │
+│  └─────────────────────────────┘ └─────────────────────┘  │
+│                                                             │
+│ 🔽 Footer: Company Info | Social Links | Contact          │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 👤 **User Profile Page Layout**
+```
+┌─────────────────────────────────────────────────────────────┐
+│ 🔝 Header: Logo | Navigation | Search | Account | Bag     │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  👤 My Profile (Tabbed layout)                            │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │ [Profile Info] [Order History] [Wishlist]         │   │
+│  ├─────────────────────────────────────────────────────┤   │
+│  │                                                 │   │
+│  │ Profile Information                              │   │
+│  │ ┌─────────────────────────────────────────────┐   │   │
+│  │ │ Username: [Display]                        │   │   │
+│  │ │ Email: [Display]                           │   │   │
+│  │ │                                             │   │   │
+│  │ │ Default Delivery Information:               │   │   │
+│  │ │ Phone: [Input]                             │   │   │
+│  │ │ Street Address: [Input]                    │   │   │
+│  │ │ Town/City: [Input]                         │   │   │
+│  │ │ Postcode: [Input]                          │   │   │
+│  │ │ Country: [Dropdown]                        │   │   │
+│  │ │                                             │   │   │
+│  │ │ [Update Information]                        │   │   │
+│  │ └─────────────────────────────────────────────┘   │   │
+│  │                                                 │   │
+│  └─────────────────────────────────────────────────────┘   │
+│                                                             │
+│ 🔽 Footer: Company Info | Social Links | Contact          │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Brand Color Palette
+
+Skin0clock_ng's visual identity is designed to reflect elegance, clarity, and vibrant self-care energy. Each color plays a purposeful role in enhancing the user experience and brand perception.
+
+| **Color**  | **Hex Code** | **Purpose & Description**                                                                                                                                                 |
+| ---------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Purple** | `#764ba2`    | **Signature Brand Color** — A bold, luxurious purple that evokes calm, trust, and beauty. It's the foundation of our brand identity and adds a modern edge to the design. |
+| **Black**  | `#000000`    | **Primary Text & Structure** — Used for headings, body text, and structural elements to ensure strong contrast and legibility throughout the site.                        |
+| **White**  | `#ffffff`    | **Clean Backgrounds** — Offers simplicity and cleanliness, allowing products and messages to stand out with clarity and elegance.                                         |
+                                 
+
 
 ## Technologies Used
 
@@ -506,8 +783,8 @@ The following libraries & frameworks were used to enhance functionality, improve
 
 A detailed first look at ERD & database models below:
 
-![ERD & Database Model](static/documentation/readme/model.webp)
-
+![ERD & Database Model](static/documentation/readme/model.png)
+![ERD & Database Model](static/documentation/readme/model1.png)
 ## Deployment
 
 ### Cloudinary Integration
@@ -616,15 +893,11 @@ git clone https://github.com/your-username/repo-name.git
 
 - Boutique Ado Walkthrough Project:
   - Various code sections throughout the site were adapted from the Code Institute's Boutique Ado walkthrough project as a basis to build Skin0clock_ng.
+  
 
 - Product images & info within site:
-  - [Cloudinary](https://cloudinary.com/) for image hosting and optimization
-
-- Used throughout the site to compress & optimize images for faster loading times and improved performance:
-  - [TinyPNG](https://tinypng.com/)
-
-- Helped reinforce concepts used to build modern, responsive Flexbox-based layouts across the site:
-  - [Flexbox Froggy](https://flexboxfroggy.com/)
+  - [Canva](https://www.canva.com/) for image generated throughout the site
+  - [chatgpt](https://chatgpt.com/) info and explanation of products were gotten from chatgpt
 
 - Resources used for resolving specific Django issues:
   - [Code Institute Full Stack Development course materials](https://codeinstitute.net/global/full-stack-software-development-diploma/)
@@ -636,11 +909,10 @@ git clone https://github.com/your-username/repo-name.git
   - [Slack](https://slack.com/intl/en-ie/)
 
 ## Acknowledgements
-
+- A huge thanks to my husband for his continued support during this project & the past year of completing this diploma.
+  
 - A huge thanks to my mentor and facilitator for the support & knowledge shared during this project.
 
 - Tutor Assist for the support when debugging became overwhelming.
-
-- Slack channel peers for their feedback & support with errors.
 
 - The Code Institute community for providing the foundation and resources needed to build this project.
