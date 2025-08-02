@@ -788,7 +788,7 @@ hr {
 
 @media (min-width: 343px) {
     .main-content {
-        margin-top: 262px;
+        margin-top: 180px;
     }
     .wishlist-empty {
         padding-top: 4rem;
@@ -800,6 +800,12 @@ hr {
     }
     .wishlist-empty-title {
         font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 368px) {
+    .main-content {
+        margin-top: 180px;
     }
 }
 
