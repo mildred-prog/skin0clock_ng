@@ -302,7 +302,7 @@ __Apps tested:__
     Performance was lower than preferred on mobile view due to the site being image heavy on landing page with hero & featured products. Images used in the sites design were compressed to offer the best chance for a decent performance score.
 
     **Mobile Home Page**  
-    ![Lighthouse Report Home Mobile](static/documentation/testing/lh-mobile.webp)
+    ![Lighthouse Report Home Mobile](static/documentation/testing/lh-mobile.jpg)
 
 
 
@@ -362,7 +362,6 @@ __Accessibility Fixes__
 | `charge.succeeded`| Order payment status updated, inventory adjusted |
 | `charge.updated`| Order adjustments verified following charge updates (refunds, disputes) |
 
-![Stripe Webhooks](static/documentation/readme/stripe-webhooks.webp)
 
 
 ## Manual Testing

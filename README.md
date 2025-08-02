@@ -6,7 +6,7 @@ We are on a mission to empower people with knowledge and access to high-quality 
 
 Skin0clock_ng is not just a store, it's a community-driven movement toward informed skincare choices, self-care, and the joy of achieving healthy, radiant skin.
 
-Let's glow together!
+Discover the secret of beauty,Let's glow together!
 
 Live Link: https://skin0clock-ng-1fc932a0495c.herokuapp.com/
 
