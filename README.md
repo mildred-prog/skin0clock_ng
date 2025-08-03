@@ -137,6 +137,7 @@ Skin0clock_ng is a premium skincare e-commerce platform that employs a multi-cha
 | **Brand Voice**        | Friendly, educational, trustworthy                                                             |
 | **Call-to-Actions**    | “Shop Now” buttons driving traffic to the main website                                         |
 
+![Facebook Mock-up](static/documentation/readme/facebook.jpg)
 
 - **Content Marketing Strategy**
 
@@ -670,7 +671,7 @@ Skin0clock_ng's visual identity is designed to reflect elegance, clarity, and vi
 | **Hosting & Deployment:** |    |
 |:--------------------------|:---|
 | **Heroku** | Cloud platform used for hosting & deploying the Django web application. |
-| **Cloudinary** | Cloud storage service used for hosting static & media files. |
+| **AWS S3** | Amazon Web Services storage service used for hosting static & media files.. |
 | **Gunicorn** | WSGI HTTP server used to run Django apps in a production environment. |
 
 ### Libraries & Frameworks
@@ -696,8 +697,7 @@ The following libraries & frameworks were used to enhance functionality, improve
   - `PyJWT` – Token-based authentication (used by Stripe & others)
 
 - **Cloud Storage:**
-  - `cloudinary` – Cloud storage and image management
-  - `cloudinary_storage` – Django integration for Cloudinary
+  - `AWS S3` – Amazon Web Services storage service used for hosting static & media files.
 
 - **Database:**
   - `psycopg2-binary` – PostgreSQL driver
@@ -785,35 +785,202 @@ A detailed first look at ERD & database models below:
 
 ![ERD & Database Model](static/documentation/readme/model.png)
 ![ERD & Database Model](static/documentation/readme/model1.png)
-## Deployment
+## Django Project Setup
 
-### Cloudinary Integration
-**Cloudinary** is used to store Skin0clock_ng's static & media files securely, for fast & reliable access.
+##### (1) Install Django & Supporting Libraries
+```bash
+pip install 'django<4' gunicorn
+pip install dj_database_url psycopg2
+```
 
-#### Steps to Set Up Cloudinary:
+Once the relevant dependencies are installed, generate a `requirements.txt` file to track them:
 
-##### (1) Create & Configure Cloudinary Account
-- **Sign up** for a free Cloudinary account
-- Go to **Dashboard** & note your Cloud Name, API Key, and API Secret
+```bash
+pip freeze --local > requirements.txt
+```
 
-##### (2) Configure Django Settings
-Add to your `settings.py`:
+##### (2) Create Your Django Project & App
+```bash
+django-admin startproject skin0clock_ng .
+python manage.py startapp home
+```
+
+Add your new app to `INSTALLED_APPS` in `settings.py`:
 
 ```python
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'your-cloud-name',
-    'API_KEY': 'your-api-key',
-    'API_SECRET': 'your-api-secret'
-}
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+'home',
 ```
 
-##### (3) Install Required Packages
+##### (3) Create a Superuser
+To enable admin access:
+
 ```bash
-pip install cloudinary django-cloudinary-storage
+python manage.py createsuperuser
 ```
+
+##### (4) Run Migrations
+```bash
+python manage.py migrate
+```
+
+##### (5) Set Up Environment Variables
+Create an `env.py` file to store sensitive information like `DATABASE_URL` & `SECRET_KEY`.
+
+```python
+import os
+
+os.environ["DATABASE_URL"] = "<copiedURLfromPostgres/SQLite>"
+os.environ["SECRET_KEY"] = "my_super^secret@key"
+```
+
+Add `env.py` to your `.gitignore` to keep it out of version control.
+##### (6) Update `settings.py` to Use Environment Variables
+
+```python
+import os
+import dj_database_url
+
+if os.path.exists("env.py"):
+    import env
+
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
+```
+
+##### (7) Set Up the Templates Directory
+In `settings.py`, add:
+
+```python
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+```
+
+Update the `DIRS` section of `TEMPLATES`:
+
+```python
+'DIRS': [
+    os.path.join(BASE_DIR, 'templates'),
+    os.path.join(BASE_DIR, 'templates', 'allauth'),
+],
+```
+
+##### (8) Create Media, Static & Templates Directories
+Inside the top-level project directory (same level as `manage.py`), create:
+
+- `media/`
+- `static/`
+- `templates/`
+
+##### (9) Prepare for Heroku Deployment
+Create a `Procfile` in the root of your project & add:
+
+```
+web: gunicorn skin0clock-ng.wsgi
+```
+
+##### (10) Finalize Setup
+Make any necessary migrations:
+
+```bash
+python manage.py migrate
+```
+
+
+## Deployment
+
+### AWS Cloud Service
+**Amazon Web Services (AWS)** used to store 1up GrowKits' static & media files securely, for fast & reliable access.
+
+![AWS Bucket](static/documentation/readme/aws-bucket.jpg)
+
+#### Steps to Set Up AWS:
+
+##### (1) Create & Configure an S3 Bucket
+- **Login** to your AWS Management Console
+- Go to **S3** & create a new bucket with a globally unique name
+- Choose a region closest to your user base
+
+**Public Access & Ownership:**
+- Uncheck "Block all public access"
+- Under Object Ownership, select "ACLs enabled" & "Bucket owner preferred"
+
+**Enable Static Website Hosting:**
+- In the "Properties" tab, enable static website hosting
+- Set `index.html` & `error.html` as the default documents
+
+**CORS Configuration:**
+```json
+[
+  {
+    "AllowedHeaders": ["Authorization"],
+    "AllowedMethods": ["GET"],
+    "AllowedOrigins": ["*"],
+    "ExposeHeaders": []
+  }
+]
+```
+
+**Bucket Policy:**
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::your-bucket-name/*"
+    }
+  ]
+}
+```
+
+**Access Control List (ACL):**
+- Enable "List" for public access
+
+##### (2) Configure IAM
+
+**Create a User Group:**
+- Go to IAM > User Groups > Create New Group
+- Name it (eg. `skin0clock_ng`)
+
+**Attach Policies:**
+- Attach `AmazonS3FullAccess` policy
+- Modify it:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "s3:*",
+      "Resource": [
+        "arn:aws:s3:::your-bucket-name",
+        "arn:aws:s3:::your-bucket-name/*"
+      ]
+    }
+  ]
+}
+```
+
+**Create a User:**
+- Enable Programmatic Access
+- Assign to the group
+- Download credentials CSV (AWS_ACCESS_KEY_ID & AWS_SECRET_ACCESS_KEY)
+
+##### (3) Final AWS Setup
+- Remove `DISABLE_COLLECTSTATIC` from Heroku Config Vars
+- Create a `media/` directory in your S3 bucket
+- Upload files & set public access
+
+**Security:** 
+- Never commit AWS credentials in source code
+- Create env.py to keep keys secure
+
+
 
 ### Stripe Integration
 - Stripe is used to process payments securely
