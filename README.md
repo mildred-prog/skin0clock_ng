@@ -877,7 +877,7 @@ Inside the top-level project directory (same level as `manage.py`), create:
 Create a `Procfile` in the root of your project & add:
 
 ```
-web: gunicorn skin0clock-ng.wsgi
+web: gunicorn skin0clock_ng.wsgi
 ```
 
 ##### (10) Finalize Setup
