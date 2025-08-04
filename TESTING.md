@@ -111,6 +111,7 @@ Testing using the recommended [HTML W3C Validator](https://validator.w3.org/) to
 **Products & Deals Page**  
 ![Products & Deals HTML Validation](static/documentation/testing/html-product&deals.jpg)
 
+
 ### Validation Errors
 
 | **CSS Validation Issue** | **Description** |
@@ -184,14 +185,14 @@ Common issues that were identified & resolved included:
 | ----------- |:------------:|:-----------:|:-------------:|:-----------:|:------------:|:------------:|:------------:|
 | skin0clock_ng | n/a | [no errors](static/documentation/testing/main-urls.jpg) | [no errors](static/documentation/testing/main-views.jpg) | n/a | n/a |
 | home | n/a | [no errors](static/documentation/testing/home-apps.jpg) | n/a | [no errors](static/documentation/testing/home-urls.jpg) | [no errors](static/documentation/testing/home-views.jpg) | n/a | [no errors](static/documentation/testing/home-test.webp) |
-| products | [no errors](static/documentation/testing/products-admin.jpg) | [no errors](static/documentation/testing/products-apps.jpg) | [no errors](static/documentation/testing/products-models.jpg) | [no errors](static/documentation/testing/products-urls.jpg) | [no errors](static/documentation/testing/products-views.jpg) | [no errors](static/documentation/testing/products-forms.jpg) | [no errors](static/documentation/testing/products-test.webp) |
+| products | [no errors](static/documentation/testing/products-admin.jpg) | [no errors](static/documentation/testing/products-apps.jpg) | [no errors](static/documentation/testing/products-models.jpg) | [no errors](static/documentation/testing/products-urls.jpg) | [no errors](static/documentation/testing/products-views.jpg) | [no errors](static/documentation/testing/products-forms.jpg) | [no errors](static/documentation/testing/products-test.jpg) |
 | wishlist | [no errors](static/documentation/testing/wishlist-admin.jpg) | n/a | [no errors](static/documentation/testing/wishlist-models.jpg) | [no errors](static/documentation/testing/wishlist-urls.jpg) | [no errors](static/documentation/testing/wishlist-views.jpg) | n/a | [no errors](static/documentation/testing/wishlist-test.jpg) |
-| faq | [no errors](static/documentation/testing/faq-admin.jpg) | [no errors](static/documentation/testing/faq-apps.jpg) | [no errors](static/documentation/testing/faq-models.jpg) | [no errors](static/documentation/testing/faq-urls.jpg) | [no errors](static/documentation/testing/faq-views.jpg) | n/a | [no errors](static/documentation/testing/faq-test.jpg) |
+| faq | [no errors](static/documentation/testing/faq-admin.jpg) | [no errors](static/documentation/testing/faq-apps.jpg) | [no errors](static/documentation/testing/faq-models.jpg) | [no errors](static/documentation/testing/faq-urls.jpg) | [no errors](static/documentation/testing/faq-views.jpg) | n/a | [no errors](static/documentation/testing/faq-testss.jpg) |
 | bag | n/a | [no errors](static/documentation/testing/bag-apps.jpg) | n/a | [no errors](static/documentation/testing/bag-urls.jpg) | [no errors](static/documentation/testing/bag-views.jpg) | n/a | [no errors](static/documentation/testing/bag-test.jpg) |
 | checkout | [no errors](static/documentation/testing/checkout-admin.jpg) | [no errors](static/documentation/testing/checkout-apps.jpg) | [no errors](static/documentation/testing/checkout-models.jpg) | [no errors](static/documentation/testing/checkout-urls.jpg) | [no errors](static/documentation/testing/checkout-views.jpg) | [no errors](static/documentation/testing/checkout-forms.jpg) | [no errors](static/documentation/testing/checkout-test.jpg) |
 | profiles | n/a | [no errors](static/documentation/testing/profiles-apps.jpg) | [no errors](static/documentation/testing/profiles-models.jpg) | [no errors](static/documentation/testing/profiles-url.jpg) | [no errors](static/documentation/testing/profiles-views.jpg) | [no errors](static/documentation/testing/profiles-forms.jpg) | [no errors](static/documentation/testing/profiles-test.jpg) |
 | review | [no errors](static/documentation/testing/review-admin.jpg) | [no errors](static/documentation/testing/review-apps.jpg) | [no errors](static/documentation/testing/review-models.jpg) | [no errors](static/documentation/testing/wishlist-urls.jpg) | [no errors](static/documentation/testing/wishlist-views.jpg) | [no errors](static/documentation/testing/review-forms.jpg) | [no errors](static/documentation/testing/review-test.jpg) |
-| contact | [no errors](static/documentation/testing/contact-admin.jpg) | [no errors](static/documentation/testing/contact-apps.jpg) | [no errors](static/documentation/testing/contact-models.jpg) | [no errors](static/documentation/testing/contact-urls.jpg) | [no errors](static/documentation/testing/contact-views.jpg) | [no errors](static/documentation/testing/contact-forms.jpg) | [no errors](static/documentation/testing/contact-test.jpg) |
+| contact | [no errors](static/documentation/testing/contact-admin.jpg) | [no errors](static/documentation/testing/contact-apps.jpg) | [no errors](static/documentation/testing/contact-models.jpg) | [no errors](static/documentation/testing/contact-urls.jpg) | [no errors](static/documentation/testing/contact-views.jpg) | [no errors](static/documentation/testing/contact-forms.jpg) | [no errors](static/documentation/testing/contact-tests.jpg) |
 
 
 | **Feature** | **contexts.py** | **signals.py** | **webhook_handler.py** | **webhooks.py** | **utils.py** |
@@ -362,7 +363,8 @@ __Accessibility Fixes__
 | `charge.succeeded`| Order payment status updated, inventory adjusted |
 | `charge.updated`| Order adjustments verified following charge updates (refunds, disputes) |
 
-
+![Stripe Webhooks](static/documentation/testing/stripe-webhook.jpg)
+![Message Confirmation](static/documentation/testing/message-confirmation.jpg)
 
 ## Manual Testing
 
@@ -424,3 +426,18 @@ The below are bugs that I spent more time investigating, most of these encounter
 | 007 | Wishlist heart icon not toggling active state visually |  Fixed | Added `aria-pressed` state and visual class toggling on click | JS logic in wishlist.js |
 | 008 | FAQ toggle buttons not accessible by keyboard |  Fixed | Converted from `<div>` to `<button>` and added `aria-expanded` attributes | Manual keyboard test |
 | 009 | Review submission form not announcing success to screen readers |  Fixed | Added `role="status"` live region to toast message container | Accessibility improvement |
+
+---
+
+###  Known UI Behaviours & Design Choices
+
+#### 1. **Header-Hero Spacing on Small Screens (≤ 342px)**
+
+At screen widths below 342px, there is an unusually large gap between the header and the hero image. This is a known issue caused by responsive limitations and stacking behavior at extremely small screen sizes. Despite efforts to resolve it, fixing the spacing would require disproportionately complex adjustments, so it has been left as is. Given the very limited use of such screen sizes, it does not significantly impact the overall user experience.
+
+#### 2. **Add to Wishlist Button Emphasis**
+
+On the main product page, the **"Add to Wishlist"** button is styled larger than the **"Remove from Wishlist"** button.
+This was an **intentional design decision** aimed at user engagement. Since the site is an e-commerce platform, the larger button draws user attention toward saving products — a key step in encouraging purchasing behavior.
+
+
