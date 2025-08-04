@@ -150,8 +150,11 @@
 
     // Update quantity on click
     $('.update-link').click(function (e) {
-        var form = $(this).prev('.update-form');
-        form.submit();
+        e.preventDefault();
+        var form = $(this).closest('td').find('.update-form');
+        if (form.length > 0) {
+            form.submit();
+        }
     })
 
     // Remove item and reload on click
