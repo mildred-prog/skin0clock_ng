@@ -1,3 +1,9 @@
+"""
+Product Management Views
+Contains all view functions for managing products in the e-commerce system.
+Handles product display, search, filtering, and administrative operations
+for adding, editing, and deleting products.
+"""
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -12,9 +18,11 @@ from reviews.forms import ReviewForm
 
 def all_products(request):
     """
-    A view to show all products, including sorting and search queries
+    Display all products with search, filtering, and sorting capabilities.
+    Handles the main products page where users can browse all available
+    products. Supports product search, category filtering, and sorting
+    by name. Processes GET parameters for user interactions.
     """
-
     products = Product.objects.all()
     query = None
     categories = None
@@ -73,9 +81,11 @@ def all_products(request):
 
 def product_detail(request, product_id):
     """
-    A view to show individual product details
+    Display detailed information about a specific product.
+    Shows comprehensive product information including description, pricing,
+    images, and user reviews. Handles review form for authenticated users
+    who haven't reviewed the product yet.
     """
-
     product = get_object_or_404(Product, pk=product_id)
     reviews = product.reviews.all().order_by('-date_posted')
     review_form = None
@@ -98,9 +108,11 @@ def product_detail(request, product_id):
 
 def home(request):
     """
-    Home page with featured products by category
+    Display the home page with featured products by category.
+    Creates a homepage showcasing the highest-rated product from each
+    major skincare category. Provides users with a curated selection
+    of the best products to encourage browsing and purchases.
     """
-
     featured_categories = {
         'cleansers': 1,
         'toners': 2,
@@ -122,9 +134,11 @@ def home(request):
 
 def category_products(request, category_id):
     """
-    A view to show all products in a specific category
+    Display all products within a specific category.
+    Filters and displays products that belong to a particular category.
+    Provides a focused browsing experience for users exploring specific
+    skincare categories.
     """
-
     category = Category.objects.get(pk=category_id)
     products = Product.objects.filter(category_id=category_id)
     context = {
@@ -137,7 +151,10 @@ def category_products(request, category_id):
 @login_required
 def add_product(request):
     """
-    Add a product to the store
+    Add a new product to the store (admin only).
+    Allows superusers to add new products to the store. Handles both
+    GET requests (display form) and POST requests (process submission)
+    with validation and user feedback.
     """
     if not request.user.is_superuser:
         messages.error(
@@ -171,7 +188,10 @@ def add_product(request):
 @login_required
 def edit_product(request, product_id):
     """
-    Edit a product in the store
+    Edit an existing product in the store (admin only).
+    Allows superusers to modify existing product information. Pre-populates
+    the form with current product data and handles both GET and POST requests
+    for form display and processing.
     """
     if not request.user.is_superuser:
         messages.error(
@@ -208,7 +228,9 @@ def edit_product(request, product_id):
 @login_required
 def delete_product(request, product_id):
     """
-    Delete a product from the store
+    Delete a product from the store (admin only).
+    Allows superusers to permanently remove products from the store.
+    Performs direct deletion without confirmation page for efficiency.
     """
     if not request.user.is_superuser:
         messages.error(

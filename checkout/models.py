@@ -1,3 +1,8 @@
+"""
+Checkout System Models
+Contains the core models for the checkout and order management system.
+Handles the complete order lifecycle from creation to completion.
+"""
 import uuid
 from decimal import Decimal
 
@@ -11,6 +16,13 @@ from profiles.models import UserProfile
 
 
 class Order(models.Model):
+    """
+    Order model for storing complete order information.
+    Represents a complete order in the e-commerce system. Stores all
+    customer information, delivery details, order totals, and payment
+    information. Includes automatic order number generation and total
+    calculation functionality.
+    """
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(
         UserProfile, on_delete=models.SET_NULL,
@@ -42,14 +54,17 @@ class Order(models.Model):
 
     def _generate_order_number(self):
         """
-        Generate a random, unique order number using UUID
+        Creates a random, unique 32-character hexadecimal string to serve
+        as the order number. Ensures uniqueness across all orders.
         """
         return uuid.uuid4().hex.upper()
 
     def update_total(self):
         """
-        Update grand total each time a line item is added,
-        accounting for delivery costs.
+        Update order totals including delivery costs.
+        Recalculates the order total by summing all line items, then
+        calculates delivery costs based on order value and free delivery
+        threshold. Automatically saves the updated totals.
         """
         self.order_total = self.lineitems.aggregate(
             Sum('lineitem_total')
@@ -65,18 +80,26 @@ class Order(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Override the original save method to set the order number
-        if it hasn't been set already.
+        Override save method to auto-generate order number.
+        Ensures that every order has a unique order number by generating
+        one if it doesn't exist. Prevents duplicate order numbers.
         """
         if not self.order_number:
             self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
 
     def __str__(self):
+        """Return the order number as string representation."""
         return self.order_number
 
 
 class OrderLineItem(models.Model):
+    """
+    Individual line item within an order.
+    Represents a single product line within an order, including the
+    product, quantity, and calculated line total. Line total is
+    automatically calculated when the item is saved.
+    """
     order = models.ForeignKey(
         Order, null=False, blank=False,
         on_delete=models.CASCADE, related_name='lineitems'
@@ -91,13 +114,15 @@ class OrderLineItem(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Override the original save method to set the lineitem total
-        and update the order total.
+        Override save method to calculate line total and update order.
+        Automatically calculates the line item total based on product
+        price and quantity, then triggers the order total update.
         """
         self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):
+        """Return a descriptive string representation."""
         return (
             f'SKU {self.product.sku} on order {self.order.order_number}'
         )

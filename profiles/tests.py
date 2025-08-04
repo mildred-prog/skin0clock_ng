@@ -6,16 +6,26 @@ from profiles.models import UserProfile
 
 
 class ProfileViewTests(TestCase):
+    """
+    Test suite for profile-related views including:
+    - profile access control
+    - profile detail updates
+    - order history access
+    """
+
     def setUp(self):
+        """
+        Set up a test user, profile, and associated order.
+        """
         self.client = Client()
 
-        # Create test user and log them in
         self.user = User.objects.create_user(
-            username='testuser', email='test@example.com', password='testpass123'
+            username='testuser',
+            email='test@example.com',
+            password='testpass123'
         )
         self.profile = self.user.userprofile
 
-        # Create test order
         self.order = Order.objects.create(
             full_name='Test User',
             email='test@example.com',
@@ -35,10 +45,16 @@ class ProfileViewTests(TestCase):
         self.order.save()
 
     def test_profile_redirects_if_not_logged_in(self):
+        """
+        Ensure unauthenticated user is redirected from profile view.
+        """
         response = self.client.get(reverse('profile'))
-        self.assertEqual(response.status_code, 302)  # Redirect to login
+        self.assertEqual(response.status_code, 302)
 
     def test_profile_view_logged_in(self):
+        """
+        Ensure profile page loads correctly for a logged-in user.
+        """
         self.client.login(username='testuser', password='testpass123')
         response = self.client.get(reverse('profile'))
         self.assertEqual(response.status_code, 200)
@@ -46,6 +62,9 @@ class ProfileViewTests(TestCase):
         self.assertContains(response, 'Profile')
 
     def test_profile_update_post(self):
+        """
+        Ensure user profile updates via POST request.
+        """
         self.client.login(username='testuser', password='testpass123')
         response = self.client.post(reverse('profile'), {
             'default_phone_number': '987654321',
@@ -59,6 +78,9 @@ class ProfileViewTests(TestCase):
         self.assertEqual(self.profile.default_phone_number, '987654321')
 
     def test_order_history_view(self):
+        """
+        Ensure order history page loads for the correct order number.
+        """
         self.client.login(username='testuser', password='testpass123')
         url = reverse('order_history', args=[self.order.order_number])
         response = self.client.get(url)

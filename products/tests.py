@@ -21,17 +21,17 @@ class ProductAppTests(TestCase):
             category=self.category
         )
 
-        # Create superuser for admin views
         self.superuser = User.objects.create_superuser(
-            username='admin', email='admin@example.com', password='adminpass'
+            username='admin',
+            email='admin@example.com',
+            password='adminpass'
         )
 
-        # Create regular user
         self.user = User.objects.create_user(
-            username='user', email='user@example.com', password='userpass'
+            username='user',
+            email='user@example.com',
+            password='userpass'
         )
-
-    # ---------- MODELS ----------
 
     def test_category_str(self):
         self.assertEqual(str(self.category), 'Serums')
@@ -41,8 +41,6 @@ class ProductAppTests(TestCase):
 
     def test_product_category_relation(self):
         self.assertEqual(self.product.category.name, 'Serums')
-
-    # ---------- FORMS ----------
 
     def test_product_form_valid(self):
         form = ProductForm(data={
@@ -62,8 +60,6 @@ class ProductAppTests(TestCase):
             'category': self.category.id
         })
         self.assertFalse(form.is_valid())
-
-    # ---------- VIEWS ----------
 
     def test_all_products_view(self):
         url = reverse('products')
@@ -85,13 +81,15 @@ class ProductAppTests(TestCase):
 
     def test_edit_product_view_superuser(self):
         self.client.login(username='admin', password='adminpass')
-        response = self.client.get(reverse('edit_product', args=[self.product.id]))
+        url = reverse('edit_product', args=[self.product.id])
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'products/edit_product.html')
 
     def test_delete_product_view_superuser(self):
         self.client.login(username='admin', password='adminpass')
-        response = self.client.post(reverse('delete_product', args=[self.product.id]))
+        url = reverse('delete_product', args=[self.product.id])
+        response = self.client.post(url)
         self.assertRedirects(response, reverse('products'))
         self.assertFalse(Product.objects.filter(id=self.product.id).exists())
 
@@ -101,20 +99,32 @@ class ProductAppTests(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('home'))
 
-    # ---------- URL RESOLUTION ----------
-
     def test_url_all_products(self):
-        self.assertEqual(resolve(reverse('products')).func, views.all_products)
+        self.assertEqual(
+            resolve(reverse('products')).func,
+            views.all_products
+        )
 
     def test_url_product_detail(self):
-        resolved_func = resolve(reverse('product_detail', args=[self.product.id])).func
+        resolved_func = resolve(
+            reverse('product_detail', args=[self.product.id])
+        ).func
         self.assertEqual(resolved_func, views.product_detail)
 
     def test_url_add_product(self):
-        self.assertEqual(resolve(reverse('add_product')).func, views.add_product)
+        self.assertEqual(
+            resolve(reverse('add_product')).func,
+            views.add_product
+        )
 
     def test_url_edit_product(self):
-        self.assertEqual(resolve(reverse('edit_product', args=[self.product.id])).func, views.edit_product)
+        self.assertEqual(
+            resolve(reverse('edit_product', args=[self.product.id])).func,
+            views.edit_product
+        )
 
     def test_url_delete_product(self):
-        self.assertEqual(resolve(reverse('delete_product', args=[self.product.id])).func, views.delete_product)
+        self.assertEqual(
+            resolve(reverse('delete_product', args=[self.product.id])).func,
+            views.delete_product
+        )

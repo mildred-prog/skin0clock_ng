@@ -1,3 +1,9 @@
+"""
+Product Review Management Views
+Contains views for managing product reviews and ratings from users.
+The review system allows customers to share their experiences with products,
+helping other users make informed purchasing decisions.
+"""
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
@@ -6,19 +12,33 @@ from products.models import Product
 from .models import Review
 from .forms import ReviewForm
 
-# Create your views here.
 
 def is_admin(user):
+    """
+    Check if user is an admin for review management.
+    Returns True if user is authenticated and has staff privileges.
+    """
     return user.is_authenticated and user.is_staff
+
 
 @login_required
 def add_review(request, product_id):
+    """
+    Add a new review for a product.
+    Allows authenticated users to submit reviews for products they've purchased.
+    Prevents duplicate reviews from the same user for the same product.
+    Handles both GET and POST requests with validation and user feedback.
+    """
     product = get_object_or_404(Product, id=product_id)
 
-    # Check if this user has already reviewed this product
-    existing_review = Review.objects.filter(product=product, user=request.user).first()
+    existing_review = Review.objects.filter(
+        product=product, user=request.user
+    ).first()
+
     if existing_review:
-        messages.warning(request, "You have already submitted a review for this product.")
+        messages.warning(
+            request, "You have already submitted a review for this product."
+        )
         return redirect('product_detail', product_id=product.id)
 
     if request.method == 'POST':
@@ -29,27 +49,56 @@ def add_review(request, product_id):
             review.user = request.user
             review.date_posted = timezone.now()
             review.save()
-            messages.success(request, "Thank you! Your review has been submitted.")
+            messages.success(
+                request, "Thank you! Your review has been submitted."
+            )
             return redirect('product_detail', product_id=product.id)
     else:
         form = ReviewForm()
 
-    return render(request, 'reviews/add_review.html', {'form': form, 'product': product})
+    return render(
+        request,
+        'reviews/add_review.html',
+        {'form': form, 'product': product}
+    )
 
 
 def product_reviews(request, product_id):
+    """
+    Display all reviews for a specific product.
+    Shows all reviews and ratings for a particular product, ordered by
+    most recent first. Provides users with comprehensive feedback to
+    help with purchasing decisions.
+    """
     product = get_object_or_404(Product, id=product_id)
     reviews = product.reviews.all().order_by('-date_posted')
-    return render(request, 'reviews/product_reviews.html', {'product': product, 'reviews': reviews})
+    return render(
+        request,
+        'reviews/product_reviews.html',
+        {'product': product, 'reviews': reviews}
+    )
+
 
 @user_passes_test(is_admin)
 def delete_review(request, review_id):
+    """
+    Delete a review (admin only).
+    Allows administrators to remove inappropriate or spam reviews.
+    Requires confirmation before deletion and provides feedback to users.
+    """
     review = get_object_or_404(Review, id=review_id)
     product_id = review.product.id
-    
+
     if request.method == 'POST':
         review.delete()
-        messages.success(request, f'Review by {review.user.username} has been deleted successfully.')
+        messages.success(
+            request,
+            f"Review by {review.user.username} has been deleted successfully."
+        )
         return redirect('product_detail', product_id=product_id)
-    
-    return render(request, 'reviews/delete_review_confirm.html', {'review': review})
+
+    return render(
+        request,
+        'reviews/delete_review_confirm.html',
+        {'review': review}
+    )

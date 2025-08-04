@@ -1,8 +1,20 @@
+"""
+User Profile Management Forms
+Contains forms for managing user profile information.
+Provides user-friendly form interfaces for updating delivery addresses
+and contact information with proper styling and placeholders.
+"""
 from django import forms
 from .models import UserProfile
 
 
 class UserProfileForm(forms.ModelForm):
+    """
+    Form for updating user profile information.
+    Provides a comprehensive form for managing user delivery addresses
+    and contact information. Includes custom placeholders and styling
+    for better user experience.
+    """
     class Meta:
         model = UserProfile
         exclude = ('user',)
@@ -10,7 +22,9 @@ class UserProfileForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         """
         Add placeholders and classes, remove auto-generated
-        labels and set autofocus on first field
+        labels and set autofocus on first field.
+        Configures form fields with custom placeholders, styling,
+        and accessibility features for better user experience.
         """
         super().__init__(*args, **kwargs)
         placeholders = {

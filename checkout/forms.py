@@ -1,8 +1,20 @@
+"""
+Checkout System Forms
+Contains forms for managing checkout and order information.
+Provides user-friendly form interfaces for collecting customer
+information during the checkout process with proper styling.
+"""
 from django import forms
 from .models import Order
 
 
 class OrderForm(forms.ModelForm):
+    """
+    Form for collecting customer information during checkout.
+    Provides a comprehensive form for gathering customer details including
+    contact information and delivery address. Includes custom placeholders
+    and styling for better user experience during checkout.
+    """
     class Meta:
         model = Order
         fields = ('full_name', 'email', 'phone_number',
@@ -13,7 +25,9 @@ class OrderForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         """
         Add placeholders and classes, remove auto-generated
-        labels and set autofocus on first field
+        labels and set autofocus on first field.
+        Configures form fields with custom placeholders, styling,
+        and accessibility features for better checkout experience.
         """
         super().__init__(*args, **kwargs)
         placeholders = {
@@ -37,4 +51,3 @@ class OrderForm(forms.ModelForm):
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
-            

@@ -1,3 +1,10 @@
+"""
+Wishlist Management Views
+
+Contains views for managing user wishlist functionality.
+The wishlist system allows users to save products they're interested in
+for future reference and purchase, with AJAX support for dynamic interactions.
+"""
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -10,7 +17,9 @@ from products.models import Product
 @login_required
 def wishlist_view(request):
     """
-    Display user's wishlist
+    Display user's wishlist.
+    Shows all products that the user has added to their wishlist.
+    Uses select_related to optimize database queries for product information.
     """
     wishlist_items = Wishlist.objects.filter(
         user=request.user
@@ -24,7 +33,10 @@ def wishlist_view(request):
 @require_POST
 def add_to_wishlist(request, product_id):
     """
-    Add a product to user's wishlist
+    Add a product to user's wishlist.
+    Allows authenticated users to add products to their wishlist.
+    Prevents duplicate entries and provides feedback for both new additions
+    and existing items. Supports both regular requests and AJAX calls.
     """
     product = get_object_or_404(Product, id=product_id)
 
@@ -60,7 +72,10 @@ def add_to_wishlist(request, product_id):
 @require_POST
 def remove_from_wishlist(request, product_id):
     """
-    Remove a product from user's wishlist
+    Remove a product from user's wishlist.
+    Allows users to remove products from their wishlist. Handles cases
+    where the item doesn't exist and provides appropriate feedback.
+    Supports both regular requests and AJAX calls with JSON responses.
     """
     product = get_object_or_404(Product, id=product_id)
 
@@ -95,7 +110,9 @@ def remove_from_wishlist(request, product_id):
 @login_required
 def check_wishlist_status(request, product_id):
     """
-    Check if a product is in user's wishlist (for AJAX requests)
+    Check if a product is in user's wishlist (for AJAX requests).
+    Returns the wishlist status of a product for the current user.
+    Used by frontend JavaScript to update UI elements without page refresh.
     """
     try:
         product = Product.objects.get(id=product_id)
