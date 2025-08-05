@@ -210,6 +210,26 @@ input[name='q']::placeholder {
     cursor: pointer;
 }
 
+.remove-item {
+    transition: all 0.2s ease;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.remove-item:hover {
+    color: #dc3545 !important;
+    background-color: rgba(220, 53, 69, 0.1);
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+
+.remove-item i {
+    font-size: 10px;
+}
+
 .update-link {
     transition: all 0.2s ease;
     padding: 2px 6px;
@@ -801,7 +821,7 @@ hr {
 
 @media (min-width: 343px) {
     .main-content {
-        margin-top: 180px;
+        margin-top: 200px;
     }
     .wishlist-empty {
         padding-top: 4rem;
@@ -904,7 +924,8 @@ hr {
     overflow-x: auto;
   }
 
-  .card img {
+  /* Only target shopping bag card images, not all product images */
+  .bag .card img {
     width: 70px;
     height: auto;
   }
