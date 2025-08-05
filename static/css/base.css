@@ -227,7 +227,7 @@ input[name='q']::placeholder {
 }
 
 .remove-item i {
-    font-size: 10px;
+    font-size: 14px;
 }
 
 .update-link {
@@ -821,7 +821,7 @@ hr {
 
 @media (min-width: 343px) {
     .main-content {
-        margin-top: 200px;
+        margin-top: 195px;
     }
     .wishlist-empty {
         padding-top: 4rem;
