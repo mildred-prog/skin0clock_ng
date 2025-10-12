@@ -60,6 +60,28 @@
 
                         <p class="card-text">{{ product.description|truncatewords:20 }}</p>
                         <p class="card-text fw-bold">£{{ product.price }}</p>
+                        {% if product.rating %}
+                        <div class="rating-display mb-2">
+                            <div class="d-flex align-items-center">
+                                <div class="star-display mr-2">
+                                    {% for i in "12345" %}
+                                        {% if forloop.counter <= product.rating %}
+                                            <i class="fas fa-star text-warning" style="font-size: 0.9em;"></i>
+                                        {% else %}
+                                            <i class="far fa-star text-muted" style="font-size: 0.9em;"></i>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <small class="text-muted">
+                                    {{ product.rating }}/5 ({{ product.get_review_count }} review{{ product.get_review_count|pluralize }})
+                                </small>
+                            </div>
+                        </div>
+                        {% else %}
+                        <small class="text-muted mb-2 d-block">
+                            <i class="far fa-star"></i> No reviews yet
+                        </small>
+                        {% endif %}
                         <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">View Product</a>
                     </div>
                 </div>
