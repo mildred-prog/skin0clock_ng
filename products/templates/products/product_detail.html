@@ -35,9 +35,29 @@
                 <h5 class="mb-0">{{ product.name }}</h5>
                 <h5 class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</h5>
                 {% if product.rating %}
-                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                <div class="rating-display mb-2">
+                    <div class="d-flex align-items-center">
+                        <div class="star-display mr-2">
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= product.rating %}
+                                    <i class="fas fa-star text-warning"></i>
+                                {% else %}
+                                    <i class="far fa-star text-muted"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <span class="rating-text">
+                            <strong>{{ product.rating }}</strong>/5 
+                            <small class="text-muted">({{ product.get_review_count }} review{{ product.get_review_count|pluralize }})</small>
+                        </span>
+                    </div>
+                </div>
                 {% else %}
-                <small class="text-muted">No Rating</small>
+                <div class="rating-display mb-2">
+                    <small class="text-muted">
+                        <i class="far fa-star"></i> No reviews yet
+                    </small>
+                </div>
                 {% endif %}
                 {% if request.user.is_superuser %}
                     <small class="mt-3">
