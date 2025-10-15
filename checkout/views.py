@@ -12,6 +12,7 @@ from products.models import Product
 from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
 from bag.contexts import bag_contents
+from wishlist.views import remove_purchased_items_from_wishlist
 
 import stripe
 import json
@@ -173,6 +174,19 @@ def checkout_success(request, order_number):
             )
             if user_profile_form.is_valid():
                 user_profile_form.save()
+
+        # Remove purchased items from wishlist
+        purchased_product_ids = list(order.lineitems.values_list('product_id', flat=True))
+        removed_products = remove_purchased_items_from_wishlist(
+            request.user, purchased_product_ids
+        )
+        
+        if removed_products:
+            removed_products_str = ', '.join(removed_products)
+            messages.info(
+                request,
+                f'The following items have been removed from your wishlist: {removed_products_str}'
+            )
 
     messages.success(
         request,

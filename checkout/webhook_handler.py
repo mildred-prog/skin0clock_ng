@@ -9,6 +9,7 @@ from django.conf import settings
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
+from wishlist.views import remove_purchased_items_from_wishlist
 
 
 class StripeWH_Handler:
@@ -121,6 +122,12 @@ class StripeWH_Handler:
 
         try:
             order = Order.objects.get(stripe_pid=pid)
+            
+            # Remove purchased items from wishlist if user is authenticated
+            if profile and profile.user:
+                purchased_product_ids = list(order.lineitems.values_list('product_id', flat=True))
+                remove_purchased_items_from_wishlist(profile.user, purchased_product_ids)
+            
             self._send_confirmation_email(order)
             return HttpResponse(
                 content=(
@@ -157,6 +164,11 @@ class StripeWH_Handler:
                 time.sleep(1)
 
         if order_exists:
+            # Remove purchased items from wishlist if user is authenticated
+            if profile and profile.user:
+                purchased_product_ids = list(order.lineitems.values_list('product_id', flat=True))
+                remove_purchased_items_from_wishlist(profile.user, purchased_product_ids)
+            
             self._send_confirmation_email(order)
             return HttpResponse(
                 content=(
@@ -191,6 +203,12 @@ class StripeWH_Handler:
                     quantity=quantity,
                 )
                 order_line_item.save()
+            
+            # Remove purchased items from wishlist if user is authenticated
+            if profile and profile.user:
+                purchased_product_ids = list(json.loads(bag).keys())
+                remove_purchased_items_from_wishlist(profile.user, purchased_product_ids)
+                
         except Exception as e:
             if order:
                 order.delete()
