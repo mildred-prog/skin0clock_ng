@@ -1,26 +1,28 @@
 {% if user.is_authenticated %}
     <div class="wishlist-button-container" data-product-id="{{ product.id }}">
-        <!-- Add to Wishlist -->
-        <form method="post" action="{% url 'wishlist:add_to_wishlist' product.id %}" class="d-inline wishlist-form">
-            {% csrf_token %}
-            <button type="submit" 
-                    class="btn btn-primary btn-sm wishlist-btn text-white"
-                    aria-label="Add to Wishlist for {{ product.name }}"
-                    data-product-id="{{ product.id }}">
-                <i class="fas fa-heart" aria-hidden="true"></i> Add to Wishlist
-            </button>
-        </form>
-
-        <!-- Remove from Wishlist -->
-        <form method="post" action="{% url 'wishlist:remove_from_wishlist' product.id %}" class="d-inline wishlist-form">
-            {% csrf_token %}
-            <button type="submit"
-                    class="btn btn-danger btn-sm wishlist-btn text-white"
-                    aria-label="Remove from Wishlist for {{ product.name }}"
-                    data-product-id="{{ product.id }}">
-                <i class="fas fa-heart-broken" aria-hidden="true"></i> Remove from Wishlist
-            </button>
-        </form>
+        {% if product.in_wishlist %}
+            <!-- Remove from Wishlist -->
+            <form method="post" action="{% url 'wishlist:remove_from_wishlist' product.id %}" class="d-inline wishlist-form">
+                {% csrf_token %}
+                <button type="submit"
+                        class="btn btn-danger btn-sm wishlist-btn text-white"
+                        aria-label="Remove from Wishlist for {{ product.name }}"
+                        data-product-id="{{ product.id }}">
+                    <i class="fas fa-heart-broken" aria-hidden="true"></i> Remove from Wishlist
+                </button>
+            </form>
+        {% else %}
+            <!-- Add to Wishlist -->
+            <form method="post" action="{% url 'wishlist:add_to_wishlist' product.id %}" class="d-inline wishlist-form">
+                {% csrf_token %}
+                <button type="submit" 
+                        class="btn btn-primary btn-sm wishlist-btn text-white"
+                        aria-label="Add to Wishlist for {{ product.name }}"
+                        data-product-id="{{ product.id }}">
+                    <i class="fas fa-heart" aria-hidden="true"></i> Add to Wishlist
+                </button>
+            </form>
+        {% endif %}
     </div>
 {% else %}
     <a href="{% url 'account_login' %}?next={{ request.path }}" 

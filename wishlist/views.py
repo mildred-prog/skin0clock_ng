@@ -94,6 +94,9 @@ def remove_from_wishlist(request, product_id):
                 'message': f'{product.name} removed from wishlist',
                 'in_wishlist': False
             })
+        
+        # For non-AJAX requests, return redirect
+        return redirect(request.META.get('HTTP_REFERER', 'wishlist:wishlist'))
 
     except Wishlist.DoesNotExist:
         messages.error(request, 'Item not found in your wishlist.')
@@ -103,8 +106,9 @@ def remove_from_wishlist(request, product_id):
                 'success': False,
                 'message': 'Item not found in wishlist'
             })
-
-    return redirect(request.META.get('HTTP_REFERER', 'wishlist:wishlist'))
+        
+        # For non-AJAX requests, return redirect
+        return redirect(request.META.get('HTTP_REFERER', 'wishlist:wishlist'))
 
 
 @login_required
@@ -122,3 +126,34 @@ def check_wishlist_status(request, product_id):
         return JsonResponse({'in_wishlist': in_wishlist})
     except Product.DoesNotExist:
         return JsonResponse({'error': 'Product not found'}, status=404)
+
+
+def remove_purchased_items_from_wishlist(user, purchased_product_ids):
+    """
+    Remove purchased items from user's wishlist.
+    This function is called after a successful purchase to automatically
+    remove items from the user's wishlist that they have just purchased.
+    
+    Args:
+        user: The user who made the purchase
+        purchased_product_ids: List of product IDs that were purchased
+    
+    Returns:
+        List of product names that were removed from wishlist
+    """
+    if not user.is_authenticated:
+        return []
+    
+    # Get wishlist items that match the purchased products
+    wishlist_items_to_remove = Wishlist.objects.filter(
+        user=user,
+        product_id__in=purchased_product_ids
+    ).select_related('product')
+    
+    # Store product names for feedback
+    removed_products = []
+    for wishlist_item in wishlist_items_to_remove:
+        removed_products.append(wishlist_item.product.name)
+        wishlist_item.delete()
+    
+    return removed_products
