@@ -14,6 +14,7 @@ from .models import Product, Category
 from .forms import ProductForm
 from reviews.models import Review
 from reviews.forms import ReviewForm
+from wishlist.models import Wishlist
 
 
 def all_products(request):
@@ -68,8 +69,25 @@ def all_products(request):
 
     current_sorting = f'{sort}_{direction}'
 
+    # Add wishlist status for each product if user is authenticated
+    products_with_wishlist = []
+    if request.user.is_authenticated:
+        # Get all wishlist items for the current user
+        user_wishlist_products = set(
+            Wishlist.objects.filter(user=request.user)
+            .values_list('product_id', flat=True)
+        )
+        
+        for product in products:
+            product.in_wishlist = product.id in user_wishlist_products
+            products_with_wishlist.append(product)
+    else:
+        for product in products:
+            product.in_wishlist = False
+            products_with_wishlist.append(product)
+
     context = {
-        'products': products,
+        'products': products_with_wishlist,
         'search_term': query,
         'current_categories': categories,
         'current_category': current_category,
@@ -95,6 +113,13 @@ def product_detail(request, product_id):
         user_has_reviewed = product.reviews.filter(user=request.user).exists()
         if not user_has_reviewed:
             review_form = ReviewForm()
+        
+        # Check if product is in user's wishlist
+        product.in_wishlist = Wishlist.objects.filter(
+            user=request.user, product=product
+        ).exists()
+    else:
+        product.in_wishlist = False
 
     context = {
         'product': product,
